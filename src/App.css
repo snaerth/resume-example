@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+}

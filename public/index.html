@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="is">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <title>Snær Seljan Þóroddsson</title>
+  <script>
+    document.documentElement.className = 'js';
+  </script>
+</head>
+
+<body class="loading">
+  <div id="root"></div>
+  <script>
+    (function () {
+      document.addEventListener("DOMContentLoaded", function () {
+        var minTime = 500;
+        var now = new Date();
+        var next = new Date();
+        var timeDiff = next.getTime() - now.getTime();
+        if (timeDiff < minTime) {
+          var delay = minTime - timeDiff;
+          setTimeout(function () {
+            document.body.classList.remove('loading');
+          }, delay);
+        } else {
+          document.body.classList.remove('loading');
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
