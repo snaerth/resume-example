@@ -6,25 +6,30 @@ class CoverPhoto extends Component {
         const image = this.refs.image;
         const tl = new TimelineLite();
         let initialWidth =  this.getWindowWidth();
+        this.setImageWidth(initialWidth, tl, image);
 
         window.onresize = () => {
-            const finalWidth = this.getWindowWidth();
-            let posX = 0;
-            
-            if (initialWidth < finalWidth) {
-                posX = (finalWidth / initialWidth) * 100;
-                tl.to(image, 0.2, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
-            } else {
-                posX = (finalWidth / initialWidth) * 100;
-                tl.to(image, 0.2, {backgroundPositionX: posX / 1.5 + '%',ease: Linear.easeNone}); // eslint-disable-line
-            }
-
-            initialWidth = finalWidth;
+            this.setImageWidth(initialWidth, tl, image);
         }
     }
 
     getWindowWidth() {
         return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    }
+
+    setImageWidth(initialWidth, tl, image) {
+        const finalWidth = this.getWindowWidth();
+        let posX = 0;
+        
+        if (initialWidth < finalWidth) {
+            posX = (finalWidth / initialWidth) * 100;
+            tl.to(image, 0.2, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
+        } else {
+            posX = (finalWidth / initialWidth) * 100;
+            tl.to(image, 0.2, {backgroundPositionX: posX / 1.5 + '%',ease: Linear.easeNone}); // eslint-disable-line
+        }
+
+        initialWidth = finalWidth;
     }
 
     render() {

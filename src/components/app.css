@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.left,
+.right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 3em 2em;
+    color: #fff;
+    overflow: hidden;
+}
+
+.left {
+    align-items: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+}

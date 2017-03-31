@@ -2,21 +2,6 @@
     position: relative;
 }
 
-.left,
-.right {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 3em 2em;
-    color: #fff;
-}
-
-.left {
-    align-items: center;
-}
-
 .coverImage {
     background-size: cover;
     background-position-x: center 0px;
@@ -29,6 +14,15 @@
     left: 0;
 }
 
+.overlay {
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 @media only screen and (max-width: 1200px) {
     .coverImage {
         background-position-x: 60%;
@@ -39,13 +33,4 @@
     .coverImage {
         background-position-x: 60%;
     }
-}
-
-.overlay {
-    background: rgba(0, 0, 0, .2);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
