@@ -4,24 +4,112 @@
     flex-direction: row;
 }
 
-.left,
-.right {
+.col-50 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 3em 2em;
     color: #fff;
     overflow: hidden;
+    position: relative;
+}
+
+.col-50:nth-child(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.left,
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 .left {
-    align-items: center;
+    align-items: flex-end;
 }
+
+.right {
+    background: #fff;
+}
+
+h1.name {
+    font-size: 13vw;
+    line-height: 0.8;
+    margin: 0;
+    padding: 0 0 0 5vw;
+    text-indent: -4vw;
+    letter-spacing: -0.05em;
+    text-transform: lowercase;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 2%;
+    z-index: 1;
+}
+
+h1.name span {
+    display: block;
+}
+
+h1.name span:last-child {
+    text-indent: 3vw;
+}
+
+.github-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+.github-icon {
+    width: 50px;
+    height: 50px;
+}
+
 
 @media only screen and (max-width: 992px) {
     .container {
         flex-direction: column;
+    }
+    .col-50 {
+        overflow: initial;
+    }
+    .col-50:first-child {
+        height: 45vh;
+        min-height: 400px;
+    }
+    .col-50:last-child {
+        height: 100vh;
+    }
+    h1.name {
+        right: 0;
+        left: 20%;
+        top: 20px;
+    }
+    .left {
+        padding-top: 5em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .left {
+        align-items: center;
     }
 }

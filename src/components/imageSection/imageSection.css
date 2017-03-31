@@ -1,10 +1,10 @@
-.left-content-container {
+.image-content-container {
     position: relative;
 }
 
 .coverImage {
     background-size: cover;
-    background-position-x: center 0px;
+    background-position-x: 60%;
     background-repeat: no-repeat;
     width: 100%;
     max-width: 100%;
@@ -31,6 +31,7 @@
 
 @media only screen and (max-width: 992px) {
     .coverImage {
-        background-position-x: 60%;
+        background-position-x: 55%;
+        background-position-y: -30%;
     }
 }

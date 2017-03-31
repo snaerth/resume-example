@@ -23,10 +23,10 @@ class CoverPhoto extends Component {
         
         if (initialWidth < finalWidth) {
             posX = (finalWidth / initialWidth) * 100;
-            tl.to(image, 0.2, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
+            //tl.to(image, 0.1, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
         } else {
             posX = (finalWidth / initialWidth) * 100;
-            tl.to(image, 0.2, {backgroundPositionX: posX / 1.5 + '%',ease: Linear.easeNone}); // eslint-disable-line
+            //tl.to(image, 0.1, {backgroundPositionX: posX / 1.5 + '%',ease: Linear.easeNone}); // eslint-disable-line
         }
 
         initialWidth = finalWidth;
