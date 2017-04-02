@@ -36,13 +36,12 @@ class App extends Component {
   }
 
   renderPreEffect() {
-    const {tl} = this.state;
     if (this.props.common.pageRevealer) {
+      const {tl} = this.state;
       tl.timeScale(3).reverse();
       setTimeout(() => {
         this.props.actions.showPage();
       }, 1000);
-      return <PageSlideEffect type="top"/>;
     } else {
       return null;
     }
@@ -66,11 +65,12 @@ class App extends Component {
         </div>
         {this.renderPreEffect()}
         {this.props.common.showPage 
-          ? <Resume /> 
+          ? <Resume />
           : <a href="https://github.com/snaerth?tab=repositories" className="github-link">
             <img src={GithubIcon} alt="Github" className="github-icon" />
           </a>
         }
+        {this.props.common.pageRevealer ? <PageSlideEffect type="top"/> : null}
       </div>
     );
   }
