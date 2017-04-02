@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {TimelineLite} from 'gsap';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../common/actions';
 import ImageSection from './imageSection';
 import ContentSection from './contentSection';
 import PageSlideEffect from './pageSlideEffect';
+import Resume from './resume';
 import './app.css';
 import GithubIcon from './github.svg';
 
@@ -16,11 +19,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('sdfsdf');
     const {tl} = this.state;
     const {left, right, firstName, lastName} = this.refs;
 
-    tl.set(firstName, { rotationX: -45})
+    tl.set(firstName, {rotationX: -45})
       .set(lastName, {rotationX: -45})
       .to(left, 1.5, { x: '0%', opacity: 1,ease: Power2.easeOut}) // eslint-disable-line
       .to(right, 1.5, { x: '0%', opacity: 1,ease: Power2.easeOut}, 0) // eslint-disable-line
@@ -36,7 +38,10 @@ class App extends Component {
   renderPreEffect() {
     const {tl} = this.state;
     if (this.props.common.pageRevealer) {
-      tl.timeScale(2).reverse();
+      tl.timeScale(3).reverse();
+      setTimeout(() => {
+        this.props.actions.showPage();
+      }, 1000);
       return <PageSlideEffect effectNum={2}/>;
     } else {
       return null;
@@ -47,9 +52,6 @@ class App extends Component {
     return (
       <div>
         <h1 className="name"><span ref="firstName">Snær Seljan</span><span ref="lastName">Þóroddsson</span></h1>
-        <a href="https://github.com/snaerth?tab=repositories" className="github-link">
-          <img src={GithubIcon} alt="Github" className="github-icon" />
-        </a>
         <div className="container">
           <div className="col-50">
             <div className="left" ref="left">
@@ -63,6 +65,12 @@ class App extends Component {
           </div>
         </div>
         {this.renderPreEffect()}
+        {this.props.common.showPage 
+          ? <Resume /> 
+          : <a href="https://github.com/snaerth?tab=repositories" className="github-link">
+            <img src={GithubIcon} alt="Github" className="github-icon" />
+          </a>
+        }
       </div>
     );
   }
@@ -79,5 +87,18 @@ function mapStateToProps(state) {
     return { common: state.common };
 }
 
+/**
+ * Maps dispatch to components props
+ *
+ * @param {Object} dispatch - Redux dispatch medhod
+ * @returns {Object}
+ * @author Snær Seljan Þóroddsson
+ */
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+}
 
-export default connect(mapStateToProps, null)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

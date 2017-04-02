@@ -1,7 +1,8 @@
-import {PAGE_REVEALER_START, PAGE_REVEALER_STOP} from './types';
+import {PAGE_REVEALER_START, PAGE_REVEALER_STOP, SHOW_PAGE, HIDE_PAGE} from './types';
 
 const initialState = {
-  pageRevealer: false
+  pageRevealer: false,
+  showPage: false
 };
 
 export default function (state = initialState, action) {
@@ -16,7 +17,19 @@ export default function (state = initialState, action) {
         ...state,
         pageRevealer: false
       };
-    default: 
-      return {...state};
+    case SHOW_PAGE:
+      return {
+        ...state,
+        showPage: true
+      };
+    case HIDE_PAGE:
+      return {
+        ...state,
+        showPage: false
+      };
+    default:
+      return {
+        ...state
+      };
   }
 }

@@ -81,7 +81,7 @@ a.link-slideright:hover::before {
 /* Page Loader */
 
 .js body::before {
-    content: 'Sæki upplýsingar um Snæ Seljan...';
+    content: 'Sæki upplýsingar...';
     letter-spacing: 0.2em;
     text-indent: -0.2em;
     text-transform: uppercase;
