@@ -42,7 +42,7 @@ class App extends Component {
       setTimeout(() => {
         this.props.actions.showPage();
       }, 1000);
-      return <PageSlideEffect effectNum={2}/>;
+      return <PageSlideEffect type="top"/>;
     } else {
       return null;
     }

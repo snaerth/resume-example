@@ -3,21 +3,16 @@ import './pageSlideEffect.css';
 
 class PageSlideEffect extends Component {
     static propTypes = {
-        effectNum: PropTypes.number
+        type: PropTypes.string.isRequired
     };
 
-    renderLayer() {
-        const effect = this.props.effectNum || 1;
-        let layers = [];
-        for (let i = 0, len = effect; i < len; i++) {
-            layers.push(<div className="layer" key={i}/>);
-        }
-        return layers;
-    }
-
     render() {
+        const {type} = this.props;
         return (
-            <div className={`revealer revealer--animate anim--effect-${this.props.effectNum || 1}`}>{this.renderLayer()}</div>
+            <div className={`revealer revealer--animate anim--effect-${type} revealer--${type}`}>
+                <div className="layer"/>
+                <div className="layer"/>
+            </div>
         );
     }
 }

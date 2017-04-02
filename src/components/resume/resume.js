@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -7,8 +7,6 @@ import * as actionCreators from '../../common/actions';
 import './resume.css';
 
 class Resume extends Component {
-    static propTypes = {};
-
     constructor(props) {
         super(props);
         this.state = {

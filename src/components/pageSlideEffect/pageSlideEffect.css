@@ -8,6 +8,14 @@
     left: 0;
 }
 
+.revealer--top {
+	bottom: 100%;
+}
+
+.revealer--bottom {
+	top: 100%;
+}
+
 .layer {
     position: absolute;
     width: 100%;
@@ -16,142 +24,89 @@
     left: 0;
 }
 
-/* One layer effect (effect-1) */
+/* Two layer effect (effect-2) to TOP */
 
-.anim--effect-1.revealer--animate .layer {
-    animation: anim-effect-1 1.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-	animation-delay: 0.5s;
-    background: #FF92F6;
-}
-
-@keyframes anim-effect-1 {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    35%,
-    65% {
-        -webkit-transform: translate3d(0, -100%, 0);
-        transform: translate3d(0, -100%, 0);
-    }
-    100% {
-        -webkit-transform: translate3d(0, -200%, 0);
-        transform: translate3d(0, -200%, 0);
-    }
-}
-
-
-/* Two layer effect (effect-2) */
-
-.anim--effect-2.revealer--animate .layer {
-    animation: anim-effect-2-1 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+.anim--effect-top.revealer--animate .layer {
+    animation: anim-effect-2-1-top 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 	animation-delay: 0.5s;
     background: #fff;
 }
 
-.anim--effect-2.revealer--animate .layer:nth-child(2) {
-    animation-name: anim-effect-2-2;
+.anim--effect-top.revealer--animate .layer:nth-child(2) {
+    animation-name: anim-effect-2-2-top;
 	animation-delay: 0.5s;
     background: #FF92F6;
 }
 
-@keyframes anim-effect-2-1 {
+@keyframes anim-effect-2-1-top {
     0% {
-        -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
     30%,
     70% {
-        -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
-        -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
         animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     }
     100% {
-        -webkit-transform: translate3d(0, -200%, 0);
         transform: translate3d(0, -200%, 0);
     }
 }
 
-@keyframes anim-effect-2-2 {
+@keyframes anim-effect-2-2-top {
     0%,
     14.5% {
-        -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
     37.5%,
     62.5% {
-        -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
-        -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
         animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     }
     85.5%,
     100% {
-        -webkit-transform: translate3d(0, -200%, 0);
         transform: translate3d(0, -200%, 0);
     }
 }
 
-
-/* Three layer effect (effect-3) */
-
-.anim--effect-3.revealer--animate .layer {
-    animation: anim-effect-3-1 1.5s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+/* Two layer effect (effect-2) to Bottom */
+.anim--effect-bottom.revealer--animate .layer {
+    animation: anim-effect-2-1-bottom 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 	animation-delay: 0.5s;
     background: #fff;
 }
 
-.anim--effect-3.revealer--animate .layer:nth-child(2) {
-    animation-name: anim-effect-3-2;
+.anim--effect-bottom.revealer--animate .layer:nth-child(2) {
+    animation-name: anim-effect-2-2-bottom;
 	animation-delay: 0.5s;
-    background: #F478DC;
+    background: #FF92F6;
 }
 
-.anim--effect-3.revealer--animate .layer:nth-child(3) {
-    animation-name: anim-effect-3-3;
-	animation-delay: 0.5s;
-    background: #fff;
-}
-
-@keyframes anim-effect-3-1 {
+@keyframes anim-effect-2-1-bottom {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, -200%, 0);
     }
-    25%,
-    75% {
+    30%,
+    70% {
         transform: translate3d(0, -100%, 0);
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     }
     100% {
-        transform: translate3d(0, -200%, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
-@keyframes anim-effect-3-2 {
+@keyframes anim-effect-2-2-bottom {
     0%,
-    12.5% {
-        transform: translate3d(0, 0, 0);
+    14.5% {
+        transform: translate3d(0, -200%, 0);
     }
     37.5%,
     62.5% {
         transform: translate3d(0, -100%, 0);
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     }
-    87.5%,
+    85.5%,
     100% {
-        transform: translate3d(0, -200%, 0);
-    }
-}
-
-@keyframes anim-effect-3-3 {
-    0%,
-    25% {
         transform: translate3d(0, 0, 0);
-        animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    }
-    75%,
-    100% {
-        transform: translate3d(0, -200%, 0);
     }
 }
