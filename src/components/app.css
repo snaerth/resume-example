@@ -40,10 +40,12 @@
 
 .left {
     align-items: flex-end;
+    transform: translate3d(-100%,0,0);
 }
 
 .right {
     background: #fff;
+    transform: translate3d(100%,0,0);
 }
 
 h1.name {
@@ -65,6 +67,8 @@ h1.name {
 
 h1.name span {
     display: block;
+    opacity: 0;
+    transform: translate3d(0,20%,0);
 }
 
 h1.name span:last-child {

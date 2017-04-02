@@ -6,27 +6,23 @@ class CoverPhoto extends Component {
         const image = this.refs.image;
         const tl = new TimelineLite();
         let initialWidth =  this.getWindowWidth();
-        this.setImageWidth(initialWidth, tl, image);
-
-        window.onresize = () => {
-            this.setImageWidth(initialWidth, tl, image);
-        }
+        this.setImagePosition(initialWidth, tl, image);
     }
 
     getWindowWidth() {
         return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     }
 
-    setImageWidth(initialWidth, tl, image) {
+    setImagePosition(initialWidth, tl, image) {
         const finalWidth = this.getWindowWidth();
         let posX = 0;
         
         if (initialWidth < finalWidth) {
             posX = (finalWidth / initialWidth) * 100;
-            //tl.to(image, 0.1, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
+            tl.to(image, 0.1, {backgroundPositionX: posX  + '%',ease: Linear.easeNone}); // eslint-disable-line
         } else {
             posX = (finalWidth / initialWidth) * 100;
-            //tl.to(image, 0.1, {backgroundPositionX: posX / 1.5 + '%',ease: Linear.easeNone}); // eslint-disable-line
+            tl.to(image, 0.1, {backgroundPositionX: posX / 2 + '%',ease: Linear.easeNone}); // eslint-disable-line
         }
 
         initialWidth = finalWidth;

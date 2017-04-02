@@ -96,6 +96,8 @@ a.link-slideright:hover::before {
     left: 0;
     width: 100%;
     height: 100%;
+    background: #F478DC;
+    background: linear-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%);
     background: radial-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%), radial-gradient(right top, circle, #F478DC 0%, #CC62EE 57%);
     z-index: 1000;
     pointer-events: none;
