@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {TimelineLite} from 'gsap';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { TimelineLite } from 'gsap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Button from '../button';
 import * as actionCreators from '../../common/actions';
 import './resume.css';
@@ -10,37 +10,55 @@ class Resume extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tl: new TimelineLite()
+            tl: new TimelineLite(),
+            waiting: true
         };
     }
 
+
     componentDidMount() {
-        const {tl} = this.state;
-        const {title} = this.refs;
-        tl.set(title, {rotationX: -45})
-        .to(title, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0,ease: Power2.easeOut}, 0.8) // eslint-disable-line
-        .play();
+        this.timer = setTimeout(() => {
+            this.setState({
+                waiting: false
+            });
+            const { tl } = this.state;
+            const { title, back } = this.refs;
+            tl.set(title, { rotationX: -45 })
+                .to(back, 1,{ x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
+                .to(title, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 0.8) // eslint-disable-line
+                .play();
+        }, this.props.delay);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer);
     }
 
     back() {
-        this.props.actions.pageRevealerStop();
-        const {tl} = this.state;
+        const { tl } = this.state;
         tl.timeScale(3).reverse();
         this.props.actions.pageRevealerStart('bottom');
-        this.props.actions.hidePage();
+        setTimeout(() => {
+            this.props.actions.pageAnimationBackward();
+        }, this.props.delay);
     }
 
     render() {
-        return (
-            <div className="resume-container">
-                <div className="job-application--button-container button-right"><Button text="Forsíða" onClick={() => this.back()}/></div>
-                <div className="container-inner">
-                    <h1 className="name">
-                        <span ref="title">ferilskrá</span>
-                    </h1>
+        if (!this.state.waiting) {
+            return (
+                <div className="resume-container">
+                    <div className="job-application--button-container button-right button-right--offset" 
+                         ref="back"><Button text="Back" onClick={() => this.back()} /></div>
+                    <div className="container-inner">
+                        <h1 className="name">
+                            <span ref="title">ferilskrá</span>
+                        </h1>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+
+        return null;
     }
 }
 
@@ -52,7 +70,7 @@ class Resume extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-    return {common: state.common};
+    return { common: state.common };
 }
 
 /**

@@ -4,3 +4,6 @@ export const PAGE_REVEALER_STOP = 'page_revealer_stop';
 
 export const SHOW_PAGE = 'show_page';
 export const HIDE_PAGE = 'hide_page';
+
+export const PAGE_ANIMATION_FORWARD = 'page_animation_forward';
+export const PAGE_ANIMATION_BACKWARD = 'page_animation_backward';

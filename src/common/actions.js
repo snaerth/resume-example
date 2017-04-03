@@ -2,9 +2,18 @@ import {
     PAGE_REVEALER_START,
     PAGE_REVEALER_STOP,
     SHOW_PAGE, 
-    HIDE_PAGE
+    HIDE_PAGE,
+    PAGE_ANIMATION_FORWARD,
+    PAGE_ANIMATION_BACKWARD
 } from './types';
 
+export function pageAnimationForward() {
+    return { type: PAGE_ANIMATION_FORWARD };
+}
+
+export function pageAnimationBackward() {
+    return { type: PAGE_ANIMATION_BACKWARD };
+}
 
 export function pageRevealerStart(payload) {
     return { type: PAGE_REVEALER_START, payload };

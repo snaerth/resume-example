@@ -24,13 +24,17 @@
     right: 15px;
 }
 
+.button-right--offset {
+    transform: translate3d(200%, 0,0);
+}
+
 
 /* Moema */
 
 .button--moema {
     padding: 1.5em 3em;
     border-radius: 50px;
-    background: #FFABFF;
+    background: #FF92F6;
     color: #fff;
     -webkit-transition: background-color 0.3s, color 0.3s;
     transition: background-color 0.3s, color 0.3s;
