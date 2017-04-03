@@ -15,7 +15,6 @@ class Resume extends Component {
     }
 
     componentDidMount() {
-        
         const {tl} = this.state;
         const {title} = this.refs;
         tl.set(title, {rotationX: -45})
@@ -27,9 +26,8 @@ class Resume extends Component {
         this.props.actions.pageRevealerStop();
         const {tl} = this.state;
         tl.timeScale(3).reverse();
-        // setTimeout(() => {
-        //     this.props.actions.hidePage();
-        // }, 1000);
+        this.props.actions.pageRevealerStart('bottom');
+        this.props.actions.hidePage();
     }
 
     render() {

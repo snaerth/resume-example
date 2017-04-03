@@ -13,7 +13,7 @@ class Right extends Component {
                     href="mailto:snaerth@gmail.com"
                     title="Senda póst snaerth@gmail.com"
                     className="link-slideright">snaerth@gmail.com</a>
-                <div className="job-application--button-container"><Button text="Ferilskrá" onClick={() => this.props.actions.pageRevealerStart()}/></div>
+                <div className="job-application--button-container"><Button text="Ferilskrá" onClick={() => this.props.actions.pageRevealerStart('top')}/></div>
             </div>
         );
     }

@@ -6,8 +6,8 @@ import {
 } from './types';
 
 
-export function pageRevealerStart() {
-    return { type: PAGE_REVEALER_START };
+export function pageRevealerStart(payload) {
+    return { type: PAGE_REVEALER_START, payload };
 }
 
 export function pageRevealerStop() {

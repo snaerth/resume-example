@@ -70,7 +70,7 @@ class App extends Component {
             <img src={GithubIcon} alt="Github" className="github-icon" />
           </a>
         }
-        {this.props.common.pageRevealer ? <PageSlideEffect type="top"/> : null}
+        {this.props.common.pageRevealer ? <PageSlideEffect type={this.props.common.pageRevealerType}/> : null}
       </div>
     );
   }

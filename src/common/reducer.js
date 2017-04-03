@@ -2,6 +2,7 @@ import {PAGE_REVEALER_START, PAGE_REVEALER_STOP, SHOW_PAGE, HIDE_PAGE} from './t
 
 const initialState = {
   pageRevealer: false,
+  pageRevealerType: 'top',
   showPage: false
 };
 
@@ -10,7 +11,8 @@ export default function (state = initialState, action) {
     case PAGE_REVEALER_START:
       return {
         ...state,
-        pageRevealer: true
+        pageRevealer: true,
+        pageRevealerType: action.payload
       };
     case PAGE_REVEALER_STOP:
       return {
