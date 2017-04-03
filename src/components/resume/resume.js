@@ -24,7 +24,7 @@ class Resume extends Component {
             const { tl } = this.state;
             const { title, back } = this.refs;
             tl.set(title, { rotationX: -45 })
-                .to(back, 1,{ x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
+                .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
                 .to(title, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 0.8) // eslint-disable-line
                 .play();
         }, this.props.delay);
@@ -37,7 +37,10 @@ class Resume extends Component {
     back() {
         const { tl } = this.state;
         tl.timeScale(3).reverse();
-        this.props.actions.pageRevealerStart('bottom');
+        setTimeout(() => {
+            this.props.actions.pageRevealerStart('bottom');
+        }, 200);
+
         setTimeout(() => {
             this.props.actions.pageAnimationBackward();
         }, this.props.delay);
@@ -47,12 +50,16 @@ class Resume extends Component {
         if (!this.state.waiting) {
             return (
                 <div className="resume-container">
-                    <div className="job-application--button-container button-right button-right--offset" 
-                         ref="back"><Button text="Back" onClick={() => this.back()} /></div>
+                    <div className="job-application--button-container button-right button-right--offset"
+                        ref="back"><Button text="Back" onClick={() => this.back()} /></div>
+                    <h1 className="name">
+                        <span ref="title">ferilskrá</span>
+                    </h1>
                     <div className="container-inner">
-                        <h1 className="name">
-                            <span ref="title">ferilskrá</span>
-                        </h1>
+                        <a
+                            href="mailto:snaerth@gmail.com"
+                            title="Senda póst snaerth@gmail.com"
+                            className="link-slideright">snaerth@gmail.com</a>
                     </div>
                 </div>
             );

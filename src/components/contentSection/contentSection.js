@@ -9,10 +9,6 @@ class Right extends Component {
     render() {
         return (
             <div className="content-container">
-                <a
-                    href="mailto:snaerth@gmail.com"
-                    title="Senda póst snaerth@gmail.com"
-                    className="link-slideright">snaerth@gmail.com</a>
                 <div className="job-application--button-container">
                     <Button text="Ferilskrá" onClick={() => this.props.actions.pageAnimationForward()}/>
                 </div>
