@@ -7,6 +7,7 @@ import ImageSection from './imageSection';
 import ContentSection from './contentSection';
 import PageSlideEffect from './pageSlideEffect';
 import Resume from './resume';
+import Page from './page';
 import './app.css';
 
 class App extends Component {
@@ -76,7 +77,7 @@ class App extends Component {
           </div>
         </div>
         {this.renderPreEffect()}
-        {this.props.common.showPage ? <Resume delay={1000} /> : null}
+        {this.props.common.showPage ? <Page delay={1000} title="ferilskrá"><Resume/></Page> : null}
         {this.props.common.pageRevealer ? <PageSlideEffect type={type} /> : null}
       </div >
     );
