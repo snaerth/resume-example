@@ -16,15 +16,26 @@ class Resume extends Component {
         const rows = container.children;
         const { tl } = this.state;
 
-        
-        tl.pause();
         for (let i = 0, len = rows.length; i < len; i++) {
-            tl.to(rows[i], 1.5, { y: '-50px', opacity: 1, ease: Power2.easeIn }); // eslint-disable-line
+            const cols = rows[i].children;
+
+            for (let j = 0, len = cols.length; j < len; j++) {
+                const delayBetween = 0.4 + ((i + 1) / 10) + ((j + i + 1) / 10);
+                tl.to(cols[j], 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut }, delayBetween); // eslint-disable-line
+            }
         }
 
-        setTimeout(tl.play(), 5000);
+        tl.pause();
+        setTimeout(() => {
+            tl.play();
+        }, 800);
+    }
 
-        // TOTO implement animation rows
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.common.pageRevealer) {
+            const { tl } = this.state;
+            tl.timeScale(3).reverse();
+        }
     }
 
     render() {

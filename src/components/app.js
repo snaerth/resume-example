@@ -6,6 +6,7 @@ import * as actionCreators from '../common/actions';
 import ImageSection from './imageSection';
 import ContentSection from './contentSection';
 import PageSlideEffect from './pageSlideEffect';
+import DelayWrapper from './delay';
 import Resume from './resume';
 import Page from './page';
 import './app.css';
@@ -77,7 +78,9 @@ class App extends Component {
           </div>
         </div>
         {this.renderPreEffect()}
-        {this.props.common.showPage ? <Page delay={1000} title="ferilskrá"><Resume/></Page> : null}
+        {this.props.common.showPage
+          ? <DelayWrapper delay={1000}><Page title="ferilskrá" delay={1000}><Resume /></Page></DelayWrapper>
+          : null}
         {this.props.common.pageRevealer ? <PageSlideEffect type={type} /> : null}
       </div >
     );

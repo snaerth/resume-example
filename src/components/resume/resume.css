@@ -1,27 +1,32 @@
 .resume-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    padding: 25% 1em 7%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 25% 1em 7%;
 }
 
 .resume-row {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1em 0;
-    display: flex;
-    flex-direction: row;
-    opacity: 0;
-    transform: translate3d(0, 50px, 0);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: row;
 }
 
 .resume-left {
-    flex: 1 0 0; 
+  flex: 1 0 0;
+  transform: translate3d(0, 20px, 0);
 }
 
 .resume-right {
-    flex: 2 0 0; 
+  flex: 2 0 0;
+  transform: translate3d(0, 20px, 0);
+}
+
+.resume-left,
+.resume-right {
+  opacity: 0;
 }

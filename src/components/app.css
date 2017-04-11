@@ -40,12 +40,12 @@
 
 .left {
     align-items: flex-end;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-200%, 0, 0);
 }
 
 .right {
     background: #fff;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(200%, 0, 0);
 }
 
 h1.name {
