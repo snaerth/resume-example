@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { TimelineLite } from 'gsap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Button from '../button';
 import * as actionCreators from '../../common/actions';
 import './resume.css';
 
@@ -12,9 +11,19 @@ class Resume extends Component {
         this.state = { tl: new TimelineLite() };
     }
 
-    componentDidMound() {
+    componentDidMount() {
         const container = this.refs.container;
         const rows = container.children;
+        const { tl } = this.state;
+
+        
+        tl.pause();
+        for (let i = 0, len = rows.length; i < len; i++) {
+            tl.to(rows[i], 1.5, { y: '-50px', opacity: 1, ease: Power2.easeIn }); // eslint-disable-line
+        }
+
+        setTimeout(tl.play(), 5000);
+
         // TOTO implement animation rows
     }
 
