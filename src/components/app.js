@@ -14,9 +14,9 @@ import './app.css';
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      tl: new TimelineLite(),
-      showResume: false
+      tl: new TimelineLite()
     };
   }
 
@@ -55,6 +55,10 @@ class App extends Component {
     }
   }
 
+  renderPage() {
+    return <DelayWrapper delay={1000}><Page title="ferilskrá" delay={1000}><Resume /></Page></DelayWrapper>;
+  }
+
   render() {
     const type = this.props.common.pageRevealerType;
     return (
@@ -79,10 +83,10 @@ class App extends Component {
         </div>
         {this.renderPreEffect()}
         {this.props.common.showPage
-          ? <DelayWrapper delay={1000}><Page title="ferilskrá" delay={1000}><Resume /></Page></DelayWrapper>
+          ? this.renderPage()
           : null}
         {this.props.common.pageRevealer ? <PageSlideEffect type={type} /> : null}
-      </div >
+      </div>
     );
   }
 }

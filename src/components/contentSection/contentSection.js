@@ -6,11 +6,16 @@ import Button from '../button';
 import './contentSection.css';
 
 class Right extends Component {
+    clickHandler() {
+        history.pushState({}, 'profile', 'profile');
+        this.props.actions.pageAnimationForward();
+    }
+
     render() {
         return (
             <div className="content-container">
                 <div className="job-application--button-container">
-                    <Button text="Ferilskrá" onClick={() => this.props.actions.pageAnimationForward()}/>
+                    <Button text="Ferilskrá" onClick={() => this.clickHandler()}/>
                 </div>
             </div>
         );

@@ -14,6 +14,16 @@ class Page extends Component {
         };
     }
 
+    componentWillMount() {
+        window.onpopstate = e => {
+            if(!e.state) {
+                this.back();
+            } else {
+                this.props.actions.pageAnimationForward();
+            }
+        };
+    }
+
     componentDidMount() {
         const { tl } = this.state;
         const { title, back } = this.refs;
@@ -24,7 +34,8 @@ class Page extends Component {
     }
 
     back() {
-        const { tl } = this.state;
+        history.pushState(null, null, window.location.origin);
+        const {tl} = this.state;
         tl.timeScale(3).reverse();
         setTimeout(() => {
             this.props.actions.pageRevealerStart('bottom');
