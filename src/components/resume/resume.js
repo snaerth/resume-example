@@ -32,9 +32,8 @@ class Resume extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.common.pageRevealer) {
-            const { tl } = this.state;
-            tl.timeScale(3).reverse();
+        if (nextProps.common.resumeBackAnimation) {
+            this.state.tl.timeScale(3).reverse();
         }
     }
 

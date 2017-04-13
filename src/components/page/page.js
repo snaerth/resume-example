@@ -34,16 +34,15 @@ class Page extends Component {
     }
 
     back() {
+        this.props.actions.resumeBackAnimation();
         history.pushState(null, null, window.location.origin);
-        const {tl} = this.state;
-        tl.timeScale(3).reverse();
-        setTimeout(() => {
-            this.props.actions.pageRevealerStart('bottom');
-        }, 800);
+        const tl = this.state.tl;
 
         setTimeout(() => {
-            this.props.actions.pageAnimationBackward();
-        }, this.props.delay + 400);
+            tl.timeScale(3).reverse();
+            setTimeout(this.props.actions.pageRevealerStart, this.props.delay - 400, 'bottom');
+            setTimeout(this.props.actions.pageAnimationBackward, this.props.delay);
+        }, 400);
     }
 
     render() {

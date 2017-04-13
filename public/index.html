@@ -27,24 +27,5 @@
     </defs>
   </svg>
   <div id="root"></div>
-  <script>
-    (function () {
-      document.addEventListener("DOMContentLoaded", function () {
-        var minTime = 1000;
-        var now = new Date();
-        var next = new Date();
-        var timeDiff = next.getTime() - now.getTime();
-        if (timeDiff < minTime) {
-          var delay = minTime - timeDiff;
-          setTimeout(function () {
-            document.body.classList.remove('loading');
-          }, delay);
-        } else {
-          document.body.classList.remove('loading');
-        }
-      });
-    })();
-  </script>
 </body>
-
 </html>

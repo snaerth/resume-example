@@ -1,0 +1,10 @@
+{
+    "name": "Snær Seljan Þóroddsson",
+    "firstName": "snær seljan",
+    "lastName": "þóroddsson",
+    "email": "snaerth@gmail.com",
+    "sendEmail" : "Contact me",
+    "resume": {
+        "title": "Resume"
+    }
+}

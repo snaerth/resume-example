@@ -14,14 +14,37 @@ import './app.css';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      tl: new TimelineLite()
+      tl: new TimelineLite(),
+      loading: true
     };
   }
 
   componentDidMount() {
-    const { tl } = this.state;
+    this.props.actions.getTranslations();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.loading) {
+      this.startAnimation();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.common.showPage) {
+      const { tl } = this.state;
+      setTimeout(() => {
+        tl.timeScale(1).play();
+      }, 1000);
+    }
+    if(nextProps.translations && this.state.loading) {
+      this.setState({loading: false});
+      this.removePageLoading();
+    }
+  }
+
+  startAnimation() {
+    const tl = this.state.tl;
     const { left, right, firstName, lastName, github } = this.refs;
 
     tl.set(github, { scale: 0.5 })
@@ -36,15 +59,25 @@ class App extends Component {
 
     setTimeout(() => {
       tl.play();
-    }, 800);
+    }, 800); 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.common.showPage) {
-      const { tl } = this.state;
+  addPageLoading() {
+    document.body.classList.add('loading');
+  }
+
+  removePageLoading() {
+    const minTime = 1000;
+    const now = new Date();
+    const next = new Date();
+    const timeDiff = next.getTime() - now.getTime();
+    if (timeDiff < minTime) {
+      const delay = minTime - timeDiff;
       setTimeout(() => {
-        tl.timeScale(1).play();
-      }, 1000);
+        document.body.classList.remove('loading');
+      }, delay, );
+    } else {
+      document.body.classList.remove('loading');
     }
   }
 
@@ -56,14 +89,16 @@ class App extends Component {
   }
 
   renderPage() {
-    return <DelayWrapper delay={1000}><Page title="ferilskrá" delay={1000}><Resume /></Page></DelayWrapper>;
+    return <DelayWrapper delay={1000}><Page title={this.props.translations.resume.title} delay={1000}><Resume /></Page></DelayWrapper>;
   }
 
   render() {
+    if(this.state.loading) return null;
     const type = this.props.common.pageRevealerType;
+
     return (
       <div>
-        <h1 className="name"><span ref="firstName">Snær Seljan</span><span ref="lastName">Þóroddsson</span></h1>
+        <h1 className="name"><span ref="firstName">{this.props.translations.firstName}</span><span ref="lastName">{this.props.translations.firstName}</span></h1>
         <div className="container">
           <div className="col-50">
             <div className="left" ref="left">
@@ -99,7 +134,7 @@ class App extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return { common: state.common };
+  return { common: state.common, translations: state.common.translations };
 }
 
 /**

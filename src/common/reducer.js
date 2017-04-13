@@ -1,13 +1,34 @@
-import { PAGE_REVEALER_START, PAGE_REVEALER_STOP, SHOW_PAGE, HIDE_PAGE, PAGE_ANIMATION_FORWARD, PAGE_ANIMATION_BACKWARD } from './types';
+import {
+  PAGE_REVEALER_START,
+  PAGE_REVEALER_STOP,
+  SHOW_PAGE,
+  HIDE_PAGE,
+  PAGE_ANIMATION_FORWARD,
+  PAGE_ANIMATION_BACKWARD,
+  RESUME_BACK_ANIMATION,
+  GET_TRANSLATIONS
+} from './types';
 
 const initialState = {
   pageRevealer: false,
   pageRevealerType: 'top',
-  showPage: false
+  showPage: false,
+  resumeBackAnimation: false,
+  translations: null
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case GET_TRANSLATIONS:
+      return {
+        ...state,
+        translations: action.payload
+      };
+    case RESUME_BACK_ANIMATION:
+      return {
+        ...state,
+        resumeBackAnimation: true
+      };
     case PAGE_ANIMATION_FORWARD:
       return {
         ...state,
