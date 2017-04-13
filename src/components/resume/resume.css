@@ -5,15 +5,36 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  padding: 25% 1em 7%;
+  padding: 20% 1em 7%;
+}
+
+.resume-container .resume-left h2 {
+  margin: 0;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.resume-container .resume-left h2:nth-child(1) {
+  margin-top: 16px;
+  font-size: 50px;
+}
+
+.resume-container .resume-left h2:nth-child(2) {
+  font-weight: normal;
+  letter-spacing: .2px;
+  opacity: .8;
 }
 
 .resume-row {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 1em 0;
   display: flex;
   flex-direction: row;
+}
+
+.resume-row > div {
+  margin: 0 50px;
 }
 
 .resume-left {
@@ -22,11 +43,24 @@
 }
 
 .resume-right {
-  flex: 2 0 0;
+  flex: 3 0 0;
   transform: translate3d(0, 20px, 0);
 }
 
 .resume-left,
 .resume-right {
   opacity: 0;
+}
+@media only screen and (max-width: 992px) {
+  .resume-row {
+    flex-direction: column;
+  }
+
+  .resume-row > div {
+    margin: initial;
+  }
+
+  .resume-container .resume-left h2 {
+    text-align: left;
+  }
 }
