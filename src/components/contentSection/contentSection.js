@@ -21,7 +21,7 @@ class Right extends Component {
         return (
             <div className="content-container">
                 <div className="job-application--button-container">
-                    <Button text={translations.resume.title} onClick={() => this.clickHandler()}/>
+                    <Button text={translations.resume} onClick={() => this.clickHandler()}/>
                     <Button
                         text={translations.sendEmail}
                         onClick={() => this.emailHandler(translations.email)}/>

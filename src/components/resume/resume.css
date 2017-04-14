@@ -27,7 +27,7 @@
 
 .resume-row {
     max-width: 1600px;
-    margin: 0 auto;
+    margin: 0 auto 2em;
     padding: 1em 0;
     display: flex;
     flex-direction: row;

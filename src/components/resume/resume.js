@@ -1,27 +1,46 @@
-import React, { Component } from 'react';
-import { TimelineLite } from 'gsap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
+import {TimelineLite} from 'gsap';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import Button from '../button';
 import * as actionCreators from '../../common/actions';
 import './resume.css';
 
 class Resume extends Component {
     constructor(props) {
         super(props);
-        this.state = { tl: new TimelineLite() };
+        this.state = {
+            tl: new TimelineLite()
+        };
+    }
+
+    componentWillMount() {
+        window.onpopstate = e => {
+            if(!e.state) {
+                this.back();
+            } else {
+                this.props.actions.pageAnimationForward();
+            }
+        };
     }
 
     componentDidMount() {
+        const { tl } = this.state;
+        const { title, back } = this.refs;
         const container = this.refs.container;
         const rows = container.children;
-        const { tl } = this.state;
+        
+        tl.set(title, { rotationX: -45 })
+            .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
+            .to(title, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 0.8) // eslint-disable-line
+            .pause();
 
         for (let i = 0, len = rows.length; i < len; i++) {
             const cols = rows[i].children;
 
             for (let j = 0, len = cols.length; j < len; j++) {
                 const delayBetween = 0.4 + ((i + 1) / 10) + ((j + i + 1) / 10);
-                tl.to(cols[j], 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut }, delayBetween); // eslint-disable-line
+                tl.to(cols[j], 1.5, { y: '0%',opacity: 1,ease: Power2.easeOut }, delayBetween); // eslint-disable-line
             }
         }
 
@@ -31,32 +50,61 @@ class Resume extends Component {
         }, 800);
     }
 
+    back() {
+        this.props.actions.resumeBackAnimation();
+        history.pushState(null, null, window.location.origin);
+        const tl = this.state.tl;
+
+        setTimeout(() => {
+            tl.timeScale(3).reverse();
+            setTimeout(this.props.actions.pageRevealerStart, this.props.delay - 400, 'bottom');
+            setTimeout(this.props.actions.pageAnimationBackward, this.props.delay);
+        }, 400);
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.common.resumeBackAnimation) {
             this.state.tl.timeScale(3).reverse();
         }
     }
 
+    renderSections() {
+        const resumeSections = this.props.translations.resumeSections;
+        return resumeSections.map((section, i) => {
+            return (
+                <div key={i}>
+                    <h1 className="name">
+                        <span ref="title">{section.title}</span>
+                    </h1>
+                    {this.renderRows(section.rows)}
+                </div>);
+        });
+    }
+
+    renderRows(rows) {
+        return rows.map((row, i) => {
+            return (
+                <div className="resume-row" key={i}>
+                    <div className="resume-left">
+                        <h2>{row.title}</h2>
+                        <h2>{row.secondTitle}</h2>
+                    </div>
+                    <div className="resume-right">
+                        <p>{row.content}</p>
+                    </div>
+                </div>
+            );
+        });
+    }
+
     render() {
+        const translations = this.props.translations;
         return (
-            <div className="resume-container" ref="container">
-                <div className="resume-row">
-                    <div className="resume-left">
-                        <h2>Starfsferill</h2>
-                        <h2>Advania</h2>
-                    </div>
-                    <div className="resume-right">
-                        <p>Vefforritun hjá Advania síðastliðin 2 ár.Þar hef ég sinnt störfum vefforritara og hef komið aðgerð, hönnun og þróun margra vefsíðna, kerfa og verkefna.Ég hef reynslu bæði í fram-og bakendaforritun.Einnig hef ég reynslu af verktakavinnuhjá ýmsum fyrirtækjum og má þar nefna Símann,Íslandsbanka og Borgun.Kunnáttamínog helstu verkefni má sjá nánar í kaflanumtölvukunnátta</p>
-                    </div>
+            <div>
+                <div className="job-application--button-container button-right button-right--offset" ref="back">
+                    <Button text={translations.back} onClick={() => this.back()}/>
                 </div>
-                <div className="resume-row">
-                    <div className="resume-left">
-                        <h2>Starfsferill</h2>
-                    </div>
-                    <div className="resume-right">
-                        <p>Vefforritun hjá Advania síðastliðin 2 ár.Þar hef ég sinnt störfum vefforritara og hef komið aðgerð, hönnun og þróun margra vefsíðna, kerfa og verkefna.Ég hef reynslu bæði í fram-og bakendaforritun.Einnig hef ég reynslu af verktakavinnuhjá ýmsum fyrirtækjum og má þar nefna Símann,Íslandsbanka og Borgun.Kunnáttamínog helstu verkefni má sjá nánar í kaflanumtölvukunnátta</p>
-                    </div>
-                </div>
+                <div className="resume-container" ref="container">{this.renderSections()}</div>
             </div>
         );
     }
@@ -70,7 +118,7 @@ class Resume extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-    return { common: state.common };
+    return {common: state.common, translations: state.common.translations};
 }
 
 /**
