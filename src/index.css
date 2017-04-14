@@ -42,7 +42,15 @@ img {
   height: auto;
 }
 
+::selection {
+  background: #FF92F6; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #FF92F6; /* Gecko Browsers */
+}
+
 a.link-slideright {
+  font-family: 'Josefin Sans', sans-serif;
   color: #F478DC;
   position: relative;
   display: inline-block;
@@ -63,7 +71,7 @@ a.link-slideright::before {
   content: '';
   position: absolute;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: #F478DC;
   transition: transform .3s;
 }
@@ -106,7 +114,7 @@ p {
 /* Page Loader */
 
 .js body::before {
-  content: 'Sæki upplýsingar...';
+  content: 'Working on it...';
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   letter-spacing: .2em;
   text-indent: -0.2em;

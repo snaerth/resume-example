@@ -14,6 +14,9 @@ import './app.css';
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.changeLanguage = this.changeLanguage.bind(this);
+
     this.state = {
       tl: new TimelineLite(),
       loading: true
@@ -21,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getTranslations();
+    this.props.actions.setLanguage('en');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -45,16 +48,16 @@ class App extends Component {
 
   startAnimation() {
     const tl = this.state.tl;
-    const { left, right, firstName, lastName, github } = this.refs;
+    const { left, right, firstName, lastName, github, lang } = this.refs;
 
-    tl.set(github, { scale: 0.5 })
-      .set(firstName, { rotationX: -45 })
+    tl.set(firstName, { rotationX: -45 })
       .set(lastName, { rotationX: -45 })
       .to(left, 1.5, { x: '0%', opacity: 1, ease: Power2.easeOut }) // eslint-disable-line
       .to(right, 1.5, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0) // eslint-disable-line
       .to(firstName, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 0.8) // eslint-disable-line
       .to(lastName, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 1) // eslint-disable-line
-      .to(github, 1.5, { scale: 1, opacity: 1, ease: Elastic.easeOut }, 1) // eslint-disable-line
+      .to(github, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, 1) // eslint-disable-line
+      .to(lang, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, 1) // eslint-disable-line
       .pause();
 
     setTimeout(() => {
@@ -81,6 +84,14 @@ class App extends Component {
     }
   }
 
+  changeLanguage() {
+    this.addPageLoading();
+    this.removePageLoading();
+    setTimeout(() => {
+      this.props.actions.setLanguage(this.props.common.lang === 'en' ? 'is': 'en');
+    }, 300);
+  }
+
   renderPreEffect() {
     if (this.props.common.pageRevealer) {
       const { tl } = this.state;
@@ -100,6 +111,12 @@ class App extends Component {
       <div>
         <h1 className="name"><span ref="firstName">{this.props.translations.firstName}</span><span ref="lastName">{this.props.translations.firstName}</span></h1>
         <div className="container">
+          <span ref="lang" className="language-wrapper" onClick={() => this.changeLanguage()}>
+            <svg className="icon-globe">
+              <use href="#icon-globe"/>
+            </svg>
+            <span className="language">{this.props.common.lang === 'en' ? 'Icelandic': 'English'}</span>
+          </span>
           <div className="col-50">
             <div className="left" ref="left">
               <ContentSection />

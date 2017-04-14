@@ -32,3 +32,9 @@ h2 {
         padding-bottom: 15%;
     }
 }
+
+@media only screen and (max-height: 800px) {
+    .content-container {
+        padding-bottom: 50px;
+    }
+}

@@ -4,6 +4,7 @@
     "lastName": "þóroddsson",
     "email": "snaerth@gmail.com",
     "sendEmail" : "Hafðu samband",
+    "back": "Til baka",
     "resume": {
         "title": "ferilskrá"
     }

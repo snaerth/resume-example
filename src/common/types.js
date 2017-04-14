@@ -5,4 +5,4 @@ export const HIDE_PAGE = 'hide_page';
 export const PAGE_ANIMATION_FORWARD = 'page_animation_forward';
 export const PAGE_ANIMATION_BACKWARD = 'page_animation_backward';
 export const RESUME_BACK_ANIMATION = 'resume_back_animation';
-export const GET_TRANSLATIONS = 'get_translations';
+export const SET_LANGUAGE = 'set_language';

@@ -49,7 +49,7 @@ class Page extends Component {
         return (
             <div className="page-container">
                 <div className="job-application--button-container button-right button-right--offset"
-                    ref="back"><Button text="Back" onClick={() => this.back()} /></div>
+                    ref="back"><Button text={this.props.translations.back} onClick={() => this.back()} /></div>
                 <h1 className="name">
                     <span ref="title">{this.props.title}</span>
                 </h1>
@@ -67,7 +67,7 @@ class Page extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-    return { common: state.common };
+    return { common: state.common, translations: state.common.translations };
 }
 
 /**

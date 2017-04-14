@@ -8,10 +8,7 @@ import './contentSection.css';
 class Right extends Component {
     clickHandler() {
         history.pushState({}, 'profile', null);
-        this
-            .props
-            .actions
-            .pageAnimationForward();
+        this.props.actions.pageAnimationForward();
     }
 
     emailHandler(email) {
@@ -25,7 +22,9 @@ class Right extends Component {
             <div className="content-container">
                 <div className="job-application--button-container">
                     <Button text={translations.resume.title} onClick={() => this.clickHandler()}/>
-                    <Button text={translations.sendEmail} onClick={() => this.emailHandler(translations.email)}/>
+                    <Button
+                        text={translations.sendEmail}
+                        onClick={() => this.emailHandler(translations.email)}/>
                 </div>
             </div>
         );
@@ -40,9 +39,8 @@ class Right extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return { common: state.common, translations: state.common.translations };
+    return {common: state.common, translations: state.common.translations};
 }
-
 
 /**
  * Maps dispatch to components props

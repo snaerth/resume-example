@@ -6,7 +6,7 @@ import {
   PAGE_ANIMATION_FORWARD,
   PAGE_ANIMATION_BACKWARD,
   RESUME_BACK_ANIMATION,
-  GET_TRANSLATIONS
+  SET_LANGUAGE
 } from './types';
 
 const initialState = {
@@ -14,15 +14,17 @@ const initialState = {
   pageRevealerType: 'top',
   showPage: false,
   resumeBackAnimation: false,
-  translations: null
+  translations: null,
+  lang: 'en'
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_TRANSLATIONS:
+    case SET_LANGUAGE:
       return {
         ...state,
-        translations: action.payload
+        translations: action.payload.translations,
+        lang: action.payload.lang
       };
     case RESUME_BACK_ANIMATION:
       return {

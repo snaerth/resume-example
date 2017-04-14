@@ -8,11 +8,19 @@ import {
     PAGE_ANIMATION_FORWARD,
     PAGE_ANIMATION_BACKWARD,
     RESUME_BACK_ANIMATION,
-    GET_TRANSLATIONS
+    SET_LANGUAGE
 } from './types';
 
-export function getTranslations(lang) {
-    return {type: GET_TRANSLATIONS, payload: lang === 'en' ? en : is};
+export function setLanguage(lang) {
+    return {
+        type: SET_LANGUAGE,
+        payload: {
+            translations: lang === 'is'
+                ? is
+                : en,
+            lang: lang || 'en'
+        }
+    };
 }
 
 export function pageAnimationForward() {
