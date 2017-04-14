@@ -28,7 +28,7 @@ class Resume extends Component {
         const { tl } = this.state;
         const { title, back } = this.refs;
         const container = this.refs.container;
-        const rows = container.children;
+        const rows = this.refs.rows.children;
         
         tl.set(title, { rotationX: -45 })
             .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
@@ -37,7 +37,6 @@ class Resume extends Component {
 
         for (let i = 0, len = rows.length; i < len; i++) {
             const cols = rows[i].children;
-
             for (let j = 0, len = cols.length; j < len; j++) {
                 const delayBetween = 0.4 + ((i + 1) / 10) + ((j + i + 1) / 10);
                 tl.to(cols[j], 1.5, { y: '0%',opacity: 1,ease: Power2.easeOut }, delayBetween); // eslint-disable-line
@@ -71,12 +70,14 @@ class Resume extends Component {
     renderSections() {
         const resumeSections = this.props.translations.resumeSections;
         return resumeSections.map((section, i) => {
+            const rows = this.renderRows(section.rows);
+
             return (
                 <div key={i}>
                     <h1 className="name">
                         <span ref="title">{section.title}</span>
                     </h1>
-                    {this.renderRows(section.rows)}
+                    {<div ref="rows">{rows}</div>}
                 </div>);
         });
     }
@@ -84,7 +85,7 @@ class Resume extends Component {
     renderRows(rows) {
         return rows.map((row, i) => {
             return (
-                <div className="resume-row" key={i}>
+                <div className="resume-row" key={'row-' + i}>
                     <div className="resume-left">
                         <h2>{row.title}</h2>
                         <h2>{row.secondTitle}</h2>
