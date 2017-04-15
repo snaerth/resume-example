@@ -64,13 +64,27 @@
 }
 
 .images-section .image-wrapper {
-    margin: 0 1em;
+    margin: 0 3em;
+    opacity: 0;
+    transform: scale3d(0.8,0.8,0.8);
+    font: 400 18px/1 'Kaushan Script', cursive;
+    max-width:400px;
+}
+
+.images-section .image-wrapper p {
+    background: white;
+    margin-top: 0;
+    padding: 0 20px 20px;
+    text-align: center;
+    color: #888;
+    line-height: 1.2;
+    font-size: 20px;
 }
 
 .images-section img {
     border: 20px solid #fff;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
 }
 

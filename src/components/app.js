@@ -55,16 +55,18 @@ class App extends Component {
       firstName,
       lastName,
       github,
+      githubMobile,
       lang,
       mobileImage,
     } = this.refs;
 
     tl
-      .set(firstName, {rotationX: -45})
-      .set(lastName, {rotationX: -45})
-      .to(left, 1.5, {x: '0%', opacity: 1, ease: Power2.easeOut}) // eslint-disable-line
-      .to(right, 1.5, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0) // eslint-disable-line
-      .to(mobileImage, 1.5, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0) // eslint-disable-line
+      .set([firstName, lastName], {rotationX: -45})
+      .to([left, right, mobileImage], 1.5, {
+        x: '0%',
+        opacity: 1,
+        ease: Power2.easeOut, // eslint-disable-line
+      }) 
       .to(
         firstName,
         1.5,
@@ -73,10 +75,10 @@ class App extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut,// eslint-disable-line
+          ease: Power2.easeOut, // eslint-disable-line
         },
         0.8,
-      ) // eslint-disable-line
+      )
       .to(
         lastName,
         1.5,
@@ -85,12 +87,16 @@ class App extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut,// eslint-disable-line
+          ease: Power2.easeOut, // eslint-disable-line
         },
         1,
       )
-      .to(github, 1, {y: '0%', opacity: 1, ease: Power2.easeOut}, 1) // eslint-disable-line
-      .to(lang, 1, {y: '0%', opacity: 1, ease: Power2.easeOut}, 1) // eslint-disable-line
+      .to(
+        [github, githubMobile, lang],
+        1,
+        {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+        1,
+      )
       .pause();
 
     setTimeout(() => {
@@ -174,6 +180,15 @@ class App extends Component {
               {this.props.common.lang === 'en' ? 'Icelandic' : 'English'}
             </span>
           </span>
+          <a
+            ref="githubMobile"
+            href="https://github.com/snaerth?tab=repositories"
+            className="github-link mobile"
+          >
+            <svg className="icon-github">
+              <use href="#icon-github" />
+            </svg>
+          </a>
           <div className="col-50">
             <div className="left" ref="left">
               <ContentSection />

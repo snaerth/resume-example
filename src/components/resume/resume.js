@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import inView from 'in-view';
 import Button from '../button';
 import * as actionCreators from '../../common/actions';
 import './resume.css';
@@ -9,7 +10,6 @@ import './resume.css';
 class Resume extends Component {
   constructor(props) {
     super(props);
-    this.scrollHandler = this.scrollHandler.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -26,6 +26,7 @@ class Resume extends Component {
   }
 
   componentDidMount() {
+    this.initInViewport('.inViewport');
     const {tl} = this.state;
     const {title, back} = this.refs;
     const rows = this.refs.rows.children;
@@ -63,7 +64,7 @@ class Resume extends Component {
     tl.pause();
     setTimeout(() => {
       tl.play();
-    }, 800);
+    }, 400);
   }
 
   back() {
@@ -73,11 +74,7 @@ class Resume extends Component {
 
     setTimeout(() => {
       tl.timeScale(3).reverse();
-      setTimeout(
-        this.props.actions.pageRevealerStart,
-        this.props.delay - 400,
-        'bottom',
-      );
+      this.props.actions.pageRevealerStart('bottom');
       setTimeout(this.props.actions.pageAnimationBackward, this.props.delay);
     }, 800);
   }
@@ -93,21 +90,21 @@ class Resume extends Component {
     return resumeSections.map((section, i) => {
       const rows = this.renderRows(section.rows);
       const images = this.renderImagesSection(section.images);
-      
+
       return (
         <div key={i}>
           <h1 className="name">
             <span ref="title">{section.title}</span>
           </h1>
           {<div ref="rows">{rows}</div>}
-          {<div className="images-section" onScroll={this.scrollHandler}>{images}</div>}
+          {
+            <div className="images-section inViewport">
+              {images}
+            </div>
+          }
         </div>
       );
     });
-  }
-
-  scrollHandler(e) {
-    console.log(e);
   }
 
   renderRows(rows) {
@@ -127,7 +124,36 @@ class Resume extends Component {
   }
 
   renderImagesSection(images) {
-    return images.map((image, i) => <div key={`${image}-i`} className="image-wrapper"><img src={`images/${image}`} alt={this.props.translations.name}/></div>);
+    return images.map((image, i) => (
+      <div key={'image' + i} className="image-wrapper">
+        <img src={`images/${image.url}`} alt={this.props.translations.name} />
+        <p>{image.text}</p>
+      </div>
+    ));
+  }
+
+  initInViewport(selector) {
+    const tl = new TimelineLite();
+
+    inView(selector).on('enter', el => {
+      if (el.className.indexOf('images-section') > -1) {
+        for (let i = 0, len = el.children.length; i < len; i++) {
+          const random = Math.round(Math.random() * 7) + 1;
+
+          tl.to(
+            el.children[i],
+            0.5,
+            {
+              opacity: 1,
+              scale: 1,
+              rotation: i % 2 === 0 ? -random : random,
+              ease: Power2.easeOut, // eslint-disable-line
+            }, 
+            0.3 * i,
+          );
+        }
+      }
+    });
   }
 
   render() {

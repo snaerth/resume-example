@@ -27,9 +27,18 @@
                 }
             ],
             "images": [
-                "me1.jpg",
-                "me2.jpg",
-                "me3.jpg"
+                {
+                    "url": "me1.jpg",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "url": "me2.jpg",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                },
+                {
+                    "url": "me3.jpg",
+                    "text": "Lorem ipsum dolor sit amet"
+                }
             ]
         }
     ]
