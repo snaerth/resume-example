@@ -16,7 +16,8 @@ html {
     min-height: 100vh;
 }
 
-body {
+body,
+#root {
     overflow-x: hidden;
 }
 
@@ -33,6 +34,7 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     background: rgba(0, 0, 0, .2);
+    overflow-y:scroll;
 }
 
 img {
@@ -152,5 +154,11 @@ p {
     }
     #root {
         padding-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .hidden-mobile-480 {
+        display:none;
     }
 }

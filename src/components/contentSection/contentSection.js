@@ -26,6 +26,7 @@ class Right extends Component {
             onClick={() => this.clickHandler()}
           />
           <Button
+            className="hidden-mobile-480"
             text={translations.sendEmail}
             onClick={() => this.emailHandler(translations.email)}
           />

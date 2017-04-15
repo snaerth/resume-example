@@ -79,7 +79,7 @@ class Resume extends Component {
         'bottom',
       );
       setTimeout(this.props.actions.pageAnimationBackward, this.props.delay);
-    }, 400);
+    }, 800);
   }
 
   componentWillReceiveProps(nextProps) {

@@ -152,7 +152,6 @@
 
 @media only screen and (max-width: 992px) {
     .button--moema {
-        min-width: initial;
         padding: 1em 2em;
     }
 }
