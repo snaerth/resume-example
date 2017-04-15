@@ -6,29 +6,33 @@ import Button from '../button';
 import './contentSection.css';
 
 class Right extends Component {
-    clickHandler() {
-        history.pushState({}, 'profile', null);
-        this.props.actions.pageAnimationForward();
-    }
+  clickHandler() {
+    history.pushState({}, 'profile', null);
+    this.props.actions.pageAnimationForward();
+  }
 
-    emailHandler(email) {
-        window.location.href = 'mailto:' + email;
-        return false;
-    }
+  emailHandler(email) {
+    window.location.href = 'mailto:' + email;
+    return false;
+  }
 
-    render() {
-        const {translations} = this.props;
-        return (
-            <div className="content-container">
-                <div className="job-application--button-container">
-                    <Button text={translations.resume} onClick={() => this.clickHandler()}/>
-                    <Button
-                        text={translations.sendEmail}
-                        onClick={() => this.emailHandler(translations.email)}/>
-                </div>
-            </div>
-        );
-    }
+  render() {
+    const {translations} = this.props;
+    return (
+      <div className="content-container">
+        <div className="job-application--button-container">
+          <Button
+            text={translations.resume}
+            onClick={() => this.clickHandler()}
+          />
+          <Button
+            text={translations.sendEmail}
+            onClick={() => this.emailHandler(translations.email)}
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 /**
@@ -39,7 +43,7 @@ class Right extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-    return {common: state.common, translations: state.common.translations};
+  return {common: state.common, translations: state.common.translations};
 }
 
 /**
@@ -50,9 +54,9 @@ function mapStateToProps(state) {
  * @author Snær Seljan Þóroddsson
  */
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(actionCreators, dispatch)
-    };
+  return {
+    actions: bindActionCreators(actionCreators, dispatch),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Right);

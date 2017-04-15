@@ -57,6 +57,23 @@
     position: absolute;
 }
 
+.images-section {
+    display: flex;
+    justify-content: center;
+    padding: 8em 0;
+}
+
+.images-section .image-wrapper {
+    margin: 0 1em;
+}
+
+.images-section img {
+    border: 20px solid #fff;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
 @media only screen and (max-width: 992px) {
     .resume-row {
         flex-direction: column;
@@ -66,5 +83,16 @@
     }
     .resume-container .resume-left h2 {
         text-align: left;
+    }
+    .images-section img {
+        border: 15px solid #fff;
+        min-width: 240px;
+    }
+    .images-section {
+        padding: 3em 0;
+        justify-content: flex-start;
+    }
+    .images-section .image-wrapper {
+        margin: 0 20px 0 0;
     }
 }

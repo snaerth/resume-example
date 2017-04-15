@@ -14,11 +14,11 @@
 body,
 html {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 html {
     -webkit-overflow-scrolling: touch;
-    overflow-x: hidden;
     overflow-y: scroll;
 }
 
@@ -148,7 +148,6 @@ p {
     .js body::before {
         font-size: 1em;
     }
-    
     #root {
         padding-top: 100px;
     }
