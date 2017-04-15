@@ -19,22 +19,9 @@ h2 {
 
 @media only screen and (max-width: 992px) {
     .content-container {
-        padding-bottom: 5%;
+        padding-bottom: 0;
     }
     .job-application--button-container {
         padding-top: 0em;
-    }
-}
-
-
-@media only screen and (max-height: 1000px) and (min-width: 992px) {
-    .content-container {
-        padding-bottom: 15%;
-    }
-}
-
-@media only screen and (max-height: 800px) {
-    .content-container {
-        padding-bottom: 50px;
     }
 }

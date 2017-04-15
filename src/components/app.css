@@ -16,7 +16,7 @@
     position: relative;
 }
 
-.col-50:nth-child(2) {
+.col-50:last-child {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -95,7 +95,7 @@ h1.name span:last-child {
     pointer-events: none;
 }
 
-.language-wrapper, 
+.language-wrapper,
 .github-link {
     transform: translate3d(0, -200%, 0);
 }
@@ -137,32 +137,59 @@ h1.name span:last-child {
     fill: #fff;
 }
 
+.mobile-background {
+    display: none;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-size: cover;
+    background-position-x: 50%;
+    transform: translate3d(200%, 0, 0);
+}
+
 @media only screen and (max-width: 992px) {
     .container {
-        flex-direction: column;
+        display: block;
     }
     .col-50 {
         overflow: initial;
+        display: block;
+        height: auto;
+        bottom: 20%;
+        position: absolute;
     }
     .col-50:first-child {
-        height: 45vh;
-        min-height: 400px;
+        height: auto;
     }
     .col-50:last-child {
-        height: 100vh;
+        display: none;
     }
     h1.name {
-        right: 0;
-        left: 20%;
-        top: 20px;
+        position: relative;
+        left: 20px;
+        font-size: 60px;
     }
     .left {
         padding-top: 5em;
+        bottom: 0;
     }
-}
-
-@media only screen and (max-width: 768px) {
-    .left {
-        align-items: center;
+    .mobile-background {
+        display: block;
+    }
+    .language-wrapper {
+        min-height: 30px;
+        min-width: initial;
+    }
+    .language {
+        padding: 0;
+        top: 4px;
+        font-size: 24px;
+    }
+    .icon-github,
+    .icon-globe {
+        width: 40px;
+        height: 40px;
     }
 }

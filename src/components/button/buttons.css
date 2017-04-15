@@ -25,7 +25,7 @@
 }
 
 .button-right--offset {
-    transform: translate3d(200%, 0,0);
+    transform: translate3d(200%, 0, 0);
 }
 
 
@@ -148,4 +148,11 @@
 
 .button--size-l {
     font-size: 18px;
+}
+
+@media only screen and (max-width: 992px) {
+    .button--moema {
+        min-width: initial;
+        padding: 1em 2em;
+    }
 }

@@ -102,7 +102,7 @@ class Resume extends Component {
         const translations = this.props.translations;
         return (
             <div>
-                <div className="job-application--button-container button-right button-right--offset" ref="back">
+                <div className="job-application--button-container button-right button-right--offset back-button" ref="back">
                     <Button text={translations.back} onClick={() => this.back()}/>
                 </div>
                 <div className="resume-container" ref="container">{this.renderSections()}</div>

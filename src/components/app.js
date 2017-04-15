@@ -9,6 +9,7 @@ import PageSlideEffect from './pageSlideEffect';
 import DelayWrapper from './delay';
 import Resume from './resume';
 import Page from './page';
+import backgroundImage from '../common/images/snaer_seljan_thoroddsson.jpg';
 import './app.css';
 
 class App extends Component {
@@ -48,12 +49,13 @@ class App extends Component {
 
   startAnimation() {
     const tl = this.state.tl;
-    const { left, right, firstName, lastName, github, lang } = this.refs;
+    const { left, right, firstName, lastName, github, lang, mobileImage } = this.refs;
 
     tl.set(firstName, { rotationX: -45 })
       .set(lastName, { rotationX: -45 })
       .to(left, 1.5, { x: '0%', opacity: 1, ease: Power2.easeOut }) // eslint-disable-line
       .to(right, 1.5, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0) // eslint-disable-line
+      .to(mobileImage, 1.5, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0) // eslint-disable-line
       .to(firstName, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 0.8) // eslint-disable-line
       .to(lastName, 1.5, { y: '0%', opacity: 1, transformOrigin: '0 50%', rotationX: 0, ease: Power2.easeOut }, 1) // eslint-disable-line
       .to(github, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, 1) // eslint-disable-line
@@ -109,8 +111,9 @@ class App extends Component {
 
     return (
       <div>
-        <h1 className="name"><span ref="firstName">{this.props.translations.firstName}</span><span ref="lastName">{this.props.translations.firstName}</span></h1>
+        <h1 className="name"><span ref="firstName">{this.props.translations.firstName}</span><span ref="lastName">{this.props.translations.lastName}</span></h1>
         <div className="container">
+          <div ref="mobileImage" className="mobile-background" style={{backgroundImage: `url(${backgroundImage})`}}><div className="overlay" /></div>
           <span ref="lang" className="language-wrapper" onClick={() => this.changeLanguage()}>
             <svg className="icon-globe">
               <use href="#icon-globe"/>

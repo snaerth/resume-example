@@ -52,6 +52,11 @@
     opacity: 0;
 }
 
+.back-button {
+    right: 0px;
+    position: absolute;
+}
+
 @media only screen and (max-width: 992px) {
     .resume-row {
         flex-direction: column;
