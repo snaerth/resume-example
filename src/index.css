@@ -14,12 +14,14 @@
 body,
 html {
     min-height: 100vh;
+}
+
+body {
     overflow-x: hidden;
 }
 
 html {
     -webkit-overflow-scrolling: touch;
-    overflow-y: scroll;
 }
 
 body {

@@ -9,6 +9,7 @@ import './resume.css';
 class Resume extends Component {
   constructor(props) {
     super(props);
+    this.scrollHandler = this.scrollHandler.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -99,10 +100,14 @@ class Resume extends Component {
             <span ref="title">{section.title}</span>
           </h1>
           {<div ref="rows">{rows}</div>}
-          {<div className="images-section">{images}</div>}
+          {<div className="images-section" onScroll={this.scrollHandler}>{images}</div>}
         </div>
       );
     });
+  }
+
+  scrollHandler(e) {
+    console.log(e);
   }
 
   renderRows(rows) {
