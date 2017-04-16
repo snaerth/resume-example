@@ -98,8 +98,10 @@ class Resume extends Component {
           </h1>
           {<div ref="rows">{rows}</div>}
           {
-            <div className="images-section inViewport">
-              {images}
+            <div className="vertical-scroll-hider">
+              <div className="images-section inViewport">
+                {images}
+              </div>
             </div>
           }
         </div>
@@ -148,7 +150,7 @@ class Resume extends Component {
               scale: 1,
               rotation: i % 2 === 0 ? -random : random,
               ease: Power2.easeOut, // eslint-disable-line
-            }, 
+            },
             0.3 * i,
           );
         }

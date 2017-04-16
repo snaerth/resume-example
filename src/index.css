@@ -14,10 +14,6 @@
 body,
 html {
     min-height: 100vh;
-}
-
-body,
-#root {
     overflow-x: hidden;
 }
 
@@ -154,6 +150,9 @@ p {
     }
     #root {
         padding-top: 100px;
+    }
+    p {
+        font-size: 22px;
     }
 }
 

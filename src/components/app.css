@@ -177,8 +177,12 @@ h1.name span:last-child {
 
   h1.name {
     position: relative;
-    left: 20px;
-    font-size: 60px;
+    left: 0px;
+    font-size: 80px;
+  }
+
+  h1.name span:first-child {
+    text-indent: 0;
   }
 
   .left {
