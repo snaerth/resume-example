@@ -40,6 +40,40 @@
                     "text": "Lorem ipsum dolor sit amet"
                 }
             ]
+        },
+        {
+            "title": "Education",
+            "rows": [
+                {
+                    "title": "Háskóli Íslands",
+                    "secondTitle": "2012-2015",
+                    "content": "Computer science, BS"
+                },
+                {
+                    "title": "Kennaraháskóli Íslands",
+                    "secondTitle": "2005-2008",
+                    "content": "Grunnskólakennarafræði, B.Ed. - Kjörsvið: Stærðfræði"
+                },
+                {
+                    "title": "Menntaskólinn á Egilsstöðum",
+                    "secondTitle": "2000-2004",
+                    "content": "Stúdentspróf af náttúrufræðibraut"
+                }
+            ],
+            "images": [
+                {
+                    "url": "me1.jpg",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "url": "me2.jpg",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                },
+                {
+                    "url": "me3.jpg",
+                    "text": "Lorem ipsum dolor sit amet"
+                }
+            ]
         }
     ]
 }

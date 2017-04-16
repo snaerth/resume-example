@@ -47,6 +47,11 @@
   transform: translate3d(0, 20px, 0);
 }
 
+.resume-row.first .resume-left,
+.resume-row.first .resume-right {
+    opacity: 0;
+}
+
 .resume-left,
 .resume-right {
   opacity: 0;
@@ -80,14 +85,13 @@
 
 .images-section .image-wrapper p {
   background: white;
-  margin-top: 0;
-  padding: 0 20px 20px;
+  margin-top: -20px;
+  padding: 10px 20px;
   text-align: center;
   color: #888;
   line-height: 1.2;
   font-size: 20px;
-  min-height: 45px;
-  max-height: 45px;
+  min-height: 55px;
 }
 
 .images-section img {
@@ -124,7 +128,7 @@
   }
 
   .images-section {
-    padding: 0 0 2em;
+    padding: 1em 0 2em;
     justify-content: flex-start;
   }
 

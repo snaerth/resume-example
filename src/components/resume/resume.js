@@ -29,7 +29,6 @@ class Resume extends Component {
     this.initInViewport('.inViewport');
     const {tl} = this.state;
     const {title, back} = this.refs;
-    const rows = this.refs.rows.children;
 
     tl
       .set(title, {rotationX: -45})
@@ -48,16 +47,19 @@ class Resume extends Component {
       )
       .pause();
 
-    for (let i = 0, len = rows.length; i < len; i++) {
-      const cols = rows[i].children;
-      for (let j = 0, len = cols.length; j < len; j++) {
-        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-        tl.to(
-          cols[j],
-          1.5,
-          {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-          delayBetween,
-        );
+    if (this.refs.row_1) {
+      const rows = this.refs.row_1.children;
+      for (let i = 0; i < rows.length; i++) {
+        const cols = rows[i].children;
+        for (let j = 0, len = cols.length; j < len; j++) {
+          const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+          tl.to(
+            cols[j],
+            1.5,
+            {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+            delayBetween,
+          );
+        }
       }
     }
 
@@ -96,7 +98,7 @@ class Resume extends Component {
           <h1 className="name">
             <span ref="title">{section.title}</span>
           </h1>
-          {<div ref="rows">{rows}</div>}
+          {<div ref={i === 0 ? 'row_' + 1 : ''}>{rows}</div>}
           {
             <div className="vertical-scroll-hider">
               <div className="images-section inViewport">
@@ -112,7 +114,7 @@ class Resume extends Component {
   renderRows(rows) {
     return rows.map((row, i) => {
       return (
-        <div className="resume-row" key={'row-' + i}>
+        <div className={i === 0 ? 'resume-row first': 'resume-row'} key={'row-' + i}>
           <div className="resume-left">
             <h2>{row.title}</h2>
             <h2>{row.secondTitle}</h2>
