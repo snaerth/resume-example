@@ -44,17 +44,17 @@ h1.name.relative {
 
 .resume-left {
   flex: 1 0 0;
-  transform: translate3d(0, 20px, 0);
 }
 
 .resume-right {
   flex: 3 0 0;
-  transform: translate3d(0, 20px, 0);
 }
 
-.resume-left,
-.resume-right {
-  opacity: 0;
+
+.section-0 .resume-left,
+.section-0 .resume-right {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
 }
 
 .back-button {

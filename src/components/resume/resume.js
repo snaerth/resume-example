@@ -40,23 +40,11 @@ class Resume extends Component {
       const inView = isElementInViewport(el);
 
       if (inView && !el.isAnimated) {
-        el.isAnimated = true;
-        const section = el.parentElement.parentElement;
-        const tl = section.className.indexOf('section-0') > -1
-          ? this.state.tl
-          : new TimelineLite();
-
         const cN = el.className;
         if (cN.indexOf('images-section') > -1) {
+          console.log(el.classList);
           this.animatePolaroidImages(el);
-        }
-
-        if (cN.indexOf('resume-row') > -1) {
-          this.animateRow(el, tl);
-        }
-
-        if (cN.indexOf('name') > -1) {
-          this.animateTitle(el, tl);
+          el.isAnimated = true;
         }
       }
     }
@@ -64,9 +52,10 @@ class Resume extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.scrollHandler();
-      addScrollListeners(this.scrollHandler);
+      this.animateTitle(this.refs.title, this.state.tl);
+      this.animateRow(this.refs.row_1, this.state.tl);
     }, 400);
+    addScrollListeners(this.scrollHandler);
 
     this.state.tl.to(
       this.refs.back,
@@ -110,10 +99,10 @@ class Resume extends Component {
 
       return (
         <div className={'resume-section section-' + i} key={i}>
-          <h1 className="name relative inViewport">
-            <span>{section.title}</span>
+          <h1 className="name relative">
+            <span ref={i === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
-          {<div>{rows}</div>}
+          {<div ref={i === 0 ? 'row_1' : ''}>{rows}</div>}
           {
             <div className="vertical-scroll-hider">
               <div className="images-section inViewport">{images}</div>
@@ -127,7 +116,7 @@ class Resume extends Component {
   renderRows(rows) {
     return rows.map((row, i) => {
       return (
-        <div className="resume-row inViewport" key={'row-' + i}>
+        <div className="resume-row" key={'row-' + i}>
           <div className="resume-left">
             <h2>{row.title}</h2>
             <h2>{row.secondTitle}</h2>
@@ -141,18 +130,21 @@ class Resume extends Component {
   }
 
   animateTitle(el, tl) {
-    tl.set(el.children, {rotationX: -45}).to(
-      el.children,
-      1.5,
-      {
-        y: '0%',
-        opacity: 1,
-        transformOrigin: '0 50%',
-        rotationX: 0,
-        ease: Power2.easeOut, // eslint-disable-line
-      },
-      '-=0.4',
-    );
+    tl
+      .set(el, {rotationX: -45})
+      .to(
+        el,
+        1.5,
+        {
+          y: '0%',
+          opacity: 1,
+          transformOrigin: '0 50%',
+          rotationX: 0,
+          ease: Power2.easeOut, // eslint-disable-line
+        },
+        '-=0.2',
+      )
+      .pause();
   }
 
   animatePolaroidImages(el) {
@@ -168,22 +160,30 @@ class Resume extends Component {
           rotation: i % 2 === 0 ? -random : random,
           ease: Power2.easeOut, // eslint-disable-line
         },
-        0.3 * i,
+        0.2 * i,
       );
     }
   }
 
   animateRow(el, tl) {
-    const cols = el.children;
-    for (let i = 0, len = cols.length; i < len; i++) {
-      const delayBetween = 0.4 + (i + 1) / 10;
-      tl.to(
-        cols[i],
-        1.5,
-        {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-        delayBetween + 0.3,
-      );
+    const rows = el.children;
+    for (let i = 0, len = rows.length; i < len; i++) {
+      const cols = rows[i].children;
+      for (let j = 0, len = cols.length; j < len; j++) {
+        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+        tl.to(
+          cols[j],
+          1.5,
+          {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+          delayBetween,
+        );
+      }
     }
+
+    tl.pause();
+    setTimeout(() => {
+      tl.play();
+    }, 800);
   }
 
   render() {

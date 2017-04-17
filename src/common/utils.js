@@ -1,4 +1,4 @@
-const body = document.querySelector('body');
+const body = document.getElementsByTagName('body')[0];
 
 export function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
