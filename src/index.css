@@ -111,6 +111,9 @@ p {
     font-family: "BrandonGrotesque", "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.text-right {
+    text-align: right;
+}
 
 /* Page Loader */
 

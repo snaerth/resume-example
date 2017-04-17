@@ -4,12 +4,15 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import inView from 'in-view';
 import Button from '../button';
+import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
 import './resume.css';
 
 class Resume extends Component {
   constructor(props) {
     super(props);
+    this.initInViewport = this.initInViewport.bind(this);
+    this.animateRow = this.animateRow.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -26,47 +29,16 @@ class Resume extends Component {
   }
 
   componentDidMount() {
-    this.initInViewport('.inViewport');
-    const {tl} = this.state;
-    const {title, back} = this.refs;
-
-    tl
-      .set(title, {rotationX: -45})
-      .to(back, 1, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
-      .to(
-        title,
-        1.5,
-        {
-          y: '0%',
-          opacity: 1,
-          transformOrigin: '0 50%',
-          rotationX: 0,
-          ease: Power2.easeOut, // eslint-disable-line
-        },
-        0.8,
-      )
-      .pause();
-
-    if (this.refs.row_1) {
-      const rows = this.refs.row_1.children;
-      for (let i = 0; i < rows.length; i++) {
-        const cols = rows[i].children;
-        for (let j = 0, len = cols.length; j < len; j++) {
-          const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-          tl.to(
-            cols[j],
-            1.5,
-            {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-            delayBetween,
-          );
-        }
-      }
-    }
-
-    tl.pause();
     setTimeout(() => {
-      tl.play();
-    }, 400);
+      this.initInViewport('.inViewport');
+    }, 1000);
+
+    this.state.tl.to(
+      this.refs.back,
+      1,
+      {x: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+      0.2,
+    );
   }
 
   back() {
@@ -91,19 +63,19 @@ class Resume extends Component {
     const resumeSections = this.props.translations.resumeSections;
     return resumeSections.map((section, i) => {
       const rows = this.renderRows(section.rows);
-      const images = this.renderImagesSection(section.images);
+      const images = section.images.map((image, i) => (
+        <PolaroidImages key={'image' + i} image={image} />
+      ));
 
       return (
-        <div key={i}>
-          <h1 className="name">
-            <span ref="title">{section.title}</span>
+        <div className={'resume-section section-' + i} key={i}>
+          <h1 className="name relative inViewport">
+            <span>{section.title}</span>
           </h1>
-          {<div ref={i === 0 ? 'row_' + 1 : ''}>{rows}</div>}
+          {<div>{rows}</div>}
           {
             <div className="vertical-scroll-hider">
-              <div className="images-section inViewport">
-                {images}
-              </div>
+              <div className="images-section inViewport">{images}</div>
             </div>
           }
         </div>
@@ -114,7 +86,7 @@ class Resume extends Component {
   renderRows(rows) {
     return rows.map((row, i) => {
       return (
-        <div className={i === 0 ? 'resume-row first': 'resume-row'} key={'row-' + i}>
+        <div className="resume-row inViewport" key={'row-' + i}>
           <div className="resume-left">
             <h2>{row.title}</h2>
             <h2>{row.secondTitle}</h2>
@@ -127,37 +99,72 @@ class Resume extends Component {
     });
   }
 
-  renderImagesSection(images) {
-    return images.map((image, i) => (
-      <div key={'image' + i} className="image-wrapper">
-        <img src={`images/${image.url}`} alt={this.props.translations.name} />
-        <p>{image.text}</p>
-      </div>
-    ));
-  }
-
   initInViewport(selector) {
-    const tl = new TimelineLite();
-
     inView(selector).on('enter', el => {
-      if (el.className.indexOf('images-section') > -1) {
-        for (let i = 0, len = el.children.length; i < len; i++) {
-          const random = Math.round(Math.random() * 7) + 1;
+      const section = el.parentElement.parentElement;
+      const tl = section.className.indexOf('section-0') > -1
+        ? this.state.tl
+        : new TimelineLite();
 
-          tl.to(
-            el.children[i],
-            0.5,
-            {
-              opacity: 1,
-              scale: 1,
-              rotation: i % 2 === 0 ? -random : random,
-              ease: Power2.easeOut, // eslint-disable-line
-            },
-            0.3 * i,
-          );
-        }
+      const cN = el.className;
+      if (cN.indexOf('images-section') > -1) {
+        this.animatePolaroidImages(el);
+      }
+
+      if (cN.indexOf('resume-row') > -1) {
+          this.animateRow(el, tl);
+      }
+
+      if (cN.indexOf('name') > -1) {
+        this.animateTitle(el, tl);
       }
     });
+  }
+
+  animateTitle(el, tl) {
+    console.log(el.children, tl);
+    tl.set(el.children, {rotationX: -45}).to(
+      el.children,
+      1.5,
+      {
+        y: '0%',
+        opacity: 1,
+        transformOrigin: '0 50%',
+        rotationX: 0,
+        ease: Power2.easeOut, // eslint-disable-line
+      }
+    );
+  }
+
+  animatePolaroidImages(el) {
+    const tl = new TimelineLite();
+    for (let i = 0, len = el.children.length; i < len; i++) {
+      const random = Math.round(Math.random() * 7) + 1;
+      tl.to(
+        el.children[i],
+        0.5,
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: i % 2 === 0 ? -random : random,
+          ease: Power2.easeOut, // eslint-disable-line
+        },
+        0.3 * i,
+      );
+    }
+  }
+
+  animateRow(el, tl) {
+    const cols = el.children;
+    for (let i = 0, len = cols.length; i < len; i++) {
+      const delayBetween = 0.4 + (i + 1) / 10;
+      tl.to(
+        cols[i],
+        1.5,
+        {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+        delayBetween + 0.5,
+      );
+    }
   }
 
   render() {

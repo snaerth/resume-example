@@ -5,7 +5,12 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  padding: 20% 1em 7%;
+  padding: 100px 1em;
+}
+
+h1.name.relative {
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .resume-container .resume-left h2 {
@@ -27,7 +32,7 @@
 
 .resume-row {
   max-width: 1600px;
-  margin: 0 auto 2em;
+  margin: 0 auto;
   padding: 1em 0;
   display: flex;
   flex-direction: row;
@@ -47,11 +52,6 @@
   transform: translate3d(0, 20px, 0);
 }
 
-.resume-row.first .resume-left,
-.resume-row.first .resume-right {
-    opacity: 0;
-}
-
 .resume-left,
 .resume-right {
   opacity: 0;
@@ -66,49 +66,6 @@
   overflow: hidden;
 }
 
-.images-section {
-  display: flex;
-  justify-content: center;
-  padding: 7em 0 8em;
-  position: relative;
-  top: 20px;
-  overflow-x: scroll;
-}
-
-.images-section .image-wrapper {
-  margin: 0 3em;
-  opacity: 0;
-  transform: scale3d(0.8,0.8,0.8);
-  font: 400 18px/1 'Kaushan Script', cursive;
-  max-width: 400px;
-}
-
-.images-section .image-wrapper p {
-  background: white;
-  margin-top: -20px;
-  padding: 10px 20px;
-  text-align: center;
-  color: #888;
-  line-height: 1.2;
-  font-size: 20px;
-  min-height: 55px;
-}
-
-.images-section img {
-  border: 20px solid #fff;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
-}
-
-.images-section .image-wrapper:hover {
-  transform: rotate(0deg);
-}
-@media only screen and (max-width: 1200px) {
-  .images-section img {
-    min-width: 320px;
-  }
-}
 @media only screen and (max-width: 992px) {
   .resume-row {
     flex-direction: column;
@@ -121,28 +78,6 @@
   .resume-container .resume-left h2 {
     text-align: left;
   }
-
-  .images-section img {
-    border: 15px solid #fff;
-    min-width: 240px;
-  }
-
-  .images-section {
-    padding: 1em 0 2em;
-    justify-content: flex-start;
-  }
-
-  .images-section .image-wrapper {
-    margin: 0 20px 0 0;
-  }
-
-  .images-section .image-wrapper p {
-    margin-top: -4px;
-    padding: 0 15px 10px;
-    line-height: 1;
-    font-size: 18px;
-  }
-
   .resume-container .resume-left h2:nth-child(1) {
     margin-top: 10px;
     font-size: 40px;
@@ -150,17 +85,5 @@
 
   .resume-container .resume-left h2:nth-child(2) {
     font-size: 30px;
-  }
-}
-@media only screen and (max-device-width: 1024px) and (max-width: 768px) {
-  .images-section .image-wrapper {
-    opacity: 1;
-    transform: scale3d(1,1,1) !important;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .images-section .image-wrapper {
-    opacity: 1;
-    transform: scale3d(1,1,1) !important;
   }
 }
