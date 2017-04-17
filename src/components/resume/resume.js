@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import inView from 'in-view';
+import {
+  isElementInViewport,
+  addScrollListeners,
+  removeScrollListeners,
+} from '../../common/utils';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
@@ -11,8 +15,8 @@ import './resume.css';
 class Resume extends Component {
   constructor(props) {
     super(props);
-    this.initInViewport = this.initInViewport.bind(this);
     this.animateRow = this.animateRow.bind(this);
+    this.scrollHandler = this.scrollHandler.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -28,10 +32,41 @@ class Resume extends Component {
     };
   }
 
+  scrollHandler() {
+    const elements = document.querySelectorAll('.inViewport');
+
+    for (let i = 0, len = elements.length; i < len; i++) {
+      const el = elements[i];
+      const inView = isElementInViewport(el);
+
+      if (inView && !el.isAnimated) {
+        el.isAnimated = true;
+        const section = el.parentElement.parentElement;
+        const tl = section.className.indexOf('section-0') > -1
+          ? this.state.tl
+          : new TimelineLite();
+
+        const cN = el.className;
+        if (cN.indexOf('images-section') > -1) {
+          this.animatePolaroidImages(el);
+        }
+
+        if (cN.indexOf('resume-row') > -1) {
+          this.animateRow(el, tl);
+        }
+
+        if (cN.indexOf('name') > -1) {
+          this.animateTitle(el, tl);
+        }
+      }
+    }
+  }
+
   componentDidMount() {
     setTimeout(() => {
-      this.initInViewport('.inViewport');
-    }, 1000);
+      this.scrollHandler();
+      addScrollListeners(this.scrollHandler);
+    }, 400);
 
     this.state.tl.to(
       this.refs.back,
@@ -39,6 +74,12 @@ class Resume extends Component {
       {x: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
       0.2,
     );
+  }
+
+  componentWillUnmount() {
+    removeScrollListeners(function() {
+      console.log('bla');
+    });
   }
 
   back() {
@@ -99,30 +140,7 @@ class Resume extends Component {
     });
   }
 
-  initInViewport(selector) {
-    inView(selector).on('enter', el => {
-      const section = el.parentElement.parentElement;
-      const tl = section.className.indexOf('section-0') > -1
-        ? this.state.tl
-        : new TimelineLite();
-
-      const cN = el.className;
-      if (cN.indexOf('images-section') > -1) {
-        this.animatePolaroidImages(el);
-      }
-
-      if (cN.indexOf('resume-row') > -1) {
-          this.animateRow(el, tl);
-      }
-
-      if (cN.indexOf('name') > -1) {
-        this.animateTitle(el, tl);
-      }
-    });
-  }
-
   animateTitle(el, tl) {
-    console.log(el.children, tl);
     tl.set(el.children, {rotationX: -45}).to(
       el.children,
       1.5,
@@ -132,7 +150,8 @@ class Resume extends Component {
         transformOrigin: '0 50%',
         rotationX: 0,
         ease: Power2.easeOut, // eslint-disable-line
-      }
+      },
+      '-=0.4',
     );
   }
 
@@ -162,7 +181,7 @@ class Resume extends Component {
         cols[i],
         1.5,
         {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-        delayBetween + 0.5,
+        delayBetween + 0.3,
       );
     }
   }

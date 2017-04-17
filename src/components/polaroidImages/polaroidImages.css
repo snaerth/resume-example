@@ -5,7 +5,6 @@
   padding: 7em 0 8em;
   position: relative;
   top: 20px;
-  overflow-x: scroll;
 }
 
 .images-section .image-wrapper {
@@ -32,11 +31,13 @@
   width: 100%;
   max-width: 400px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  transition: rotate 1s;
 }
 
 .images-section .image-wrapper:hover {
   transform: rotate(0deg);
 }
+
 @media only screen and (max-width: 1200px) {
   .images-section img {
     min-width: 320px;
