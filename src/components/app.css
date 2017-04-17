@@ -72,6 +72,10 @@ h1.name span {
   transform: translate3d(0, 20%, 0);
 }
 
+h1.name.visible span {
+  opacity: 1;
+}
+
 h1.name span:last-child {
   text-indent: 3vw;
 }

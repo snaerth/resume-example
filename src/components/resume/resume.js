@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {
-  isElementInViewport,
-  addScrollListeners,
-  removeScrollListeners,
-} from '../../common/utils';
+import VisibilitySensor from 'react-visibility-sensor';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
@@ -37,7 +33,7 @@ class Resume extends Component {
 
     for (let i = 0, len = elements.length; i < len; i++) {
       const el = elements[i];
-      const inView = isElementInViewport(el);
+      const inView = null;  //isElementInViewport(el);
 
       if (inView && !el.isAnimated) {
         const cN = el.className;
@@ -51,11 +47,44 @@ class Resume extends Component {
   }
 
   componentDidMount() {
+    const {tl} = this.state;
+    const {title, back, row_1} = this.refs;
+    const rows = row_1.children;
+    tl
+      .set(title, {rotationX: -45})
+      .to(back, 1, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
+      .to(
+        title,
+        1.5,
+        {
+          y: '0%',
+          opacity: 1,
+          transformOrigin: '0 50%',
+          rotationX: 0,
+          ease: Power2.easeOut, // eslint-disable-line
+        },
+        0.8,
+      )
+      .pause();
+
+    for (let i = 0, len = rows.length; i < len; i++) {
+      const cols = rows[i].children;
+      for (let j = 0, len = cols.length; j < len; j++) {
+        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+        tl.to(
+          cols[j],
+          1.5,
+          {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+          delayBetween,
+        );
+      }
+    }
+
+    tl.pause();
     setTimeout(() => {
-      this.animateTitle(this.refs.title, this.state.tl);
-      this.animateRow(this.refs.row_1, this.state.tl);
-    }, 400);
-    addScrollListeners(this.scrollHandler);
+      tl.play();
+    }, 800);
+
 
     this.state.tl.to(
       this.refs.back,
@@ -66,9 +95,7 @@ class Resume extends Component {
   }
 
   componentWillUnmount() {
-    removeScrollListeners(function() {
-      console.log('bla');
-    });
+
   }
 
   back() {
@@ -99,18 +126,22 @@ class Resume extends Component {
 
       return (
         <div className={'resume-section section-' + i} key={i}>
-          <h1 className="name relative">
+          <h1 className={i === 0 ? 'name relative' : 'name visible relative'}>
             <span ref={i === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
           {<div ref={i === 0 ? 'row_1' : ''}>{rows}</div>}
           {
-            <div className="vertical-scroll-hider">
+            <VisibilitySensor className="vertical-scroll-hider" onChange={this.onChange.bind(this)}>
               <div className="images-section inViewport">{images}</div>
-            </div>
+            </VisibilitySensor>
           }
         </div>
       );
     });
+  }
+
+  onChange(isVisible) {
+    console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
   }
 
   renderRows(rows) {
