@@ -150,9 +150,6 @@ p {
     .js body::before {
         font-size: 1em;
     }
-    #root {
-        padding-top: 100px;
-    }
     p {
         font-size: 22px;
     }
