@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import VisibilitySensor from 'react-visibility-sensor';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
+import {withinViewport} from '../../common/utils';
 import './resume.css';
 
 class Resume extends Component {
@@ -27,7 +27,21 @@ class Resume extends Component {
     };
   }
 
+  componentWillUnmount() {
+    withinViewport(true);
+  }
+
+  initElementInViewportChecker() {
+    withinViewport(null, 'images-section', 'inViewport', (isVisble, el) => {
+      if (isVisble && !el.isAnimated) {
+        this.animatePolaroidImages(el);
+        el.isAnimated = true;
+      }
+    });
+  }
+
   componentDidMount() {
+    this.initElementInViewportChecker();
     const {tl} = this.state;
     const {title, back, row_1} = this.refs;
     const rows = row_1.children;
@@ -65,7 +79,6 @@ class Resume extends Component {
     setTimeout(() => {
       tl.play();
     }, 800);
-
 
     this.state.tl.to(
       this.refs.back,
@@ -107,18 +120,16 @@ class Resume extends Component {
             <span ref={i === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
           {<div ref={i === 0 ? 'row_1' : ''}>{rows}</div>}
-          {
-            <VisibilitySensor className="vertical-scroll-hider" onChange={this.onChange.bind(this)}>
-              <div className="images-section inViewport">{images}</div>
-            </VisibilitySensor>
-          }
+          {<div className="images-section">{images}</div>}
         </div>
       );
     });
   }
 
-  onChange(isVisible) {
-    console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+  onChange(isVisible, visibilityRect, el) {
+    if (isVisible) {
+      this.animatePolaroidImages(el);
+    }
   }
 
   renderRows(rows) {
@@ -161,7 +172,7 @@ class Resume extends Component {
       const random = Math.round(Math.random() * 7) + 1;
       tl.to(
         el.children[i],
-        0.5,
+        1,
         {
           opacity: 1,
           scale: 1,

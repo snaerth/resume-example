@@ -7,14 +7,13 @@ import DelayWrapper from './delay';
 import Resume from './resume';
 import Page from './page';
 import FrontPage from './frontpage';
-import ConnectWrapper from './connectWrapper';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      animateOut: false
+      animateOut: false,
     };
   }
 
@@ -71,10 +70,10 @@ class App extends Component {
   render() {
     if (this.state.loading) return null;
     const type = this.props.common.pageRevealerType;
-    
+
     return (
       <div>
-        {!this.state.animateOut ? <FrontPage />: null}
+        {!this.state.animateOut ? <FrontPage /> : null}
         {this.renderPage()}
         {this.props.common.pageRevealer
           ? <PageSlideEffect type={type} />
@@ -108,6 +107,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default ConnectWrapper(
-  connect(mapStateToProps, mapDispatchToProps, null, {withRef: true})(App),
-);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
