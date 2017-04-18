@@ -12,7 +12,6 @@ class Resume extends Component {
   constructor(props) {
     super(props);
     this.animateRow = this.animateRow.bind(this);
-    this.scrollHandler = this.scrollHandler.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -26,24 +25,6 @@ class Resume extends Component {
         this.props.actions.pageAnimationForward();
       }
     };
-  }
-
-  scrollHandler() {
-    const elements = document.querySelectorAll('.inViewport');
-
-    for (let i = 0, len = elements.length; i < len; i++) {
-      const el = elements[i];
-      const inView = null;  //isElementInViewport(el);
-
-      if (inView && !el.isAnimated) {
-        const cN = el.className;
-        if (cN.indexOf('images-section') > -1) {
-          console.log(el.classList);
-          this.animatePolaroidImages(el);
-          el.isAnimated = true;
-        }
-      }
-    }
   }
 
   componentDidMount() {
@@ -92,10 +73,6 @@ class Resume extends Component {
       {x: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
       0.2,
     );
-  }
-
-  componentWillUnmount() {
-
   }
 
   back() {
