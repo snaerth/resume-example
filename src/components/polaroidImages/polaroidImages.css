@@ -66,17 +66,3 @@
     font-size: 18px;
   }
 }
-/*
-@media only screen and (max-device-width: 1024px) and (max-width: 768px) {
-  .images-section .image-wrapper {
-    opacity: 1;
-    transform: scale3d(1,1,1) !important;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .images-section .image-wrapper {
-    opacity: 1;
-    transform: scale3d(1,1,1) !important;
-  }
-}
-*/

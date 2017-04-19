@@ -78,7 +78,7 @@ class Resume extends Component {
     tl.pause();
     setTimeout(() => {
       tl.play();
-    }, 800);
+    }, 400);
 
     this.state.tl.to(
       this.refs.back,
@@ -92,12 +92,11 @@ class Resume extends Component {
     this.props.actions.resumeBackAnimation();
     history.pushState(null, null, window.location.origin);
     const tl = this.state.tl;
-
+    tl.timeScale(4).reverse();
     setTimeout(() => {
-      tl.timeScale(3).reverse();
       this.props.actions.pageRevealerStart('bottom');
-      setTimeout(this.props.actions.pageAnimationBackward, this.props.delay);
-    }, 800);
+      setTimeout(this.props.actions.pageAnimationBackward, this.props.delay - 400);
+    }, 500);
   }
 
   componentWillReceiveProps(nextProps) {
