@@ -54,7 +54,7 @@ h1.name {
   font-size: 13vw;
   line-height: .8;
   margin: 0;
-  padding: 0 0 0 5vw;
+  padding: 0 0 0 7vw;
   text-indent: -4vw;
   letter-spacing: -0.05em;
   text-transform: lowercase;
@@ -158,11 +158,12 @@ h1.name span:last-child {
   background-position-x: 50%;
   transform: translate3d(200%, 0, 0);
 }
+
 @media only screen and (max-width: 992px) {
   .container {
     display: block;
+    padding-top: 100px;
   }
-
   .col-50 {
     overflow: initial;
     display: block;
@@ -170,52 +171,48 @@ h1.name span:last-child {
     bottom: 50px;
     position: absolute;
   }
-
   .col-50:first-child {
     height: auto;
   }
-
   .col-50:last-child {
     display: none;
   }
-
   h1.name {
     position: relative;
     left: 0px;
     font-size: 80px;
   }
-
   h1.name span:first-child {
     text-indent: 0;
   }
-
   .left {
     padding-top: 5em;
     bottom: 0;
   }
-
   .mobile-background {
     display: block;
   }
-
   .language-wrapper {
     min-height: 30px;
     min-width: initial;
   }
-
   .language {
     padding: 0;
     top: 4px;
     font-size: 24px;
   }
-
   .icon-github,
   .icon-globe {
     width: 40px;
     height: 40px;
   }
-
   .github-link.mobile {
     display: block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h1.name {
+    font-size: 60px;
   }
 }

@@ -6,8 +6,8 @@
 }
 
 h1.name.relative {
-    position: relative;
-    margin-bottom: 50px;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 .resume-container .resume-left h2 {
@@ -35,7 +35,7 @@ h1.name.relative {
   flex-direction: row;
 }
 
-.resume-row > div {
+.resume-row>div {
   margin: 0 50px;
 }
 
@@ -47,11 +47,10 @@ h1.name.relative {
   flex: 3 0 0;
 }
 
-
 .section-0 .resume-left,
 .section-0 .resume-right {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
 }
 
 .back-button {
@@ -67,11 +66,9 @@ h1.name.relative {
   .resume-row {
     flex-direction: column;
   }
-
-  .resume-row > div {
+  .resume-row>div {
     margin: initial;
   }
-
   .resume-container .resume-left h2 {
     text-align: left;
   }
@@ -79,8 +76,13 @@ h1.name.relative {
     margin-top: 10px;
     font-size: 40px;
   }
-
   .resume-container .resume-left h2:nth-child(2) {
     font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .resume-container {
+    padding: 80px 1em;
   }
 }
