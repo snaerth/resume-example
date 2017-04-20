@@ -45,7 +45,7 @@ export function withinViewport(
       let offsetHeight = elem.offsetHeight;
       let offsetWidth = elem.offsetWidth;
 
-      do {// eslint-disable-line
+      do {  // eslint-disable-line
         if (!isNaN(elem.offsetTop)) {
           offsetTop += elem.offsetTop;
         }
@@ -150,53 +150,141 @@ export function withinViewport(
       }
     }
   }
+}
 
-  // Throttle
-  // http://underscorejs.org/#throttle
-  function throttle(func, wait, options) {
-    const _ = {
-      now: Date.now ||
-        function() {
-          return new Date().getTime();
-        },
-    };
-    let context, args, result;
-    let timeout = null;
-    let previous = 0;
-    if (!options) {
-      options = {};
+// Throttle http://underscorejs.org/#throttle
+function throttle(func, wait, options) {
+  const _ = {
+    now: Date.now ||
+      function() {
+        return new Date().getTime();
+      },
+  };
+  let context, args, result;
+  let timeout = null;
+  let previous = 0;
+  if (!options) {
+    options = {};
+  }
+  const later = () => {
+    previous = options.leading === false ? 0 : _.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) {
+      context = args = null;
     }
-    const later = () => {
-      previous = options.leading === false ? 0 : _.now();
-      timeout = null;
+  };
+  return () => {
+    const now = _.now();
+    if (!previous && options.leading === false) {
+      previous = now;
+    }
+    const remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
       result = func.apply(context, args);
+
       if (!timeout) {
         context = args = null;
       }
-    };
-    return () => {
-      const now = _.now();
-      if (!previous && options.leading === false) {
-        previous = now;
-      }
-      const remaining = wait - (now - previous);
-      context = this;
-      args = arguments;
-      if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-          clearTimeout(timeout);
-          timeout = null;
-        }
-        previous = now;
-        result = func.apply(context, args);
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  };
+}
 
-        if (!timeout) {
-          context = args = null;
-        }
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining);
-      }
-      return result;
+// From https://davidwalsh.name/javascript-debounce-function.
+function debounce(func, wait, immediate) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    const later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
     };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+export function initElementTilt(el, destroy) {
+  if(!destroy) {
+    const newElmentTilt = new ElmentTilt(el);
+    el.style.transition = 'transform 0.2s ease-out';
+    if (typeof requestAnimationFrame === 'undefined') return;
+    document.addEventListener('mousemove', onMouseMoveHandler.bind(newElmentTilt));
+    window.addEventListener('resize', debounceResizeHandler.bind(newElmentTilt));
+  } else {
+    document.removeEventListener('mousemove', onMouseMoveHandler);
+    window.removeEventListener('resize', debounceResizeHandler);
+    el.style.transition = '';
+    el.style.transform = '';
   }
 }
+
+function ElmentTilt(el) {
+  this.el = el;
+  this.win = {
+    width: window.innerWidth, 
+    height: window.innerHeight
+  };
+}
+
+ElmentTilt.prototype.options = {
+  // Main image tilt: max and min angles.
+  tilt: {maxRotationX: -4, maxRotationY: 3, maxTranslationX: 6, maxTranslationY: -2}
+};
+
+ElmentTilt.prototype.getMousePos = function(e) {
+  // from http://www.quirksmode.org/js/events_properties.html#position
+  let posx = 0;
+  let posy = 0;
+  if (!e) {
+    e = window.event;
+  }
+
+  if (e.pageX || e.pageY) {
+    posx = e.pageX;
+    posy = e.pageY;
+  } else if (e.clientX || e.clientY) {
+    posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+  }
+
+  return {
+    x: posx,
+    y: posy,
+  };
+}
+
+function onMouseMoveHandler(ev) {
+  requestAnimationFrame(() => {
+    const mousepos = this.getMousePos(ev);
+    const rotX = 2 * this.options.tilt.maxRotationX / this.win.height * mousepos.y - this.options.tilt.maxRotationX;
+    const rotY = 2 * this.options.tilt.maxRotationY / this.win.width * mousepos.x - this.options.tilt.maxRotationY;
+    const transX = 2 * this.options.tilt.maxTranslationX / this.win.width * mousepos.x - this.options.tilt.maxTranslationX;
+    const transY = 2 * this.options.tilt.maxTranslationY / this.win.height * mousepos.y - this.options.tilt.maxTranslationY;
+    this.el.style.transform = `perspective(1000px) 
+                               translate3d( ${transX}px, ${transY}px, 0) 
+                               rotate3d(1,0,0,${rotX}deg) 
+                               rotate3d(0,1,0,${rotY}deg)`;
+  });
+}
+
+// Window resize.
+function debounceResizeHandler() {
+  debounce(function() {
+    this.win = {width: window.innerWidth, height: window.innerHeight};
+  }, 10);
+}
+
+

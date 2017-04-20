@@ -1,12 +1,28 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {initElementTilt} from '../../common/utils';
 
 class CoverPhoto extends Component {
+    componentDidMount() {
+        setTimeout(initElementTilt, 2300, this.refs.image);
+    }
+
+    componentWillUnmount() {
+        initElementTilt(this.refs.image, true);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.common.showPage) {
+            initElementTilt(this.refs.image, true);
+        }
+    }
+
     render() {
         const {src, alt, onClick, className} = this.props;
 
         return (
-            <div style={{ backgroundImage: `url(${src})`}}
+            <div style={{ backgroundImage: `url(${src})`} }
                 role="img"
                 aria-label={alt}
                 onClick={onClick}
@@ -23,4 +39,15 @@ CoverPhoto.propTypes = {
     onClick: PropTypes.func
 };
 
-export default CoverPhoto;
+/**
+ * Maps state to components props
+ *
+ * @param {Object} state - Application state
+ * @returns {Object}
+ * @author Snær Seljan Þóroddsson
+ */
+function mapStateToProps(state) {
+  return {common: state.common};
+}
+
+export default connect(mapStateToProps, null)(CoverPhoto);
