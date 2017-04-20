@@ -5,10 +5,13 @@
   "dependencies": {
     "axios": "^0.16.1",
     "gsap": "^1.19.1",
+    "history": "^4.6.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.4",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },

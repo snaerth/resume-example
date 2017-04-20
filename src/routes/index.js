@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../common/actions';
-import PageSlideEffect from './pageSlideEffect';
-import DelayWrapper from './delay';
-import Resume from './resume';
-import Page from './page';
-import FrontPage from './frontpage';
+import PageSlideEffect from '../components/pageSlideEffect';
+import DelayWrapper from '../components/delay';
+import Resume from '../components/resume';
+import Page from '../components/page';
+import FrontPage from '../components/frontpage';
 
 class App extends Component {
   constructor(props) {
@@ -18,38 +18,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.setLanguage('en');
+    this.props.actions.removePageLoading();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.translations && this.state.loading) {
       this.setState({loading: false});
-      this.removePageLoading();
+      this.props.actions.removePageLoading();
     }
 
-    if (nextProps.common.pageRevealer) {
+    if (nextProps.common.pageRevealer && !this.state.loading) {
       this.timer = setTimeout(() => {
         this.setState({animateOut: !this.state.animateOut});
       }, 1000);
-    }
-  }
-
-  addPageLoading() {
-    document.body.classList.add('loading');
-  }
-
-  removePageLoading() {
-    const minTime = 1000;
-    const now = new Date();
-    const next = new Date();
-    const timeDiff = next.getTime() - now.getTime();
-    if (timeDiff < minTime) {
-      const delay = minTime - timeDiff;
-      setTimeout(() => {
-        document.body.classList.remove('loading');
-      }, delay);
-    } else {
-      document.body.classList.remove('loading');
     }
   }
 

@@ -1,0 +1,11 @@
+.page-container {
+    background-color: #CCCCCC;
+}
+
+.job-application--button-container {
+    z-index: 3;
+}
+
+.page-container h1.name {
+  padding: 0;
+}

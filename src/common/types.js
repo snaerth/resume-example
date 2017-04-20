@@ -6,3 +6,5 @@ export const PAGE_ANIMATION_FORWARD = 'page_animation_forward';
 export const PAGE_ANIMATION_BACKWARD = 'page_animation_backward';
 export const RESUME_BACK_ANIMATION = 'resume_back_animation';
 export const SET_LANGUAGE = 'set_language';
+export const ADD_PAGE_LOADING = 'add_page_loading';
+export const REMOVE_PAGE_LOADING = 'remove_page_loading';
