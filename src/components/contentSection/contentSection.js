@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import * as actionCreators from '../../common/actions';
 import Button from '../button';
@@ -15,9 +16,8 @@ class Right extends Component {
 
   clickHandler(e) {
     e.preventDefault();
-    console.log(this.props);
-    this.props.routing.location = '/profile';
     this.props.actions.pageAnimationForward();
+    setTimeout(this.props.history.push, 2000, '/profile');
   }
 
   emailHandler(email) {
@@ -72,4 +72,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Right);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Right));
