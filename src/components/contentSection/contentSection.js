@@ -13,6 +13,12 @@ class Right extends Component {
     super(props);
     this.clickHandler = this.clickHandler.bind(this);
   }
+  
+  static propTypes = {
+      history: React.PropTypes.shape({
+        push: React.PropTypes.func.isRequired,
+      }).isRequired,
+  }
 
   clickHandler(e) {
     e.preventDefault();
@@ -72,4 +78,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Right));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Right));
