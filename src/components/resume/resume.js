@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {withRouter, Link} from 'react-router-dom';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
@@ -12,6 +13,7 @@ class Resume extends Component {
   constructor(props) {
     super(props);
     this.animateRow = this.animateRow.bind(this);
+    this.back = this.back.bind(this);
     this.state = {
       tl: new TimelineLite(),
     };
@@ -19,11 +21,7 @@ class Resume extends Component {
 
   componentWillMount() {
     window.onpopstate = e => {
-      if (!e.state) {
-        this.back();
-      } else {
-        this.props.actions.pageAnimationForward();
-      }
+      this.back(e);
     };
   }
 
@@ -45,6 +43,7 @@ class Resume extends Component {
     const {tl} = this.state;
     const {title, back, row_1} = this.refs;
     const rows = row_1.children;
+
     tl
       .set(title, {rotationX: -45})
       .to(back, 1, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
@@ -75,34 +74,14 @@ class Resume extends Component {
       }
     }
 
-    tl.pause();
-    setTimeout(() => {
-      tl.play();
-    }, 400);
-
-    this.state.tl.to(
-      this.refs.back,
-      1,
-      {x: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-      0.2,
-    );
+    tl.play();
   }
 
-  back() {
-    this.props.actions.resumeBackAnimation();
-    history.pushState(null, null, window.location.origin);
-    const tl = this.state.tl;
-    tl.timeScale(4).reverse();
-    setTimeout(() => {
-      this.props.actions.pageRevealerStart('bottom');
-      setTimeout(this.props.actions.pageAnimationBackward, this.props.delay - 400);
-    }, 500);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.common.resumeBackAnimation) {
-      this.state.tl.timeScale(3).reverse();
-    }
+  back(ev) {
+    ev.preventDefault();
+    this.state.tl.timeScale(4).reverse();
+    this.props.actions.revealAnimationBackward();
+    setTimeout(this.props.history.push, 1500, '/');
   }
 
   renderSections() {
@@ -208,12 +187,15 @@ class Resume extends Component {
     const translations = this.props.translations;
     return (
       <div>
-        <div
-          className="job-application--button-container button-right button-right--offset back-button"
-          ref="back"
-        >
-          <Button text={translations.back} onClick={() => this.back()} />
-        </div>
+        <Link to="/" onClick={ev => this.back(ev)}>
+          <div
+            className="job-application--button-container button-right button-right--offset back-button"
+            ref="back"
+          >
+
+            <Button text={translations.back} />
+          </div>
+        </Link>
         <div className="resume-container" ref="container">
           {this.renderSections()}
         </div>
@@ -246,4 +228,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Resume);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Resume));

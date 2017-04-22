@@ -1,22 +1,15 @@
 import en from '../data/en.json';
 import {
-  PAGE_REVEALER_START,
-  PAGE_REVEALER_STOP,
-  SHOW_PAGE,
-  HIDE_PAGE,
-  PAGE_ANIMATION_FORWARD,
-  PAGE_ANIMATION_BACKWARD,
-  RESUME_BACK_ANIMATION,
+  REVEAL_ANIMATION_FORWARD,
+  REVEAL_ANIMATION_BACKWARD,
   SET_LANGUAGE,
   ADD_PAGE_LOADING,
-  REMOVE_PAGE_LOADING
+  REMOVE_PAGE_LOADING,
 } from './types';
 
 const initialState = {
   pageRevealer: false,
   pageRevealerType: 'top',
-  showPage: false,
-  resumeBackAnimation: false,
   translations: en,
   lang: 'en',
 };
@@ -36,51 +29,20 @@ export default function(state = initialState, action) {
         lang: action.payload.lang,
       };
 
-    case RESUME_BACK_ANIMATION:
-      return {
-        ...state,
-        resumeBackAnimation: true,
-      };
-
-    case PAGE_ANIMATION_FORWARD:
+    case REVEAL_ANIMATION_FORWARD:
       return {
         ...state,
         pageRevealer: true,
-        showPage: true,
         pageRevealerType: 'top',
+        back: false
       };
 
-    case PAGE_ANIMATION_BACKWARD:
+    case REVEAL_ANIMATION_BACKWARD:
       return {
         ...state,
         pageRevealer: true,
-        showPage: false,
         pageRevealerType: 'bottom',
-      };
-
-    case PAGE_REVEALER_START:
-      return {
-        ...state,
-        pageRevealer: true,
-        pageRevealerType: action.payload,
-      };
-
-    case PAGE_REVEALER_STOP:
-      return {
-        ...state,
-        pageRevealer: false,
-      };
-
-    case SHOW_PAGE:
-      return {
-        ...state,
-        showPage: true,
-      };
-
-    case HIDE_PAGE:
-      return {
-        ...state,
-        showPage: false,
+        back: true
       };
 
     default:

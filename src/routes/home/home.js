@@ -13,12 +13,16 @@ class Home extends Component {
     super(props);
     this.state = {
       tl: new TimelineLite(),
+      dirty: false,
     };
   }
 
   componentDidMount() {
-    this.props.actions.setLanguage('en');
-    this.props.actions.removePageLoading();
+    this.animateStart();
+  }
+
+  animateStart() {
+
     const tl = this.state.tl;
     const {
       left,
@@ -68,11 +72,7 @@ class Home extends Component {
         {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
         1,
       )
-      .pause();
-
-    setTimeout(() => {
-      tl.play();
-    }, 800);
+      .play();
   }
 
   changeLanguage() {
@@ -89,11 +89,16 @@ class Home extends Component {
     if (nextProps.common.pageRevealer) {
       this.state.tl.timeScale(3).reverse();
     }
+
+    if(!this.state.dirty) {
+      console.log('sdfsdfs');
+      this.setState({dirty: true, tl: new TimelineLite()});
+    }
   }
 
   render() {
     return (
-      <div className="container" key={'uniqe'}>
+      <div className="container">
         <h1 className="name">
           <span ref="firstName">{this.props.translations.firstName}</span>
           <span ref="lastName">{this.props.translations.lastName}</span>

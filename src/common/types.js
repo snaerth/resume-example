@@ -1,10 +1,5 @@
-export const PAGE_REVEALER_START = 'page_revealer_start';
-export const PAGE_REVEALER_STOP = 'page_revealer_stop';
-export const SHOW_PAGE = 'show_page';
-export const HIDE_PAGE = 'hide_page';
-export const PAGE_ANIMATION_FORWARD = 'page_animation_forward';
-export const PAGE_ANIMATION_BACKWARD = 'page_animation_backward';
-export const RESUME_BACK_ANIMATION = 'resume_back_animation';
+export const REVEAL_ANIMATION_FORWARD = 'reveal_animation_forward';
+export const REVEAL_ANIMATION_BACKWARD = 'reveal_animation_backward';
 export const SET_LANGUAGE = 'set_language';
 export const ADD_PAGE_LOADING = 'add_page_loading';
 export const REMOVE_PAGE_LOADING = 'remove_page_loading';

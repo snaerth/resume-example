@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import * as actionCreators from '../../common/actions';
 import Button from '../button';
 import './contentSection.css';
@@ -15,15 +14,15 @@ class Right extends Component {
   }
   
   static propTypes = {
-      history: React.PropTypes.shape({
-        push: React.PropTypes.func.isRequired,
+      history: PropTypes.shape({
+        push: PropTypes.func.isRequired,
       }).isRequired,
   }
 
   clickHandler(e) {
     e.preventDefault();
-    this.props.actions.pageAnimationForward();
-    setTimeout(this.props.history.push, 2000, '/profile');
+    this.props.actions.revealAnimationForward();
+    setTimeout(this.props.history.push, 1500, '/profile');
   }
 
   emailHandler(email) {
