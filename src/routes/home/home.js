@@ -22,7 +22,6 @@ class Home extends Component {
   }
 
   animateStart() {
-
     const tl = this.state.tl;
     const {
       left,
@@ -91,8 +90,7 @@ class Home extends Component {
     }
 
     if(!this.state.dirty) {
-      console.log('sdfsdfs');
-      this.setState({dirty: true, tl: new TimelineLite()});
+      console.log('Snær');
     }
   }
 

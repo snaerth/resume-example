@@ -12,7 +12,6 @@ class RouterWrapper extends Component {
   }
 
   render() {
-      console.log(this.props.common.pageRevealer);
     return (
       <div>
         {this.props.children}

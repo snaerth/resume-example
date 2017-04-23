@@ -1,15 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Resume from '../../components/resume';
 import './profile.css';
 
-class Profile extends Component {
-  render() {
-    return (
+const Profile = () => (
       <div className="page-container">
         <Resume />
       </div>
-    );
-  }
-}
+);
 
 export default Profile;
