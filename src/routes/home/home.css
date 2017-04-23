@@ -48,6 +48,7 @@
 .right {
   background: #fff;
   transform: translate3d(200%, 0, 0);
+  backface-visibility: hidden;
 }
 
 h1.name {
