@@ -89,8 +89,9 @@ class Home extends Component {
       this.state.tl.timeScale(3).reverse();
     }
 
-    if(!this.state.dirty) {
-      console.log('Snær');
+    if(this.props.common.backButtonPressed && !this.state.dirty) {
+      this.setState({dirty: true});
+      this.state.tl.timeScale(1).restart();
     }
   }
 

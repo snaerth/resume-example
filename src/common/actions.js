@@ -22,8 +22,8 @@ export function revealAnimationForward() {
   return {type: REVEAL_ANIMATION_FORWARD};
 }
 
-export function revealAnimationBackward() {
-  return {type: REVEAL_ANIMATION_BACKWARD};
+export function revealAnimationBackward(backButtonPressed) {
+  return {type: REVEAL_ANIMATION_BACKWARD, payload: backButtonPressed};
 }
 
 export function removePageLoading() {

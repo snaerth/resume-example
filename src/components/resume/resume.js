@@ -21,7 +21,10 @@ class Resume extends Component {
 
   componentWillMount() {
     window.onpopstate = e => {
-      this.back(e);
+      e.preventDefault();
+      this.state.tl.timeScale(4).reverse();
+      this.props.actions.revealAnimationBackward(true);
+      setTimeout(this.props.history.push, 1500, '/');
     };
   }
 

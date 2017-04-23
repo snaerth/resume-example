@@ -34,7 +34,8 @@ export default function(state = initialState, action) {
         ...state,
         pageRevealer: true,
         pageRevealerType: 'top',
-        back: false
+        back: false,
+        backButtonPressed: false,
       };
 
     case REVEAL_ANIMATION_BACKWARD:
@@ -42,7 +43,8 @@ export default function(state = initialState, action) {
         ...state,
         pageRevealer: true,
         pageRevealerType: 'bottom',
-        back: true
+        back: true,
+        backButtonPressed: action.payload,
       };
 
     default:
