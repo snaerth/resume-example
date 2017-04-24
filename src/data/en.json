@@ -75,5 +75,25 @@
                 }
             ]
         }
-    ]
+    ],
+    "processbar": {
+        "title": "Skills",
+        "items": [
+            {
+                "name": "Javascript",
+                "percentage": 90,
+                "description": "Lýsing á javascript skills"
+            },
+            {
+                "name": "Html",
+                "percentage": 88,
+                "description": "Lýsing á html skills"
+            },
+            {
+                "name": "CSS",
+                "percentage": 85,
+                "description": "Lýsing á css skills"
+            }
+        ]
+    }
 }

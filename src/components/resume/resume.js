@@ -3,7 +3,7 @@ import {TimelineLite} from 'gsap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter, Link} from 'react-router-dom';
-import Processbar from '../processBar';
+import Processbars from '../processBars';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
 import * as actionCreators from '../../common/actions';
@@ -201,7 +201,12 @@ class Resume extends Component {
           </div>
         </Link>
         <div className="resume-container" ref="container">
-          <Processbar height="20" percentage={92} title="Javascript"/>
+          <div className="resume-section">
+            <h1 className="name visible relative">
+              <span>{translations.processbar.title}</span>
+            </h1>
+            <Processbars height={20} data={translations.processbar.items} />
+          </div>
           {this.renderSections()}
         </div>
       </div>
