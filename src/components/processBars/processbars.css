@@ -28,17 +28,36 @@
 
 .processbar-counter {
   position: absolute;
-  right: -50px;
   font-weight: normal;
-  letter-spacing: .2px;
-  right: -100px;
-  top: -15px;
+  top: -45px;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 40px;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: #FF92F6;
+  color: #fff;
+  padding: 5px 10px;
+  opacity: 0;
+  transform: translate3d(0, 50px, 0) scale3d(0.5, 0.5, 0.5);
+}
+
+.processbar-counter:after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #FF92F6 transparent;
+    display: block;
+    width: 0;
 }
 
 .processbar-counter span:nth-child(2) {
-  font-family: 'Josefin Sans', Helvetica,sans-serif;
+  font-size: 14px;
+  font-weight: normal;
 }
 @media only screen and (max-width: 992px) {
   .processbar-row {

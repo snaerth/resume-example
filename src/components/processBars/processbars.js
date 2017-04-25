@@ -23,6 +23,13 @@ class Processbar extends Component {
     for (let i = 0, len = this.props.data.length; i < len; i++) {
       counters.push({score: 0});
       tl
+        .to(refs['processcounter-' + i], 1.5, {
+          scale: 1,
+          y: '0%',
+          opacity: 1,
+          ease: Elastic.easeOut, // eslint-disable-line
+          easeParams: [1, 0.3],
+        })
         .to(
           counters[i],
           1.5,
@@ -30,7 +37,8 @@ class Processbar extends Component {
             score: '+=' + this.props.data[i].percentage,
             roundProps: 'score',
             onUpdate: () => {
-              refs['processcounter-' + i].innerHTML = counters[i].score;
+              refs['processcounter-' + i].children[0].innerHTML =
+                counters[i].score;
             },
             ease: Linear.easeNone, // eslint-disable-line
           },
@@ -57,6 +65,9 @@ class Processbar extends Component {
             <h2>{row.name}</h2>
           </div>
           <div className="processbar-right">
+            <span className="processbar-counter" ref={'processcounter-' + i}>
+              <span>0</span><span>%</span>
+            </span>
             <svg
               ref="svg"
               height={this.props.height}
@@ -71,9 +82,6 @@ class Processbar extends Component {
                 ref={'processbar-' + i}
               />
             </svg>
-            <span className="processbar-counter">
-              <span ref={'processcounter-' + i}>0</span><span>%</span>
-            </span>
           </div>
         </div>
       );
