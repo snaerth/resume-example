@@ -1,4 +1,3 @@
-
 .images-section {
   display: flex;
   justify-content: center;
@@ -37,13 +36,11 @@
 .images-section .image-wrapper:hover {
   transform: rotate(0deg);
 }
-
 @media only screen and (max-width: 1200px) {
   .images-section img {
     min-width: 320px;
   }
 }
-
 @media only screen and (max-width: 992px) {
   .images-section img {
     border: 15px solid #fff;
@@ -64,5 +61,11 @@
     padding: 0 15px 10px;
     line-height: 1;
     font-size: 18px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .images-section .image-wrapper {
+    opacity: 1;
+    transform: scale3d(1,1,1);
   }
 }

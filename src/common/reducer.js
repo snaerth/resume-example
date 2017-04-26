@@ -17,15 +17,22 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_PAGE_LOADING:
-      return {...state};
+      return {
+        ...state,
+        pageRevealer: false,
+      };
 
     case REMOVE_PAGE_LOADING:
-      return {...state};
+      return {
+        ...state,
+        pageRevealer: false,
+      };
 
     case SET_LANGUAGE:
       return {
         ...state,
         translations: action.payload.translations,
+        pageRevealer: false,
         lang: action.payload.lang,
       };
 

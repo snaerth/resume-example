@@ -76,8 +76,8 @@ class Home extends Component {
 
   changeLanguage() {
     this.props.actions.addPageLoading();
-    this.props.actions.removePageLoading();
     setTimeout(() => {
+      this.props.actions.removePageLoading();
       this.props.actions.setLanguage(
         this.props.common.lang === 'en' ? 'is' : 'en',
       );
@@ -89,7 +89,7 @@ class Home extends Component {
       this.state.tl.timeScale(3).reverse();
     }
 
-    if(this.props.common.backButtonPressed && !this.state.dirty) {
+    if (this.props.common.backButtonPressed && !this.state.dirty) {
       this.setState({dirty: true});
       this.state.tl.timeScale(1).restart();
     }
