@@ -205,7 +205,7 @@ class Resume extends Component {
             <h1 className="name visible relative">
               <span>{translations.processbar.title}</span>
             </h1>
-            <Processbars height={20} data={translations.processbar.items} />
+            {<Processbars height={20} data={translations.processbar.items} />}
           </div>
           {this.renderSections()}
         </div>
