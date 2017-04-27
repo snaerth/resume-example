@@ -27,7 +27,6 @@ class Processbar extends Component {
       const percentage = this.props.data[i].percentage;
       const fullWidth = processbarEl.viewportElement.clientWidth;
       const calcPercentageWidth = percentage / 100 * fullWidth;
-      console.log(percentage);
       tl
         .to(
           counterEl,
