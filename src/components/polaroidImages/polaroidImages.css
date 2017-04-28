@@ -1,7 +1,7 @@
 .images-section {
   display: flex;
   justify-content: center;
-  padding: 7em 0 8em;
+  padding: 0 0 8em;
   position: relative;
   top: 20px;
 }
