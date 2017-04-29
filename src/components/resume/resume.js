@@ -6,6 +6,7 @@ import {withRouter, Link} from 'react-router-dom';
 import Processbars from '../processBars';
 import Button from '../button';
 import PolaroidImages from '../polaroidImages';
+import ColumnImages from '../columnImages';
 import * as actionCreators from '../../common/actions';
 import {withinViewport} from '../../common/utils';
 import './resume.css';
@@ -96,20 +97,32 @@ class Resume extends Component {
   }
 
   renderSections() {
-    const resumeSections = this.props.translations.resumeSections;
+    const {resumeSections, images} = this.props.translations;
     return resumeSections.map((section, i) => {
+      const index = i;
       const rows = this.renderRows(section.rows);
-      const images = section.images.map((image, i) => (
+      const polarImages = section.images.map((image, i) => (
         <PolaroidImages key={'image' + i} image={image} />
       ));
 
+      const begin = index % 2 !== 0 ? index + 1 : index;
+      const end = index % 2 !== 0 ? index + 1 + 2 : index + 2;
+      const colImages = images
+        .slice(begin, end)
+        .map((image, i) => <ColumnImages key={'image' + i} image={image} className={index % 2 === 0 ? 'even' : 'odd'} />);
+
       return (
-        <div className={'resume-section section-' + i} key={i}>
-          <h1 className={i === 0 ? 'name relative' : 'name visible relative'}>
-            <span ref={i === 0 ? 'title' : ''}>{section.title}</span>
+        <div className={'resume-section section-' + index} key={index}>
+          <h1 className={index === 0 ? 'name relative' : 'name visible relative'}>
+            <span ref={index === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
-          {<div ref={i === 0 ? 'row_1' : ''} className="resume-section--row">{rows}</div>}
-          {<div className="images-section onscroll-reveal">{images}</div>}
+          {
+            <div ref={index === 0 ? 'row_1' : ''} className="resume-section--row">
+              {rows}
+            </div>
+          }
+          <div className="column-images-container">{colImages}</div>
+          <div className="images-section onscroll-reveal">{polarImages}</div>
         </div>
       );
     });

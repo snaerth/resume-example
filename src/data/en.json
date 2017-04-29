@@ -95,5 +95,31 @@
                 "description": "Lýsing á css skills"
             }
         ]
-    }
+    },
+    "images": [
+        {
+            "url": "me1.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me2.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        },
+        {
+            "url": "me3.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me4.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        },
+        {
+            "url": "me5.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me6.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        }
+    ]
 }
