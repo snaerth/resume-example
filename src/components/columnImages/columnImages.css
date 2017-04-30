@@ -12,7 +12,7 @@
 
 .column-images-wrapper:nth-child(2),
 .odd.column-images-wrapper {
-  padding: 200px 25px;
+  padding: 200px 25px 0;
 }
 
 .odd.column-images-wrapper:nth-child(2) {
@@ -21,7 +21,7 @@
 
 .column-images-wrapper img {
   width: 100%;
-  filter: grayscale(100%);
+  filter: blur(1px) grayscale(1);
   transition: filter 0.3s;
 }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CoverPhoto from '../coverPhoto';
 import './imageSection.css';
-import Me from '../../common/images/snaer_seljan_thoroddsson.jpg';
+import Me from '../../common/images/snaer_seljan_thoroddsson.png';
 
 class ImageSection extends Component {
   render() {

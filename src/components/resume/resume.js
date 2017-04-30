@@ -122,7 +122,7 @@ class Resume extends Component {
             </div>
           }
           <div className="column-images-container">{colImages}</div>
-          <div className="images-section onscroll-reveal">{polarImages}</div>
+          <div className="images-section onscroll-reveal"></div>
         </div>
       );
     });
