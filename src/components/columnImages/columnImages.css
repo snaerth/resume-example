@@ -21,7 +21,7 @@
 
 .column-images-wrapper img {
   width: 100%;
-  filter: blur(1px) grayscale(1);
+  filter: grayscale(1);
   transition: filter 0.3s;
 }
 
