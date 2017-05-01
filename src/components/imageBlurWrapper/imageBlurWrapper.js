@@ -1,0 +1,76 @@
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import styles from './imageBlurWrapper.css';
+import classnames from 'classnames';
+import {processImage} from '../../utils/stackBlur';
+
+/**
+ * Image blur wrapper component
+ * Loads thumbnail image in canvas and performes
+ * blur algoritim to blur image. When bigger image has loaded
+ * it hides canvas and shows bigger image
+ */
+class ImageBlurWrapper extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loaded: false,
+    };
+  }
+
+  componentDidMount() {
+    const {blur, thumbnail, src, id} = this.props;
+    let img = new Image();
+    img.src = thumbnail || 'images/public/person-placeholder-thumbnail.png';
+    img.onload = () => {
+      let canvas = document.getElementById('canvas-blur-' + id);
+      processImage(img, canvas, blur || 10);
+    };
+
+    let imgBig = new Image();
+    imgBig.src = src;
+    imgBig.onload = () => {
+      this.setState({loaded: true});
+    };
+  }
+
+  render() {
+    const {src, alt, id} = this.props;
+    return (
+      <div className="image-blur-wrapper">
+        <img
+          src={src}
+          alt={alt}
+          className={classnames(
+            'image-blur--image',
+            this.state.loaded ? 'show' : '',
+          )}
+        />
+        <canvas
+          id={'canvas-blur-' + id}
+          className={classnames(
+            'image-blur--canvas',
+            this.state.loaded ? 'hide' : '',
+          )}
+        />
+      </div>
+    );
+  }
+}
+
+ImageBlurWrapper.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  blur: PropTypes.string,
+  id: PropTypes.string.isRequired,
+};
+
+export default ImageBlurWrapper;
+/*
+                    <ImageBlurWrapper
+                        id="1"
+                        src={`images/users/${imageUrl}`}
+                        thumbnail={`images/users/${thumbnailUrl}`}
+                        alt={name} />*/
