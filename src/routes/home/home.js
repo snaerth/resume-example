@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actionCreators from '../../common/actions';
 import ImageSection from '../../components/imageSection';
 import ContentSection from '../../components/contentSection';
-import backgroundImage from '../../common/images/snaer_seljan_thoroddsson.jpg';
+import backgroundImage from '../../common/images/snaer_seljan_thoroddsson.png';
 import './home.css';
 
 class Home extends Component {

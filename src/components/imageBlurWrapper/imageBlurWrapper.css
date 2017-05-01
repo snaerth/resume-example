@@ -1,3 +1,11 @@
+.image-blur--container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
 .image-blur--canvas {
     display: block;
     position: absolute;
@@ -9,17 +17,17 @@
     transition: visibility 2s linear, opacity .2s;
 }
 
-.hide {
-    visibility: hidden;
-    opacity: 0;
-}
-
 .image-blur--image {
     width: 100%;
     visibility: hidden;
-    backface-visibility: hidden;
     opacity: 0;
-    transition: visibility 0s linear 0s, opacity .3s .15s;
+    backface-visibility: hidden;
+    transition: visibility 0s linear 0s, opacity .15s;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
 }
 
 .show {
@@ -27,7 +35,35 @@
     opacity: 1;
 }
 
-.image-blur-wrapper {
+.even:nth-child(1) .image-blur--wrapper,
+.odd:nth-child(1) .image-blur--wrapper {
+    transform: translate3d(0, 200px, 0);
+}
+
+.even:nth-child(2) .image-blur--wrapper,
+.odd:nth-child(2) .image-blur--wrapper {
+    transform: translate3d(0, -200px, 0);
+}
+
+.image-blur--wrapper {
     position: relative;
     width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.even,
+.odd {
+    padding: 0 25px;
+}
+
+.even:nth-child(1),
+.odd:nth-child(2) {
+    padding: 0 25px;
+}
+
+.even:nth-child(2),
+.odd:nth-child(1) {
+    padding: 100px 25px 0;
 }

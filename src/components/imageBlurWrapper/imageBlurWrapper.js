@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import styles from './imageBlurWrapper.css';
 import classnames from 'classnames';
-import {processImage} from '../../utils/stackBlur';
+import {processImage} from '../../common/stackBlur';
+import './imageBlurWrapper.css';
 
 /**
  * Image blur wrapper component
@@ -36,9 +36,9 @@ class ImageBlurWrapper extends Component {
   }
 
   render() {
-    const {src, alt, id} = this.props;
+    const {src, alt, id, className, text} = this.props;
     return (
-      <div className="image-blur-wrapper">
+      <div className={classnames('image-blur--wrapper', className)}>
         <img
           src={src}
           alt={alt}
@@ -54,6 +54,7 @@ class ImageBlurWrapper extends Component {
             this.state.loaded ? 'hide' : '',
           )}
         />
+        {text ? <p>{text}</p>: null}
       </div>
     );
   }
@@ -62,15 +63,10 @@ class ImageBlurWrapper extends Component {
 ImageBlurWrapper.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  txt: PropTypes.string,
   thumbnail: PropTypes.string.isRequired,
   blur: PropTypes.string,
   id: PropTypes.string.isRequired,
 };
 
 export default ImageBlurWrapper;
-/*
-                    <ImageBlurWrapper
-                        id="1"
-                        src={`images/users/${imageUrl}`}
-                        thumbnail={`images/users/${thumbnailUrl}`}
-                        alt={name} />*/

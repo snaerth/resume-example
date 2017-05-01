@@ -133,7 +133,7 @@ function processImageDataRGB(imageData, top_x, top_y, width, height, radius) {
   let stackEnd = null;
   for (i = 1; i < div; i++) {
     stack = stack.next = new BlurStack();
-    if (i == radiusPlus1) {
+    if (i == radiusPlus1) { // eslint-disable-line
       stackEnd = stack;
     }
   }
@@ -195,7 +195,7 @@ function processImageDataRGB(imageData, top_x, top_y, width, height, radius) {
       g_out_sum -= stackIn.g;
       b_out_sum -= stackIn.b;
 
-      p = (yw + ((p = x + radius + 1) < widthMinus1 ? p : widthMinus1)) << 2;
+      p = (yw + ((p = x + radius + 1) < widthMinus1 ? p : widthMinus1)) << 2; // eslint-disable-line
 
       r_in_sum += (stackIn.r = pixels[p]);
       g_in_sum += (stackIn.g = pixels[p + 1]);
@@ -281,7 +281,7 @@ function processImageDataRGB(imageData, top_x, top_y, width, height, radius) {
       g_out_sum -= stackIn.g;
       b_out_sum -= stackIn.b;
 
-      p = (x + (((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) * width)) << 2;
+      p = (x + (((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) * width)) << 2; // eslint-disable-line
 
       r_sum += (r_in_sum += (stackIn.r = pixels[p]));
       g_sum += (g_in_sum += (stackIn.g = pixels[p + 1]));

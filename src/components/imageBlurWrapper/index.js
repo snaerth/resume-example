@@ -1,2 +1,2 @@
-import ImageBlurWrapper from './imageBlurWrapper.jsx';
+import ImageBlurWrapper from './imageBlurWrapper';
 export default ImageBlurWrapper;

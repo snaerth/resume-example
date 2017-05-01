@@ -99,26 +99,32 @@
     "images": [
         {
             "url": "me1.jpg",
+            "thumbnail": "thumbnails/me1.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
             "url": "me2.jpg",
+            "thumbnail": "thumbnails/me2.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         },
         {
             "url": "me3.jpg",
+            "thumbnail": "thumbnails/me3.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
             "url": "me4.jpg",
+            "thumbnail": "thumbnails/me4.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         },
         {
             "url": "me5.jpg",
+            "thumbnail": "thumbnails/me5.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
             "url": "me6.jpg",
+            "thumbnail": "thumbnails/me6.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         }
     ]
