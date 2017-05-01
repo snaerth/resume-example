@@ -35,27 +35,18 @@
     opacity: 1;
 }
 
-.even:nth-child(1) .image-blur--wrapper,
-.odd:nth-child(1) .image-blur--wrapper {
-    transform: translate3d(0, 200px, 0);
-}
-
-.even:nth-child(2) .image-blur--wrapper,
-.odd:nth-child(2) .image-blur--wrapper {
-    transform: translate3d(0, -200px, 0);
-}
-
 .image-blur--wrapper {
     position: relative;
     width: 100%;
     max-width: 500px;
     overflow: hidden;
-    opacity: 0;
 }
 
 .even,
 .odd {
     padding: 0 25px;
+    transform: scale3d(0.8,0.8,0.8);
+    transition: all .3s;
 }
 
 .even:nth-child(1),
@@ -66,4 +57,16 @@
 .even:nth-child(2),
 .odd:nth-child(1) {
     padding: 100px 25px 0;
+}
+
+.active.even:nth-child(1),
+.active.odd:nth-child(2) {
+    padding: 100px 25px 0;
+    transform: scale3d(1,1,1);
+}
+
+.active.even:nth-child(2),
+.active.odd:nth-child(1) {
+    padding: 0 25px;
+    transform: scale3d(1,1,1);
 }

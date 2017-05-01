@@ -188,14 +188,8 @@ class Resume extends Component {
   }
 
   animateImages(el) {
-    const tl = new TimelineLite();
     for (let i = 0, len = el.children.length; i < len; i++) {
-      const img = el.children[i].children[0];
-      tl.to(img, 1.2, {
-        y: "0%",
-        autoAlpha: 1,
-        ease: Power4.easeOut // eslint-disable-line
-      }, 1.2);
+      el.children[i].classList.add('active');
     }
   }
 
