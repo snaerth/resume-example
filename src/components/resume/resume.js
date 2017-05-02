@@ -14,7 +14,6 @@ import './resume.css';
 class Resume extends Component {
 	constructor(props) {
 		super(props);
-		this.animateRow = this.animateRow.bind(this);
 		this.back = this.back.bind(this);
 		this.state = {
 			tl: new TimelineLite(),
@@ -201,32 +200,10 @@ class Resume extends Component {
 		}
 	}
 
-	animateRow(el, tl) {
-		const rows = el.children;
-		for (let i = 0, len = rows.length; i < len; i++) {
-			const cols = rows[i].children;
-			for (let j = 0, len = cols.length; j < len; j++) {
-				const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-				tl.to(
-					cols[j],
-					1.5,
-					{ y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
-					delayBetween
-				);
-			}
-		}
-
-		tl.pause();
-		setTimeout(() => {
-			tl.play();
-		}, 800);
-	}
-
 	render() {
 		const { translations } = this.props;
 		const { processbars } = translations;
 		const { processbarVisible } = this.state;
-		console.log(processbarVisible[1]);
 		return (
 			<div>
 				<Link to="/" onClick={ev => this.back(ev)}>
