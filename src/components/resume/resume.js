@@ -1,250 +1,283 @@
-import React, { Component } from "react";
-import { TimelineLite } from "gsap";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { withRouter, Link } from "react-router-dom";
-import Processbars from "../processBars";
-import Button from "../button";
-import ImageBlurWrapper from "../imageBlurWrapper";
-import * as actionCreators from "../../common/actions";
-import { withinViewport } from "../../common/utils";
-import "./resume.css";
+import React, { Component } from 'react';
+import { TimelineLite } from 'gsap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter, Link } from 'react-router-dom';
+import classnames from 'classnames';
+import Processbars from '../processBars';
+import Button from '../button';
+import ImageBlurWrapper from '../imageBlurWrapper';
+import * as actionCreators from '../../common/actions';
+import { withinViewport } from '../../common/utils';
+import './resume.css';
 
 class Resume extends Component {
-  constructor(props) {
-    super(props);
-    this.animateRow = this.animateRow.bind(this);
-    this.back = this.back.bind(this);
-    this.state = {
-      tl: new TimelineLite(),
-      processbarVisible: false
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.animateRow = this.animateRow.bind(this);
+		this.back = this.back.bind(this);
+		this.state = {
+			tl: new TimelineLite(),
+			processbarVisible: this.props.translations.processbars.map(() => false)
+		};
+	}
 
-  componentWillMount() {
-    window.onpopstate = e => {
-      e.preventDefault();
-      this.state.tl.timeScale(4).reverse();
-      this.props.actions.revealAnimationBackward(true);
-      setTimeout(this.props.history.push, 1500, "/");
-    };
-  }
+	componentWillMount() {
+		window.onpopstate = e => {
+			e.preventDefault();
+			this.state.tl.timeScale(4).reverse();
+			this.props.actions.revealAnimationBackward(true);
+			setTimeout(this.props.history.push, 1500, '/');
+		};
+	}
 
-  componentWillUnmount() {
-    withinViewport(true);
-  }
+	componentWillUnmount() {
+		withinViewport(true);
+	}
 
-  initElementInViewportChecker() {
-    withinViewport(null, "onscroll-reveal", "inViewport",(isVisble, el) => {
-      if (isVisble && !el.isAnimated) {
-        if (el.classList.contains("image-blur--container")) {
-          this.animateImages(el);
-        }
+	initElementInViewportChecker() {
+		withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisble, el) => {
+			if (isVisble && !el.isAnimated) {
+				if (el.classList.contains('image-blur--container')) {
+					this.animateImages(el);
+				}
 
-        if (el.classList.contains("processbars")) {
-          this.setState((prevState, props) => {
-            return { processbarVisible: true };
-          });
-        }
+				if (el.classList.contains('processbars')) {
+					let processbarState = this.state.processbarVisible;
+					for (let i = 0, len = processbarState.length; i < len; i++) {
+						if (el.classList.contains('processbar-' + i)) {
+							let newArr = [...processbarState];
+							newArr[i] = true;
+							this.setState((prevState, props) => {
+								return { processbarVisible: newArr };
+							});
+						}
+					}
+				}
 
-        el.isAnimated = true;
-      }
-    });
-  }
+				el.isAnimated = true;
+			}
+		});
+	}
 
-  componentDidMount() {
-    this.initElementInViewportChecker();
-    const { tl } = this.state;
-    const { title, back, row_1 } = this.refs;
-    const rows = row_1.children;
+	componentDidMount() {
+		this.initElementInViewportChecker();
+		const { tl } = this.state;
+		const { title, back, row_1 } = this.refs;
+		const rows = row_1.children;
 
-    tl
-      .set(title, { rotationX: -45 })
-      .to(back, 1, { x: "0%", opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
-      .to(
-        title,
-        1.5,
-        {
-          y: "0%",
-          opacity: 1,
-          transformOrigin: "0 50%",
-          rotationX: 0,
-          ease: Power2.easeOut // eslint-disable-line
-        },
-        0.8
-      )
-      .pause();
+		tl
+			.set(title, { rotationX: -45 })
+			.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
+			.to(
+				title,
+				1.5,
+				{
+					y: '0%',
+					opacity: 1,
+					transformOrigin: '0 50%',
+					rotationX: 0,
+					ease: Power2.easeOut // eslint-disable-line
+				},
+				0.8
+			)
+			.pause();
 
-    for (let i = 0, len = rows.length; i < len; i++) {
-      const cols = rows[i].children;
-      for (let j = 0, len = cols.length; j < len; j++) {
-        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-        tl.to(
-          cols[j],
-          1.5,
-          { y: "0%", opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
-          delayBetween
-        );
-      }
-    }
+		for (let i = 0, len = rows.length; i < len; i++) {
+			const cols = rows[i].children;
+			for (let j = 0, len = cols.length; j < len; j++) {
+				const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+				tl.to(
+					cols[j],
+					1.5,
+					{ y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
+					delayBetween
+				);
+			}
+		}
 
-    tl.play();
-  }
+		tl.play();
+	}
 
-  back(ev) {
-    ev.preventDefault();
-    this.state.tl.timeScale(4).reverse();
-    this.props.actions.revealAnimationBackward();
-    setTimeout(this.props.history.push, 1500, "/");
-  }
+	back(ev) {
+		ev.preventDefault();
+		this.state.tl.timeScale(4).reverse();
+		this.props.actions.revealAnimationBackward();
+		setTimeout(this.props.history.push, 1500, '/');
+	}
 
-  renderSections() {
-    const { resumeSections, images } = this.props.translations;
-    return resumeSections.map((section, i) => {
-      const index = i;
-      const rows = this.renderRows(section.rows);
-      const colImages = this.renderColImages(images, index);
+	renderSections() {
+		const { resumeSections, images } = this.props.translations;
+		return resumeSections.map((section, i) => {
+			const index = i;
+			const rows = this.renderRows(section.rows);
+			const colImages = this.renderColImages(images, index);
 
-      return (
-        <div className={"resume-section section-" + index} key={index}>
-          <h1
-            className={index === 0 ? "name relative" : "name visible relative"}
-          >
-            <span ref={index === 0 ? "title" : ""}>{section.title}</span>
-          </h1>
-          {
-            <div
-              ref={index === 0 ? "row_1" : ""}
-              className="resume-section--row"
-            >
-              {rows}
-            </div>
-          }
-          <div className="image-blur--container onscroll-reveal">
-            {colImages}
-          </div>
-        </div>
-      );
-    });
-  }
+			return (
+				<div className={'resume-section section-' + index} key={index}>
+					<h1
+						className={index === 0 ? 'name relative' : 'name visible relative'}
+					>
+						<span ref={index === 0 ? 'title' : ''}>{section.title}</span>
+					</h1>
+					{
+						<div
+							ref={index === 0 ? 'row_1' : ''}
+							className="resume-section--row"
+						>
+							{rows}
+						</div>
+					}
+					<div className="image-blur--container onscroll-reveal">
+						{colImages}
+					</div>
+				</div>
+			);
+		});
+	}
 
-  renderColImages(images, index) {
-    const begin = index % 2 !== 0 ? index + 1 : index;
-    const end = index % 2 !== 0 ? index + 1 + 2 : index + 2;
+	renderColImages(images, index) {
+		const begin = index % 2 !== 0 ? index + 1 : index;
+		const end = index % 2 !== 0 ? index + 1 + 2 : index + 2;
 
-    return images.slice(begin, end).map((image, i) => {
-      return (
-        <div key={"image" + i} className={index % 2 === 0 ? "even" : "odd"}>
-          <ImageBlurWrapper
-            id={"image" + i}
-            src={"images/" + image.url}
-            thumbnail={"images/" + image.thumbnail}
-            alt={image.text}
-            text={image.text}
-          />
-        </div>
-      );
-    });
-  }
+		return images.slice(begin, end).map((image, i) => {
+			return (
+				<div key={'image' + i} className={index % 2 === 0 ? 'even' : 'odd'}>
+					<ImageBlurWrapper
+						id={'image' + i}
+						src={'images/' + image.url}
+						thumbnail={'images/' + image.thumbnail}
+						alt={image.text}
+						text={image.text}
+					/>
+				</div>
+			);
+		});
+	}
 
-  onChange(isVisible, visibilityRect, el) {
-    if (isVisible) {
-      this.animateImages(el);
-    }
-  }
+	onChange(isVisible, visibilityRect, el) {
+		if (isVisible) {
+			this.animateImages(el);
+		}
+	}
 
-  renderRows(rows) {
-    return rows.map((row, i) => {
-      return (
-        <div className="resume-row" key={"row-" + i}>
-          <div className="resume-left">
-            <h2>{row.title}</h2>
-            <h2>{row.secondTitle}</h2>
-          </div>
-          <div className="resume-right">
-            <p>{row.content}</p>
-          </div>
-        </div>
-      );
-    });
-  }
+	renderRows(rows) {
+		return rows.map((row, i) => {
+			return (
+				<div className="resume-row" key={'row-' + i}>
+					<div className="resume-left">
+						<h2>{row.title}</h2>
+						<h2>{row.secondTitle}</h2>
+					</div>
+					<div className="resume-right">
+						<p>{row.content}</p>
+					</div>
+				</div>
+			);
+		});
+	}
 
-  animateTitle(el, tl) {
-    tl
-      .set(el, { rotationX: -45 })
-      .to(
-        el,
-        1.5,
-        {
-          y: "0%",
-          opacity: 1,
-          transformOrigin: "0 50%",
-          rotationX: 0,
-          ease: Power2.easeOut // eslint-disable-line
-        },
-        "-=0.2"
-      )
-      .pause();
-  }
+	animateTitle(el, tl) {
+		tl
+			.set(el, { rotationX: -45 })
+			.to(
+				el,
+				1.5,
+				{
+					y: '0%',
+					opacity: 1,
+					transformOrigin: '0 50%',
+					rotationX: 0,
+					ease: Power2.easeOut // eslint-disable-line
+				},
+				'-=0.2'
+			)
+			.pause();
+	}
 
-  animateImages(el) {
-    for (let i = 0, len = el.children.length; i < len; i++) {
-      el.children[i].classList.add('active');
-    }
-  }
+	animateImages(el) {
+		for (let i = 0, len = el.children.length; i < len; i++) {
+			el.children[i].classList.add('active');
+		}
+	}
 
-  animateRow(el, tl) {
-    const rows = el.children;
-    for (let i = 0, len = rows.length; i < len; i++) {
-      const cols = rows[i].children;
-      for (let j = 0, len = cols.length; j < len; j++) {
-        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-        tl.to(
-          cols[j],
-          1.5,
-          { y: "0%", opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
-          delayBetween
-        );
-      }
-    }
+	animateRow(el, tl) {
+		const rows = el.children;
+		for (let i = 0, len = rows.length; i < len; i++) {
+			const cols = rows[i].children;
+			for (let j = 0, len = cols.length; j < len; j++) {
+				const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+				tl.to(
+					cols[j],
+					1.5,
+					{ y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
+					delayBetween
+				);
+			}
+		}
 
-    tl.pause();
-    setTimeout(() => {
-      tl.play();
-    }, 800);
-  }
+		tl.pause();
+		setTimeout(() => {
+			tl.play();
+		}, 800);
+	}
 
-  render() {
-    const translations = this.props.translations;
-    return (
-      <div>
-        <Link to="/" onClick={ev => this.back(ev)}>
-          <div
-            className="job-application--button-container button-right button-right--offset back-button"
-            ref="back"
-          >
-            <Button text={translations.back} />
-          </div>
-        </Link>
-        <div className="resume-container" ref="container">
-          {this.renderSections()}
-          <div className="resume-section">
-            <h1 className="name visible relative">
-              <span>{translations.processbar.title}</span>
-            </h1>
-            <div className="onscroll-reveal processbars">
-              {this.state.processbarVisible
-                ? <Processbars
-                    height={20}
-                    data={translations.processbar.items}
-                  />
-                : null}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		const { translations } = this.props;
+		const { processbars } = translations;
+		const { processbarVisible } = this.state;
+		console.log(processbarVisible[1]);
+		return (
+			<div>
+				<Link to="/" onClick={ev => this.back(ev)}>
+					<div
+						className="job-application--button-container button-right button-right--offset back-button"
+						ref="back"
+					>
+						<Button text={translations.back} />
+					</div>
+				</Link>
+				<div className="resume-container" ref="container">
+					{this.renderSections()}
+					<div className="resume-section">
+						<h1 className="name visible relative">
+							<span>skills</span>
+						</h1>
+						<div>
+							<h2 className="name visible relative">
+								<span>{processbars[0].title}</span>
+							</h2>
+							<div
+								className={classnames(
+									'onscroll-reveal processbars',
+									'processbar-' + 0
+								)}
+							>
+								{processbarVisible[0]
+									? <Processbars height={20} data={processbars[0].items} />
+									: null}
+							</div>
+						</div>
+						<div>
+							<h2 className="name visible relative">
+								<span>{processbars[1].title}</span>
+							</h2>
+							<div
+								className={classnames(
+									'onscroll-reveal processbars',
+									'processbar-' + 1
+								)}
+							>
+								{processbarVisible[1]
+									? <Processbars height={20} data={processbars[1].items} />
+									: null}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 /**
@@ -255,7 +288,7 @@ class Resume extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return { common: state.common, translations: state.common.translations };
+	return { common: state.common, translations: state.common.translations };
 }
 
 /**
@@ -266,9 +299,9 @@ function mapStateToProps(state) {
  * @author Snær Seljan Þóroddsson
  */
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch)
-  };
+	return {
+		actions: bindActionCreators(actionCreators, dispatch)
+	};
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Resume));

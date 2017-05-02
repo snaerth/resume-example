@@ -43,52 +43,64 @@
     overflow: hidden;
 }
 
+.image-blur--wrapper p {
+    font-size: 20px;
+}
+
 .even,
 .odd {
     padding: 0 25px;
-    transform: scale3d(0.9, 0.9, 0.9);
-    transition: all 1s;
+}
+
+.even img,
+.odd img{
+    transform: scale3d(1.1,1.1,1.1);
+    transition: transform .3s ease-in-out;
+}
+
+.even.active img,
+.odd.active img {
+    transform: scale3d(1, 1, 1);
+}
+
+.even:hover img,
+.odd:hover img {
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.image-blur--wrapper-image {
+    transition: transform .3s ease-in-out;
+    overflow: hidden;
+    transform: scale3d(1,1,1);
+}
+
+.even:hover .image-blur--wrapper-image,
+.odd:hover .image-blur--wrapper-image {
+    overflow: hidden;
+    transform: scale3d(0.98,0.98,0.98);
+}
+
+.image-blur--wrapper-image img {
+    height: 100%;
+    cursor: pointer;
 }
 
 .even:nth-child(1),
-.odd:nth-child(2),
-.active.even:nth-child(2),
-.active.odd:nth-child(1) {
+.odd:nth-child(2) {
     padding: 0 25px;
 }
 
 .even:nth-child(2),
-.odd:nth-child(1),
-.active.even:nth-child(1),
-.active.odd:nth-child(2) {
+.odd:nth-child(1) {
     padding: 100px 25px 0;
-}
-
-.active.even:nth-child(1),
-.active.odd:nth-child(2) {
-    transform: scale3d(1, 1, 1);
-}
-
-.active.even:nth-child(2),
-.active.odd:nth-child(1) {
-    transform: scale3d(1, 1, 1);
 }
 
 @media only screen and (max-width: 1200px) {
     .image-blur--wrapper {
         max-width: 400px;
     }
-    .even:nth-child(1),
-    .odd:nth-child(2),
-    .active.even:nth-child(2),
-    .active.odd:nth-child(1) {
-        padding: 0 15px;
-    }
-    .even:nth-child(2),
-    .odd:nth-child(1),
-    .active.even:nth-child(1),
-    .active.odd:nth-child(2) {
-        padding: 0 15px;
+    .even,.odd {
+        padding: 0 15px !important;
     }
 }
 
@@ -99,15 +111,8 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .even:nth-child(1),
-    .odd:nth-child(2),
-    .active.even:nth-child(2),
-    .active.odd:nth-child(1),
-    .even:nth-child(2),
-    .odd:nth-child(1),
-    .active.even:nth-child(1),
-    .active.odd:nth-child(2) {
-        padding: 0 10px;
+    .even,.odd {
+        padding: 0 10px !important;
     }
     .image-blur--container {
         padding-bottom: 50px;

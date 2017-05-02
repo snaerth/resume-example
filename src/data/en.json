@@ -76,26 +76,48 @@
             ]
         }
     ],
-    "processbar": {
-        "title": "Skills",
-        "items": [
-            {
-                "name": "Javascript",
-                "percentage": 90,
-                "description": "Lýsing á javascript skills"
-            },
-            {
-                "name": "Html",
-                "percentage": 88,
-                "description": "Lýsing á html skills"
-            },
-            {
-                "name": "CSS",
-                "percentage": 85,
-                "description": "Lýsing á css skills"
-            }
-        ]
-    },
+    "processbars": [
+        {
+            "title": "programming languages",
+            "items": [
+                {
+                    "name": "Javascript",
+                    "percentage": 90,
+                    "description": "Lýsing á javascript skills"
+                },
+                {
+                    "name": "Html",
+                    "percentage": 88,
+                    "description": "Lýsing á html skills"
+                },
+                {
+                    "name": "CSS",
+                    "percentage": 85,
+                    "description": "Lýsing á css skills"
+                }
+            ]
+        },
+        {
+            "title": "javascript frameworks",
+            "items": [
+                {
+                    "name": "React",
+                    "percentage": 80,
+                    "description": "Lýsing á javascript skills"
+                },
+                {
+                    "name": "React Native",
+                    "percentage": 80,
+                    "description": "Lýsing á html skills"
+                },
+                {
+                    "name": "Angular 1.x",
+                    "percentage": 95,
+                    "description": "Lýsing á css skills"
+                }
+            ]
+        }
+    ],
     "images": [
         {
             "url": "me1.jpg",
