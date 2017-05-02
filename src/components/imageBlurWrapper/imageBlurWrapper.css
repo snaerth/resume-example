@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
+    padding-bottom: 100px;
 }
 
 .image-blur--canvas {
@@ -45,28 +46,86 @@
 .even,
 .odd {
     padding: 0 25px;
-    transform: scale3d(0.8,0.8,0.8);
-    transition: all .3s;
+    transform: scale3d(0.9, 0.9, 0.9);
+    transition: all 1s;
 }
 
 .even:nth-child(1),
-.odd:nth-child(2) {
+.odd:nth-child(2),
+.active.even:nth-child(2),
+.active.odd:nth-child(1) {
     padding: 0 25px;
 }
 
 .even:nth-child(2),
-.odd:nth-child(1) {
+.odd:nth-child(1),
+.active.even:nth-child(1),
+.active.odd:nth-child(2) {
     padding: 100px 25px 0;
 }
 
 .active.even:nth-child(1),
 .active.odd:nth-child(2) {
-    padding: 100px 25px 0;
-    transform: scale3d(1,1,1);
+    transform: scale3d(1, 1, 1);
 }
 
 .active.even:nth-child(2),
 .active.odd:nth-child(1) {
-    padding: 0 25px;
-    transform: scale3d(1,1,1);
+    transform: scale3d(1, 1, 1);
+}
+
+@media only screen and (max-width: 1200px) {
+    .image-blur--wrapper {
+        max-width: 400px;
+    }
+    .even:nth-child(1),
+    .odd:nth-child(2),
+    .active.even:nth-child(2),
+    .active.odd:nth-child(1) {
+        padding: 0 15px;
+    }
+    .even:nth-child(2),
+    .odd:nth-child(1),
+    .active.even:nth-child(1),
+    .active.odd:nth-child(2) {
+        padding: 0 15px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .image-blur--wrapper {
+        max-width: 300px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .even:nth-child(1),
+    .odd:nth-child(2),
+    .active.even:nth-child(2),
+    .active.odd:nth-child(1),
+    .even:nth-child(2),
+    .odd:nth-child(1),
+    .active.even:nth-child(1),
+    .active.odd:nth-child(2) {
+        padding: 0 10px;
+    }
+    .image-blur--container {
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .image-blur--wrapper {
+        max-width: initial;
+    }
+    .even:nth-child(1),
+    .odd:nth-child(2),
+    .active.even:nth-child(2),
+    .active.odd:nth-child(1),
+    .even:nth-child(2),
+    .odd:nth-child(1),
+    .active.even:nth-child(1),
+    .active.odd:nth-child(2) {
+        padding: 0 0 20px 0;
+    }
 }
