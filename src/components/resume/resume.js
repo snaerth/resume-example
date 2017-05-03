@@ -231,7 +231,7 @@ class Resume extends Component {
 								)}
 							>
 								{processbarVisible[0]
-									? <Processbars height={20} data={processbars[0].items} />
+									? <Processbars height={20} data={processbars[0].items} id={0} />
 									: null}
 							</div>
 						</div>
@@ -246,7 +246,7 @@ class Resume extends Component {
 								)}
 							>
 								{processbarVisible[1]
-									? <Processbars height={20} data={processbars[1].items} />
+									? <Processbars height={20} data={processbars[1].items} id={1}/>
 									: null}
 							</div>
 						</div>
