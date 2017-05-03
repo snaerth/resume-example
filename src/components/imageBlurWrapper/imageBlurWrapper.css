@@ -53,14 +53,9 @@
 }
 
 .even img,
-.odd img{
-    transform: scale3d(1.1,1.1,1.1);
-    transition: transform .3s ease-in-out;
-}
-
-.even.active img,
-.odd.active img {
+.odd img {
     transform: scale3d(1, 1, 1);
+    transition: transform .3s ease-in-out;
 }
 
 .even:hover img,
