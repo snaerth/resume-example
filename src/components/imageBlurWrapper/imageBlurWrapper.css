@@ -95,7 +95,7 @@
         max-width: 400px;
     }
     .even,.odd {
-        padding: 0 15px !important;
+        padding: 0 15px;
     }
 }
 
@@ -107,7 +107,7 @@
 
 @media only screen and (max-width: 768px) {
     .even,.odd {
-        padding: 0 10px !important;
+        padding: 0 10px;
     }
     .image-blur--container {
         padding-bottom: 50px;
@@ -118,14 +118,7 @@
     .image-blur--wrapper {
         max-width: initial;
     }
-    .even:nth-child(1),
-    .odd:nth-child(2),
-    .active.even:nth-child(2),
-    .active.odd:nth-child(1),
-    .even:nth-child(2),
-    .odd:nth-child(1),
-    .active.even:nth-child(1),
-    .active.odd:nth-child(2) {
-        padding: 0 0 20px 0;
+    .even,.odd {
+        padding: 0 !important;
     }
 }
