@@ -5,7 +5,7 @@ import {initElementTilt} from '../../common/utils';
 
 class CoverPhoto extends Component {
     componentDidMount() {
-        setTimeout(initElementTilt, 500, this.refs.image);
+        setTimeout(initElementTilt, 2300, this.refs.image);
     }
 
     componentWillUnmount() {

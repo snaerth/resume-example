@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { TimelineLite } from 'gsap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { withRouter, Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {TimelineLite} from 'gsap';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {withRouter, Link} from 'react-router-dom';
 import ProcessBarsList from '../processBarsList';
 import Button from '../button';
 import ImageBlurWrapper from '../imageBlurWrapper';
 import * as actionCreators from '../../common/actions';
-import { withinViewport } from '../../common/utils';
+import {withinViewport} from '../../common/utils';
 import './resume.css';
 
 class Resume extends Component {
@@ -16,7 +16,7 @@ class Resume extends Component {
     this.back = this.back.bind(this);
     this.state = {
       tl: new TimelineLite(),
-      processbarVisible: this.props.translations.processbars.map(() => false)
+      processbarVisible: this.props.translations.processbars.map(() => false),
     };
   }
 
@@ -43,7 +43,7 @@ class Resume extends Component {
               let newArr = [...processbarState];
               newArr[i] = true;
               this.setState((prevState, props) => {
-                return { processbarVisible: newArr };
+                return {processbarVisible: newArr};
               });
             }
           }
@@ -56,13 +56,13 @@ class Resume extends Component {
 
   componentDidMount() {
     this.initElementInViewportChecker();
-    const { tl } = this.state;
-    const { title, back, row_1 } = this.refs;
+    const {tl} = this.state;
+    const {title, back, row_1} = this.refs;
     const rows = row_1.children;
 
     tl
-      .set(title, { rotationX: -45 })
-      .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
+      .set(title, {rotationX: -45})
+      .to(back, 1, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
       .to(
         title,
         1.5,
@@ -71,9 +71,9 @@ class Resume extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut // eslint-disable-line
+          ease: Power2.easeOut, // eslint-disable-line
         },
-        0.8
+        0.8,
       )
       .pause();
 
@@ -84,8 +84,8 @@ class Resume extends Component {
         tl.to(
           cols[j],
           1.5,
-          { y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
-          delayBetween
+          {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
+          delayBetween,
         );
       }
     }
@@ -101,7 +101,7 @@ class Resume extends Component {
   }
 
   renderSections() {
-    const { resumeSections, images } = this.props.translations;
+    const {resumeSections, images} = this.props.translations;
     return resumeSections.map((section, i) => {
       const index = i;
       const rows = this.renderRows(section.rows);
@@ -109,6 +109,11 @@ class Resume extends Component {
 
       return (
         <div className={'resume-section section-' + index} key={index}>
+          <div className="container-wave">
+            <svg viewBox="0 0 500 70" preserveAspectRatio="xMinYMin meet">
+              <path d="M0,50 C200,100 200,0 500,50 L500,00 L0,0 Z" />
+            </svg>
+          </div>
           <h1
             className={index === 0 ? 'name relative' : 'name visible relative'}
           >
@@ -167,7 +172,7 @@ class Resume extends Component {
 
   animateTitle(el, tl) {
     tl
-      .set(el, { rotationX: -45 })
+      .set(el, {rotationX: -45})
       .to(
         el,
         1.5,
@@ -176,17 +181,17 @@ class Resume extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut // eslint-disable-line
+          ease: Power2.easeOut, // eslint-disable-line
         },
-        '-=0.2'
+        '-=0.2',
       )
       .pause();
   }
 
   render() {
-    const { translations } = this.props;
-    const { processbars } = translations;
-    const { processbarVisible } = this.state;
+    const {translations} = this.props;
+    const {processbars} = translations;
+    const {processbarVisible} = this.state;
     return (
       <div>
         <Link to="/" onClick={ev => this.back(ev)}>
@@ -222,7 +227,7 @@ class Resume extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return { common: state.common, translations: state.common.translations };
+  return {common: state.common, translations: state.common.translations};
 }
 
 /**
@@ -234,7 +239,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch)
+    actions: bindActionCreators(actionCreators, dispatch),
   };
 }
 

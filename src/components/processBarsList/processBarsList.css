@@ -2,6 +2,10 @@
     padding: 100px 0 0 0;
 }
 
+.processbars {
+  min-height: 400px;
+}
+
 .processbars-header {
     letter-spacing: 0;
     font-size: 75px;
