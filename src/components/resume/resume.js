@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { TimelineLite } from 'gsap';
+import { MorphReplace } from 'react-svg-morph';
+import WaveSvg from '../waveSvg';
+import Wave2Svg from '../wave2Svg';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -16,7 +19,8 @@ class Resume extends Component {
 		this.back = this.back.bind(this);
 		this.state = {
 			tl: new TimelineLite(),
-			processbarVisible: this.props.translations.processbars.map(() => false)
+			processbarVisible: this.props.translations.processbars.map(() => false),
+			morphReplace: true
 		};
 	}
 
@@ -91,6 +95,10 @@ class Resume extends Component {
 		}
 
 		tl.play();
+
+		setTimeout(() => {
+			this.setState({ morphReplace: false });
+		}, 2000);
 	}
 
 	back(ev) {
@@ -195,9 +203,15 @@ class Resume extends Component {
 	render() {
 		const { translations } = this.props;
 		const { processbars } = translations;
-		const { processbarVisible } = this.state;
+		const { processbarVisible, morphReplace } = this.state;
+    console.log(morphReplace);
 		return (
 			<div>
+				<div className="container-wave">
+					<MorphReplace width={1000} height={200}>
+						{morphReplace ? <WaveSvg /> : <Wave2Svg />}
+					</MorphReplace>
+				</div>
 				<Link to="/" onClick={ev => this.back(ev)}>
 					<div
 						className="job-application--button-container button-right button-right--offset back-button"
