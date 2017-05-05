@@ -111,6 +111,10 @@ h1.name.relative {
     padding-left: 1em;
     padding-right: 1em;
   }
+  .container-wave {
+    margin-left: -1em;
+    margin-right: -1em;
+  }
   .resume-row {
     flex-direction: column;
   }

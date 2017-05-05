@@ -208,8 +208,8 @@ class Resume extends Component {
 		return (
 			<div>
 				<div className="container-wave">
-					<MorphReplace width={1000} height={200}>
-						{morphReplace ? <WaveSvg /> : <Wave2Svg />}
+					<MorphReplace width="100%" height="100%"  rotation="none" preserveAspectRatio="xMinYMin meet">
+						{morphReplace ? <WaveSvg key="wave"/> : <Wave2Svg key="wave2" />}
 					</MorphReplace>
 				</div>
 				<Link to="/" onClick={ev => this.back(ev)}>
