@@ -14,10 +14,6 @@ h1.name.relative {
   background: #FFFFFF;
 }
 
-.resume-section:nth-of-type(even) {
-  background: #FFFFFF;
-}
-
 .resume-section:not(:first-child) {
   padding-top: 100px;
 }
@@ -56,7 +52,7 @@ h1.name.relative {
   flex-direction: row;
 }
 
-.resume-row > div {
+.resume-row>div {
   margin: 0 40px;
 }
 
@@ -88,65 +84,66 @@ h1.name.relative {
   overflow: hidden;
 }
 
-.container-wave:nth-of-type(even) svg path {
-  stroke: none; 
-  fill:#FFFFFF;
+.container-wave svg path {
+  stroke: none;
+  fill: #CCCCCC;
 }
 
-.container-wave:nth-of-type(odd) svg path {
-  stroke: none; 
-  fill:#CCCCCC;
+.container-wave svg {
+  background: #FFFFFF;
+  margin-bottom: -10px;
 }
+
+.resume-section:nth-of-type(even) .container-wave svg path {
+  stroke: none;
+  fill: #FFFFFF;
+}
+
+.resume-section:nth-of-type(even) .container-wave svg {
+  background: #CCCCCC;
+}
+
 @media only screen and (max-width: 992px) {
   .resume-container {
     padding: 80px 0;
   }
-
   .resume-section {
     padding-left: 1em;
     padding-right: 1em;
   }
-
   .resume-row {
     flex-direction: column;
   }
-
-  .resume-row > div {
+  .resume-row>div {
     margin: initial;
   }
-
   .resume-container .resume-left h2 {
     text-align: left;
   }
-
   .resume-container .resume-left h2:nth-child(1) {
     margin-top: 10px;
     font-size: 40px;
   }
-
   .resume-container .resume-left h2:nth-child(2) {
     font-size: 30px;
   }
-
   h1.name.relative {
     position: relative;
     margin-bottom: 0;
     font-size: 110px;
   }
-
   .resume-section .resume-section--row {
     padding: 20px 0;
   }
 }
+
 @media only screen and (max-width: 480px) {
   h1.name.relative {
     font-size: 80px;
   }
-
   .resume-container .resume-left h2:nth-child(1) {
     font-size: 30px;
   }
-
   .resume-container .resume-left h2:nth-child(2) {
     font-size: 25px;
   }
