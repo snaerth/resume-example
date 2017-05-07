@@ -84,25 +84,6 @@ h1.name.relative {
   overflow: hidden;
 }
 
-.container-wave svg path {
-  stroke: none;
-  fill: #CCCCCC;
-}
-
-.container-wave svg {
-  background: #FFFFFF;
-  margin-bottom: -10px;
-}
-
-.resume-section:nth-of-type(even) .container-wave svg path {
-  stroke: none;
-  fill: #FFFFFF;
-}
-
-.resume-section:nth-of-type(even) .container-wave svg {
-  background: #CCCCCC;
-}
-
 @media only screen and (max-width: 992px) {
   .resume-container {
     padding: 80px 0;
@@ -110,10 +91,6 @@ h1.name.relative {
   .resume-section {
     padding-left: 1em;
     padding-right: 1em;
-  }
-  .container-wave {
-    margin-left: -1em;
-    margin-right: -1em;
   }
   .resume-row {
     flex-direction: column;

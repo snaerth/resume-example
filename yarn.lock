@@ -4209,6 +4209,10 @@ react-redux@^5.0.4:
     loose-envify "^1.1.0"
     prop-types "^15.0.0"
 
+react-render-to-json@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-render-to-json/-/react-render-to-json-0.0.4.tgz#0db588e2952cea05a66a3390554c46c3ea74d006"
+
 react-router-dom@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.1.1.tgz#3021ade1f2c160af97cf94e25594c5f294583025"
@@ -4278,6 +4282,13 @@ react-scripts@0.9.5:
     whatwg-fetch "2.0.2"
   optionalDependencies:
     fsevents "1.0.17"
+
+react-svg-morph@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/react-svg-morph/-/react-svg-morph-0.1.10.tgz#780cf6823a6ab640a1367e43b7c9509d68157bf3"
+  dependencies:
+    react-render-to-json "0.0.4"
+    svgpath "^2.1.0"
 
 react@^15.5.4:
   version "15.5.4"
@@ -4881,6 +4892,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+svgpath@^2.1.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/svgpath/-/svgpath-2.2.1.tgz#0834bb67c89a76472b2bd06cc101fa7b517b222c"
 
 symbol-observable@^1.0.2:
   version "1.0.4"

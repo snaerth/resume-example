@@ -1,5 +1,5 @@
 .processbars-list-container {
-    padding: 100px 0 0 0;
+  padding: 100px 0 0;
 }
 
 .processbars {
@@ -7,30 +7,31 @@
 }
 
 .processbars-header {
-    letter-spacing: 0;
-    font-size: 75px;
-    margin: 0;
-    padding-left: 150px;
+  letter-spacing: 0;
+  font-size: 60px;
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 1200px) {
-    .processbars-header {
-        letter-spacing: 0;
-        margin: initial;
-        padding-left: 50px;
-    }
+  .processbars-header {
+    letter-spacing: 0;
+    margin: initial;
+    padding-left: 50px;
+  }
 }
-
 @media only screen and (max-width: 992px) {
-    .processbars-header {
-        font-size: 50px;
-        padding-left: 20px;
-    }
+  .processbars-header {
+    font-size: 50px;
+    padding-left: 20px;
+  }
 }
-
 @media only screen and (max-width: 768px) {
-    .processbars-header {
-        padding-left: 0px;
-        font-size: 40px;
-    }
+  .processbars-header {
+    padding-left: 0;
+    font-size: 40px;
+  }
 }

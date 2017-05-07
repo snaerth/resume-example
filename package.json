@@ -13,7 +13,6 @@
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^4.0.8",
-    "react-svg-morph": "^0.1.10",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
