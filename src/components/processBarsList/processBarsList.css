@@ -11,6 +11,9 @@
   text-transform: uppercase;
   text-align: center;
   position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
 }
 
 .processbars-header span {
@@ -22,17 +25,17 @@
   content: '';
   position: absolute;
   top: 50%;
-  width: 200px;
+  width: 100%;
   height: 2px;
   background: #484848;
 }
 
 .processbars-header span::before {
-  left: -230px;
+  left: -105%;
 }
 
 .processbars-header span::after {
-  right: -230px;
+  right: -105%;
 }
 
 @media only screen and (max-width: 1200px) {
