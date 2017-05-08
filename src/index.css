@@ -38,6 +38,14 @@ img {
     height: auto;
 }
 
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
 ::selection {
     background: #FF92F6;
     /* WebKit/Blink Browsers */

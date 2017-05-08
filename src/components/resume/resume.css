@@ -84,6 +84,10 @@ h1.name.relative {
   overflow: hidden;
 }
 
+.page-container h1.name.skills-heading {
+  padding-right: 100px;
+}
+
 @media only screen and (max-width: 992px) {
   .resume-container {
     padding: 80px 0;
@@ -116,6 +120,9 @@ h1.name.relative {
   .resume-section .resume-section--row {
     padding: 20px 0;
   }
+  .page-container h1.name.skills-heading {
+    padding-right: 50px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -127,5 +134,8 @@ h1.name.relative {
   }
   .resume-container .resume-left h2:nth-child(2) {
     font-size: 25px;
+  }
+  .page-container h1.name.skills-heading {
+    padding-right: 0px;
   }
 }
