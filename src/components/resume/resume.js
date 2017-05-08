@@ -208,7 +208,7 @@ class Resume extends Component {
           {this.renderSections()}
           <div className="resume-section">
             <div>
-              <h1 className="name visible relative text-right skills-heading">
+              <h1 className="name visible relative">
                 <span>skills</span>
               </h1>
               <ProcessBarsList
