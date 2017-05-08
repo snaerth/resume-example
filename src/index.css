@@ -1,144 +1,168 @@
 @font-face {
-    font-family: 'BrandonGrotesque';
-    src: url('/fonts/BrandonGrotesque-Regular.eot');
-    src: url('/fonts/BrandonGrotesque-Regular.eot?#iefix') format('embedded-opentype'), url('/fonts/BrandonGrotesque-Regular.woff') format('woff'), url('/fonts/BrandonGrotesque-Regular.ttf') format('truetype'), url('/fonts/BrandonGrotesque-Regular.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'BrandonGrotesque';
+  src: url('/fonts/BrandonGrotesque-Regular.eot');
+  src: url('/fonts/BrandonGrotesque-Regular.eot?#iefix') format('embedded-opentype'), url('/fonts/BrandonGrotesque-Regular.woff') format('woff'), url('/fonts/BrandonGrotesque-Regular.ttf') format('truetype'), url('/fonts/BrandonGrotesque-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #root,
 body,
 html {
-    min-height: 100vh;
-    overflow-x: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 html {
-    -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
-    position: relative;
-    margin: 0;
-    line-height: 1.2;
-    letter-spacing: .5px;
-    color: #484848;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    background-color: #CCCCCC;
+  position: relative;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: .5px;
+  color: #484848;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-color: #CCCCCC;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 
 .hidden {
-    visibility: hidden;
-    display: none;
+  visibility: hidden;
+  display: none;
 }
 
 .more {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 }
 
 .more a {
-    outline: none;
-    color: #484848;
-    font-size: 50px;
-    text-decoration: none;
-    position: relative;
-    font-family: 'Josefin Sans', sans-serif;
-    font-family: bold;
-    text-transform: uppercase;
+  outline: none;
+  color: #484848;
+  font-size: 50px;
+  text-decoration: none;
+  position: relative;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: bold;
+  text-transform: uppercase;
 }
 
+.more a::after,
 .more a::before {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 35px;
-    background: rgba(255, 146, 246, 0.8);
-    content: '';
-    transition: transform 0.3s;
-    transform: scaleY(0.618) translateX(-50%);
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 35px;
+  background: rgba(153, 153, 153, 1);
+  content: '';
+  transform: scaleY(0.618) translateX(-50%);
 }
 
-.more a:hover::before,
-.more a:focus::before {
+.more a::after {
+  background: rgba(255, 146, 246, 1);
+}
+
+.more a:focus::before,
+.more a:hover::before {
+  animation: moreHoverOn 0.7s forwards;
+}
+
+.more a:focus::after,
+.more a:hover::after {
+  animation: moreHoverOn 0.7s forwards .5s;
+}
+@keyframes moreHoverOn {
+  0% {
+    width: 100%;
+  }
+
+  50% {
     transform: scaleY(0.618) translateX(50%);
+    width: 10%;
+  }
+
+  100% {
+    width: 100%;
+    transform: scaleY(0.618) translateX(50%);
+  }
 }
 
 ::selection {
-    background: #FF92F6;
-    /* WebKit/Blink Browsers */
+  background: #FF92F6;
+  /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-    background: #FF92F6;
-    /* Gecko Browsers */
+  background: #FF92F6;
+  /* Gecko Browsers */
 }
 
 a.link-slideright {
-    font-family: 'Josefin Sans', sans-serif;
-    color: #F478DC;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    vertical-align: bottom;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    padding-bottom: 2px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #F478DC;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  vertical-align: bottom;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-bottom: 2px;
 }
 
 a.link-slideright::hover {
-    color: #F478DC;
+  color: #F478DC;
 }
 
 a.link-slideright::after,
 a.link-slideright::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #F478DC;
-    transition: transform .3s;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #F478DC;
+  transition: transform .3s;
 }
 
 a.link-slideright::before {
-    bottom: 1px;
-    left: 0;
-    transform: scaleY(0.618) translateX(-100%);
+  bottom: 1px;
+  left: 0;
+  transform: scaleY(0.618) translateX(-100%);
 }
 
 a.link-slideright::after {
-    top: 0;
-    right: 0;
-    transform: scaleY(0.618) translateX(100%);
+  top: 0;
+  right: 0;
+  transform: scaleY(0.618) translateX(100%);
 }
 
 a.link-slideright:focus::after,
 a.link-slideright:focus::before,
 a.link-slideright:hover::after,
 a.link-slideright:hover::before {
-    transform: scaleY(0.618) translateX(0);
+  transform: scaleY(0.618) translateX(0);
 }
 
 h1,
@@ -147,64 +171,62 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Josefin Sans', sans-serif;
-    letter-spacing: .1em;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
 }
 
 p {
-    font-size: 28px;
-    line-height: 1.4;
-    font-family: "BrandonGrotesque", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  font-family: "BrandonGrotesque", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
-
 
 /* Page Loader */
 
 .js body::before {
-    content: 'Working on it...';
-    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    letter-spacing: .2em;
-    text-indent: -0.2em;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #F478DC;
-    background: linear-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%);
-    background: radial-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%), radial-gradient(right top, circle, #F478DC 0%, #CC62EE 57%);
-    z-index: 1000;
-    pointer-events: none;
-    transition: transform .5s;
-    text-align: center;
+  content: 'Working on it...';
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  letter-spacing: .2em;
+  text-indent: -0.2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #F478DC;
+  background: linear-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%);
+  background: radial-gradient(50% top, circle, #F478DC 0%, #CC62EE 75%), radial-gradient(right top, circle, #F478DC 0%, #CC62EE 57%);
+  z-index: 1000;
+  pointer-events: none;
+  transition: transform .5s;
+  text-align: center;
 }
 
 .js .loading::before {
-    transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
 }
-
 @media only screen and (max-width: 992px) {
-    .js body::before {
-        font-size: 1em;
-    }
-    p {
-        font-size: 22px;
-    }
-}
+  .js body::before {
+    font-size: 1em;
+  }
 
+  p {
+    font-size: 22px;
+  }
+}
 @media only screen and (max-width: 480px) {
-    .hidden-mobile-480 {
-        display: none;
-    }
+  .hidden-mobile-480 {
+    display: none;
+  }
 }
