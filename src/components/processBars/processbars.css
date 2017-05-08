@@ -1,5 +1,7 @@
 .processbar-container {
-    padding: 70px 0 100px;
+    padding: 70px 0;
+    max-width: 1200px;
+    margin: 0 auto 50px;
 }
 
 .processbar-row {

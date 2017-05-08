@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {TimelineLite} from 'gsap';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { TimelineLite } from 'gsap';
+import { bindActionCreators } from 'redux';
 import * as actionCreators from '../../common/actions';
 import ImageSection from '../../components/imageSection';
 import ContentSection from '../../components/contentSection';
@@ -13,7 +13,7 @@ class Home extends Component {
     super(props);
     this.state = {
       tl: new TimelineLite(),
-      dirty: false,
+      dirty: false
     };
   }
 
@@ -31,15 +31,15 @@ class Home extends Component {
       github,
       githubMobile,
       lang,
-      mobileImage,
+      mobileImage
     } = this.refs;
 
     tl
-      .set([firstName, lastName], {rotationX: -45})
+      .set([firstName, lastName], { rotationX: -45 })
       .to([left, right, mobileImage], 1.5, {
         x: '0%',
         opacity: 1,
-        ease: Power2.easeOut, // eslint-disable-line
+        ease: Power2.easeOut // eslint-disable-line
       })
       .to(
         firstName,
@@ -49,9 +49,9 @@ class Home extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut, // eslint-disable-line
+          ease: Power2.easeOut // eslint-disable-line
         },
-        0.8,
+        0.8
       )
       .to(
         lastName,
@@ -61,15 +61,15 @@ class Home extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut, // eslint-disable-line
+          ease: Power2.easeOut // eslint-disable-line
         },
-        1,
+        1
       )
       .to(
         [github, githubMobile, lang],
         1,
-        {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-        1,
+        { y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
+        1
       )
       .play();
   }
@@ -79,7 +79,7 @@ class Home extends Component {
     setTimeout(() => {
       this.props.actions.removePageLoading();
       this.props.actions.setLanguage(
-        this.props.common.lang === 'en' ? 'is' : 'en',
+        this.props.common.lang === 'en' ? 'is' : 'en'
       );
     }, 300);
   }
@@ -90,7 +90,7 @@ class Home extends Component {
     }
 
     if (this.props.common.backButtonPressed && !this.state.dirty) {
-      this.setState({dirty: true});
+      this.setState({ dirty: true });
       this.state.tl.timeScale(1).restart();
     }
   }
@@ -105,7 +105,7 @@ class Home extends Component {
         <div
           ref="mobileImage"
           className="mobile-background"
-          style={{backgroundImage: `url(${backgroundImage})`}}
+          style={{ backgroundImage: `url(${backgroundImage})` }}
         >
           <div className="overlay" />
         </div>
@@ -162,7 +162,7 @@ class Home extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return {common: state.common, translations: state.common.translations};
+  return { common: state.common, translations: state.common.translations };
 }
 
 /**
@@ -174,7 +174,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch),
+    actions: bindActionCreators(actionCreators, dispatch)
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

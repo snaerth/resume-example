@@ -5,11 +5,27 @@
     "email": "snaerth@gmail.com",
     "sendEmail": "Hafðu samband",
     "back": "Til baka",
-    "resume": "ferilskrá",
+    "more": "Meira",
+    "resume": "Ferilskrá",
     "resumeSections": [
         {
-            "title": "ferilskrá",
+            "title": "Ferill",
             "rows": [
+                {
+                    "title": "Advania",
+                    "secondTitle": "2014-2017",
+                    "content": "Vefforritun hjá Advania síðastliðin 2 ár.Þar hef ég sinnt störfum vefforritara og hef komið aðgerð, hönnun og þróun margra vefsíðna, kerfa og verkefna.Ég hef reynslu bæði í fram-og bakendaforritun.Einnig hef ég reynslu af verktakavinnuhjá ýmsum fyrirtækjum og má þar nefna Símann,Íslandsbanka og Borgun.Kunnáttamínog helstu verkefni má sjá nánar í kaflanumtölvukunnátta"
+                },
+                {
+                    "title": "Launafl ehf.",
+                    "secondTitle": "2012-2013",
+                    "content": "Rafvirkjastörf á rafmagnsverkstæði Launafls í sumar- og jólafríumsíðastliðinn tvö ár."
+                },
+                {
+                    "title": "Seljaskóli",
+                    "secondTitle": "2009-2012",
+                    "content": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla."
+                },
                 {
                     "title": "Advania",
                     "secondTitle": "2014-2017",
@@ -27,10 +43,127 @@
                 }
             ],
             "images": [
-                "me1.jpg",
-                "me2.jpg",
-                "me3.jpg"
+                {
+                    "url": "me1.jpg",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "url": "me2.jpg",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                },
+                {
+                    "url": "me3.jpg",
+                    "text": "Lorem ipsum dolor sit amet"
+                }
             ]
+        },
+        {
+            "title": "Menntun",
+            "rows": [
+                {
+                    "title": "Háskóli Íslands",
+                    "secondTitle": "2012-2015",
+                    "content": "Computer science, BS"
+                },
+                {
+                    "title": "Kennaraháskóli Íslands",
+                    "secondTitle": "2005-2008",
+                    "content": "Grunnskólakennarafræði, B.Ed. - Kjörsvið: Stærðfræði"
+                },
+                {
+                    "title": "Menntaskólinn á Egilsstöðum",
+                    "secondTitle": "2000-2004",
+                    "content": "Stúdentspróf af náttúrufræðibraut"
+                }
+            ],
+            "images": [
+                {
+                    "url": "me4.jpg",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "url": "me5.jpg",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                },
+                {
+                    "url": "me6.jpg",
+                    "text": "Lorem ipsum dolor sit amet"
+                }
+            ]
+        }
+    ],
+    "processbars": [
+        {
+            "title": "Forritunarmál",
+            "items": [
+                {
+                    "name": "Javascript",
+                    "percentage": 90,
+                    "description": "Lýsing á javascript skills"
+                },
+                {
+                    "name": "Html",
+                    "percentage": 88,
+                    "description": "Lýsing á html skills"
+                },
+                {
+                    "name": "CSS",
+                    "percentage": 85,
+                    "description": "Lýsing á css skills"
+                }
+            ]
+        },
+        {
+            "title": "javascript frameworks",
+            "items": [
+                {
+                    "name": "React",
+                    "percentage": 80,
+                    "description": "Lýsing á javascript skills"
+                },
+                {
+                    "name": "React Native",
+                    "percentage": 80,
+                    "description": "Lýsing á html skills"
+                },
+                {
+                    "name": "Angular 1.x",
+                    "percentage": 95,
+                    "description": "Lýsing á css skills"
+                }
+            ]
+        }
+    ],
+    "images": [
+        {
+            "url": "me1.jpg",
+            "thumbnail": "thumbnails/me1.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me2.jpg",
+            "thumbnail": "thumbnails/me2.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        },
+        {
+            "url": "me3.jpg",
+            "thumbnail": "thumbnails/me3.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me4.jpg",
+            "thumbnail": "thumbnails/me4.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        },
+        {
+            "url": "me5.jpg",
+            "thumbnail": "thumbnails/me5.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "url": "me6.jpg",
+            "thumbnail": "thumbnails/me6.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
         }
     ]
 }

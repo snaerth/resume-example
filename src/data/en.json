@@ -5,11 +5,27 @@
     "email": "snaerth@gmail.com",
     "sendEmail": "Contact me",
     "back": "Back",
+    "more": "More",
     "resume": "Resume",
     "resumeSections": [
         {
             "title": "Career",
             "rows": [
+                {
+                    "title": "Advania",
+                    "secondTitle": "2014-2017",
+                    "content": "Vefforritun hjá Advania síðastliðin 2 ár.Þar hef ég sinnt störfum vefforritara og hef komið aðgerð, hönnun og þróun margra vefsíðna, kerfa og verkefna.Ég hef reynslu bæði í fram-og bakendaforritun.Einnig hef ég reynslu af verktakavinnuhjá ýmsum fyrirtækjum og má þar nefna Símann,Íslandsbanka og Borgun.Kunnáttamínog helstu verkefni má sjá nánar í kaflanumtölvukunnátta"
+                },
+                {
+                    "title": "Launafl ehf.",
+                    "secondTitle": "2012-2013",
+                    "content": "Rafvirkjastörf á rafmagnsverkstæði Launafls í sumar- og jólafríumsíðastliðinn tvö ár."
+                },
+                {
+                    "title": "Seljaskóli",
+                    "secondTitle": "2009-2012",
+                    "content": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla."
+                },
                 {
                     "title": "Advania",
                     "secondTitle": "2014-2017",

@@ -1,63 +1,45 @@
 .processbars-list-container {
-  padding: 200px 0 0;
+    padding: 100px 0 0;
 }
 
 .processbars {
-  min-height: 400px;
+    min-height: 400px;
 }
 
 .processbars-header {
-  font-size: 50px;
-  text-transform: uppercase;
-  text-align: center;
-  position: relative;
-  margin: 0 auto;
-  max-width: 1200px;
-  overflow: hidden;
+    text-align: center;
+    position: relative;
+    margin-bottom: 90px;
 }
 
 .processbars-header span {
-  position: relative;
-}
-
-.processbars-header span::before,
-.processbars-header span::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 2px;
-  background: #484848;
-}
-
-.processbars-header span::before {
-  left: -105%;
-}
-
-.processbars-header span::after {
-  right: -105%;
+    font-size: 50px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translate3d(0, 50%, 0);
+    display:block;
 }
 
 @media only screen and (max-width: 1200px) {
-  .processbars-header {
-    letter-spacing: 0;
-    margin: initial;
-    padding-left: 50px;
-  }
+    .processbars-header {
+        letter-spacing: 0;
+        margin: initial;
+        padding-left: 50px;
+    }
 }
 
 @media only screen and (max-width: 992px) {
-  .processbars-header {
-    font-size: 50px;
-    padding-left: 20px;
-    text-align: center;
-    padding: 0 20px;
-  }
+    .processbars-header {
+        font-size: 50px;
+        padding-left: 20px;
+        text-align: center;
+        padding: 0 20px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-  .processbars-header {
-    padding: 0;
-    font-size: 40px;
-  }
+    .processbars-header {
+        padding: 0;
+        font-size: 40px;
+    }
 }

@@ -15,9 +15,6 @@ class ProcessBarsList extends Component {
     return processbars.map((processbar, i) => {
       return (
         <div key={'processbarlist-row' + i}>
-          <h2 className="name visible relative processbars-header">
-            <span>{processbar.title}</span>
-          </h2>
           <div
             className={classnames(
               'onscroll-reveal processbars',
@@ -25,7 +22,12 @@ class ProcessBarsList extends Component {
             )}
           >
             {visibleArr[i]
-              ? <Processbars height={20} data={processbar.items} id={i} />
+              ? <Processbars
+                  height={20}
+                  data={processbar.items}
+                  id={i}
+                  title={processbar.title}
+                />
               : null}
           </div>
         </div>

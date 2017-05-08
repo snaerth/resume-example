@@ -1,23 +1,25 @@
-import React, {Component} from 'react';
-import {TimelineLite} from 'gsap';
+import React, { Component } from 'react';
+import { TimelineLite } from 'gsap';
 import WaveSvg from '../waveSvg';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {withRouter, Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter, Link } from 'react-router-dom';
+import classnames from 'classnames';
 import ProcessBarsList from '../processBarsList';
 import Button from '../button';
 import ImageBlurWrapper from '../imageBlurWrapper';
 import * as actionCreators from '../../common/actions';
-import {withinViewport} from '../../common/utils';
+import { withinViewport } from '../../common/utils';
 import './resume.css';
 
 class Resume extends Component {
   constructor(props) {
     super(props);
     this.back = this.back.bind(this);
+    this.removeHiddenClass = this.removeHiddenClass.bind(this);
     this.state = {
       tl: new TimelineLite(),
-      processbarVisible: this.props.translations.processbars.map(() => false),
+      processbarVisible: this.props.translations.processbars.map(() => false)
     };
   }
 
@@ -44,7 +46,7 @@ class Resume extends Component {
               let newArr = [...processbarState];
               newArr[i] = true;
               this.setState((prevState, props) => {
-                return {processbarVisible: newArr};
+                return { processbarVisible: newArr };
               });
             }
           }
@@ -57,13 +59,13 @@ class Resume extends Component {
 
   componentDidMount() {
     this.initElementInViewportChecker();
-    const {tl} = this.state;
-    const {title, back, row_1} = this.refs;
+    const { tl } = this.state;
+    const { title, back, row_1 } = this.refs;
     const rows = row_1.children;
 
     tl
-      .set(title, {rotationX: -45})
-      .to(back, 1, {x: '0%', opacity: 1, ease: Power2.easeOut}, 0.2) // eslint-disable-line
+      .set(title, { rotationX: -45 })
+      .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
       .to(
         title,
         1.5,
@@ -72,9 +74,9 @@ class Resume extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut, // eslint-disable-line
+          ease: Power2.easeOut // eslint-disable-line
         },
-        0.8,
+        0.8
       )
       .pause();
 
@@ -85,8 +87,8 @@ class Resume extends Component {
         tl.to(
           cols[j],
           1.5,
-          {y: '0%', opacity: 1, ease: Power2.easeOut}, // eslint-disable-line
-          delayBetween,
+          { y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
+          delayBetween
         );
       }
     }
@@ -102,7 +104,8 @@ class Resume extends Component {
   }
 
   renderSections() {
-    const {resumeSections, images} = this.props.translations;
+    const { resumeSections, images, more } = this.props.translations;
+
     return resumeSections.map((section, i) => {
       const index = i;
       const rows = this.renderRows(section.rows);
@@ -124,6 +127,7 @@ class Resume extends Component {
                 className="resume-section--row"
               >
                 {rows}
+                {rows.length > 2 ? <div className="text-center"><span className="more"><a href="#" onClick={e => this.removeHiddenClass(e)}>{more}</a></span></div> : null}
               </div>
             }
             <div className="image-blur--container">
@@ -157,8 +161,10 @@ class Resume extends Component {
 
   renderRows(rows) {
     return rows.map((row, i) => {
+      const hidden = i > 2 ? 'hidden' : '';
+
       return (
-        <div className="resume-row" key={'row-' + i}>
+        <div className={classnames('resume-row', hidden)} key={'row-' + i}>
           <div className="resume-left">
             <h2>{row.title}</h2>
             <h2>{row.secondTitle}</h2>
@@ -173,7 +179,7 @@ class Resume extends Component {
 
   animateTitle(el, tl) {
     tl
-      .set(el, {rotationX: -45})
+      .set(el, { rotationX: -45 })
       .to(
         el,
         1.5,
@@ -182,17 +188,22 @@ class Resume extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut, // eslint-disable-line
+          ease: Power2.easeOut // eslint-disable-line
         },
-        '-=0.2',
+        '-=0.2'
       )
       .pause();
   }
 
+  removeHiddenClass(e) {
+    e.preventDefault();
+    alert('útfæra sýna meira');
+  }
+
   render() {
-    const {translations} = this.props;
-    const {processbars} = translations;
-    const {processbarVisible} = this.state;
+    const { translations } = this.props;
+    const { processbars } = translations;
+    const { processbarVisible } = this.state;
 
     return (
       <div>
@@ -231,7 +242,7 @@ class Resume extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return {common: state.common, translations: state.common.translations};
+  return { common: state.common, translations: state.common.translations };
 }
 
 /**
@@ -243,7 +254,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch),
+    actions: bindActionCreators(actionCreators, dispatch)
   };
 }
 
