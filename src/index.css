@@ -51,63 +51,97 @@ img {
   display: none;
 }
 
-.more {
-  overflow: hidden;
-  position: relative;
+button.more {
+	font-family: 'Space Mono', monospace;
+	letter-spacing: 1px;
+	background: none;
+	color: #FFFFFF;
+	position: relative;
+	outline: none;
+	border: none;
+	height: 50px;
+	width: 190px;
+	font-size: 20px;
+	z-index: 2;
+	transition: .01s .23s ease-out all;
+	overflow: hidden;
 }
 
-.more a {
-  outline: none;
-  color: #484848;
-  font-size: 50px;
+button.more::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 55%;
+		background: #484848;
+		z-index: -1;
+		transition: .3s ease-in all;
+}
+
+button.more::after {
+		content: '';
+		position: absolute;
+		left: -5%;
+		top: 5%;
+		height: 90%;
+		width: 5%;
+		background:#FFFFFF;
+		z-index: -1;
+		transition: .4s .02s ease-in all;
+}
+
+button.more:hover {
+		cursor: pointer;
+		color: #484848;
+}
+
+button.more:hover::before {
+			left: 100%;
+			width: 25%;
+}
+
+button.more:hover::after {
+			left: 100%;
+			width: 70%;
+}
+
+.signature {
+	position: fixed;
+  font-family:  sans-serif;
+	font-weight: 100;
+	bottom: 10px;
+	left: 0;
+	letter-spacing: 4px;
+	font-size: 10px;
+	width: 100vw;
+  text-align: center;
+  color: white;
+	text-transform: uppercase;
   text-decoration: none;
-  position: relative;
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: bold;
-  text-transform: uppercase;
 }
 
-.more a::after,
-.more a::before {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 35px;
-  background: rgba(153, 153, 153, 1);
-  content: '';
-  transform: scaleY(0.618) translateX(-50%);
-}
 
-.more a::after {
-  background: rgba(255, 146, 246, 1);
-}
 
-.more a:focus::before,
-.more a:hover::before {
-  animation: moreHoverOn 0.7s forwards;
-}
 
-.more a:focus::after,
-.more a:hover::after {
-  animation: moreHoverOn 0.7s forwards .5s;
-}
-@keyframes moreHoverOn {
-  0% {
-    width: 100%;
-  }
 
-  50% {
-    transform: scaleY(0.618) translateX(50%);
-    width: 10%;
-  }
 
-  100% {
-    width: 100%;
-    transform: scaleY(0.618) translateX(50%);
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ::selection {
   background: #FF92F6;
@@ -185,6 +219,7 @@ p {
   text-align: right;
 }
 
+
 /* Page Loader */
 
 .js body::before {
@@ -216,15 +251,16 @@ p {
 .js .loading::before {
   transform: translate3d(0, 100%, 0);
 }
+
 @media only screen and (max-width: 992px) {
   .js body::before {
     font-size: 1em;
   }
-
   p {
     font-size: 22px;
   }
 }
+
 @media only screen and (max-width: 480px) {
   .hidden-mobile-480 {
     display: none;

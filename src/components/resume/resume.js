@@ -127,7 +127,9 @@ class Resume extends Component {
                 className="resume-section--row"
               >
                 {rows}
-                {rows.length > 2 ? <div className="text-center"><span className="more"><a href="#" onClick={e => this.removeHiddenClass(e)}>{more}</a></span></div> : null}
+                {rows.length > 2 
+                  ? <div className="text-center"><button className="more" onClick={e => this.removeHiddenClass(e)}>{more}...<span class="icon-right"></span><span class="icon-right after"></span></button></div>
+                  : null}
               </div>
             }
             <div className="image-blur--container">
