@@ -19,7 +19,8 @@ class Resume extends Component {
     this.removeHiddenClass = this.removeHiddenClass.bind(this);
     this.state = {
       tl: new TimelineLite(),
-      processbarVisible: this.props.translations.processbars.map(() => false)
+      processbarVisible: this.props.translations.processbars.map(() => false),
+      extraRowsHidden: this.props.translations.sections.map(() => true)
     };
   }
 
@@ -128,7 +129,7 @@ class Resume extends Component {
               >
                 {rows}
                 {rows.length > 2 
-                  ? <div className="text-center"><button className="more" onClick={e => this.removeHiddenClass(e)}>{more}...<span class="icon-right"></span><span class="icon-right after"></span></button></div>
+                  ? <div className="text-center"><button className="more" onClick={e => this.removeHiddenClass(e)}>{more}<span class="icon-right"></span><span class="icon-right after"></span></button></div>
                   : null}
               </div>
             }
@@ -199,7 +200,9 @@ class Resume extends Component {
 
   removeHiddenClass(e) {
     e.preventDefault();
-    alert('útfæra sýna meira');
+    this.setState((prevState, props) => {
+      return { extraRowsHidden: false };
+    });
   }
 
   render() {
