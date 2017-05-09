@@ -20,7 +20,7 @@ class Resume extends Component {
     this.state = {
       tl: new TimelineLite(),
       processbarVisible: this.props.translations.processbars.map(() => false),
-      extraRowsHidden: this.props.translations.sections.map(() => true)
+      extraRowsHidden: this.props.translations.resumeSections.map(() => true)
     };
   }
 
@@ -128,8 +128,15 @@ class Resume extends Component {
                 className="resume-section--row"
               >
                 {rows}
-                {rows.length > 2 
-                  ? <div className="text-center"><button className="more" onClick={e => this.removeHiddenClass(e)}>{more}<span class="icon-right"></span><span class="icon-right after"></span></button></div>
+                {rows.length > 2
+                  ? <div className="text-center">
+                      <button
+                        className="more"
+                        onClick={e => this.removeHiddenClass(e)}
+                      >
+                        {more}
+                      </button>
+                    </div>
                   : null}
               </div>
             }
