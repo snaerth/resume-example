@@ -52,6 +52,7 @@ img {
 }
 
 button.more {
+    border-radius: 30px;
     background: none;
     color: #FFFFFF;
     position: relative;
