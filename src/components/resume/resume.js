@@ -39,22 +39,21 @@ class Resume extends Component {
 
 	initElementInViewportChecker() {
 		withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisble, el) => {
-			if (isVisble && !el.isAnimated) {
-				if (el.classList.contains('processbars')) {
-					let processbarState = this.state.processbarVisible;
-					for (let i = 0, len = processbarState.length; i < len; i++) {
-						if (el.classList.contains('processbar-' + i)) {
-							let newArr = [...processbarState];
-							newArr[i] = true;
-							this.setState((prevState, props) => {
-								return { processbarVisible: newArr };
-							});
-						}
+			if (isVisble && !el.isAnimated && el.classList.contains('processbars')) {
+				let processbarState = this.state.processbarVisible;
+
+				for (let i = 0, len = processbarState.length; i < len; i++) {
+					if (el.classList.contains('processbar-' + i)) {
+						let newArr = [...processbarState];
+						newArr[i] = true;
+						this.setState((prevState, props) => {
+							return { processbarVisible: newArr };
+						});
 					}
 				}
-
-				el.isAnimated = true;
 			}
+
+			el.isAnimated = true;
 		});
 	}
 
@@ -79,14 +78,13 @@ class Resume extends Component {
 				},
 				0.8
 			);
-		this.animateSections(rows);
 	}
 
 	/**
    * Animates section title and text
    */
-	animateSections(rows) {
-		const tl = new TimelineLite();
+	animateSections(rows, tl) {
+		tl = tl ? tl : new TimelineLite();
 
 		for (let i = 0, len = rows.length; i < len; i++) {
 			const cols = rows[i].children;
@@ -196,24 +194,6 @@ class Resume extends Component {
 		});
 	}
 
-	animateTitle(el, tl) {
-		tl
-			.set(el, { rotationX: -45 })
-			.to(
-				el,
-				1.5,
-				{
-					y: '0%',
-					opacity: 1,
-					transformOrigin: '0 50%',
-					rotationX: 0,
-					ease: Power2.easeOut // eslint-disable-line
-				},
-				'-=0.2'
-			)
-			.pause();
-	}
-
 	removeHiddenClass(e, index, rows) {
 		e.preventDefault();
 		let newArr = [...this.state.extraRowsHidden];
@@ -222,7 +202,7 @@ class Resume extends Component {
 		this.setState((prevState, props) => {
 			return { extraRowsHidden: newArr };
 		});
-    this.animateSections(rows);
+    	this.animateSections(rows);
 	}
 
 	render() {
