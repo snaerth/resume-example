@@ -106,10 +106,11 @@ class Resume extends Component {
 
   renderSections() {
     const { resumeSections, images, more } = this.props.translations;
+    const {extraRowsHidden} = this.state;
 
     return resumeSections.map((section, i) => {
       const index = i;
-      const rows = this.renderRows(section.rows);
+      const rows = this.renderRows(section.rows, index);
       const colImages = this.renderColImages(images, index);
 
       return (
@@ -128,15 +129,8 @@ class Resume extends Component {
                 className="resume-section--row"
               >
                 {rows}
-                {rows.length > 2
-                  ? <div className="text-center">
-                      <button
-                        className="more"
-                        onClick={e => this.removeHiddenClass(e)}
-                      >
-                        {more}
-                      </button>
-                    </div>
+                {extraRowsHidden[index] && rows.length > 3 
+                  ? <div className="text-center"><button className="more" onClick={e => this.removeHiddenClass(e, index)}>{more}</button></div>
                   : null}
               </div>
             }
@@ -158,7 +152,7 @@ class Resume extends Component {
       return (
         <div key={'image' + i} className={index % 2 === 0 ? 'even' : 'odd'}>
           <ImageBlurWrapper
-            id={'image' + i}
+            id={image.id}
             src={'images/' + image.url}
             thumbnail={'images/' + image.thumbnail}
             alt={image.text}
@@ -169,10 +163,11 @@ class Resume extends Component {
     });
   }
 
-  renderRows(rows) {
+  renderRows(rows, index) {
+    const {extraRowsHidden} = this.state;
     return rows.map((row, i) => {
-      const hidden = i > 2 ? 'hidden' : '';
-
+      const hidden = extraRowsHidden[index] && i > 2 ? 'hidden' : '';
+      
       return (
         <div className={classnames('resume-row', hidden)} key={'row-' + i}>
           <div className="resume-left">
@@ -205,10 +200,13 @@ class Resume extends Component {
       .pause();
   }
 
-  removeHiddenClass(e) {
+  removeHiddenClass(e, index) {
     e.preventDefault();
+    let newArr = [...this.state.extraRowsHidden];
+    newArr[index] = false;
+
     this.setState((prevState, props) => {
-      return { extraRowsHidden: false };
+      return { extraRowsHidden: newArr};
     });
   }
 

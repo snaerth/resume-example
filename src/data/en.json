@@ -44,14 +44,17 @@
             ],
             "images": [
                 {
+                    "id": 1,
                     "url": "me1.jpg",
                     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 },
                 {
+                    "id": 2,
                     "url": "me2.jpg",
                     "text": "Dolor sit amet, consectetur adipiscing."
                 },
                 {
+                    "id": 3,
                     "url": "me3.jpg",
                     "text": "Lorem ipsum dolor sit amet"
                 }
@@ -78,14 +81,17 @@
             ],
             "images": [
                 {
+                    "id": 4,
                     "url": "me4.jpg",
                     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 },
                 {
+                    "id": 4,
                     "url": "me5.jpg",
                     "text": "Dolor sit amet, consectetur adipiscing."
                 },
                 {
+                    "id": 6,
                     "url": "me6.jpg",
                     "text": "Lorem ipsum dolor sit amet"
                 }
@@ -136,31 +142,37 @@
     ],
     "images": [
         {
+            "id": 1,
             "url": "me1.jpg",
             "thumbnail": "thumbnails/me1.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
+            "id": 2,
             "url": "me2.jpg",
             "thumbnail": "thumbnails/me2.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         },
         {
+            "id": 3,
             "url": "me3.jpg",
             "thumbnail": "thumbnails/me3.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
+            "id": 4,
             "url": "me4.jpg",
             "thumbnail": "thumbnails/me4.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         },
         {
+            "id": 5,
             "url": "me5.jpg",
             "thumbnail": "thumbnails/me5.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
+            "id": 6,
             "url": "me6.jpg",
             "thumbnail": "thumbnails/me6.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."

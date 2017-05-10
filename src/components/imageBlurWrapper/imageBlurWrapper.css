@@ -52,10 +52,10 @@
   padding: 0 25px;
 }
 
-.even img,
-.odd img {
+.even img.image-blur--image,
+.odd img.image-blur--image {
   transform: scale3d(1, 1, 1);
-  transition: transform .3s ease-in-out;
+  transition: transform .3s, visibility .1s linear 0s, opacity .15s;
 }
 
 .even:hover img,
@@ -64,7 +64,7 @@
 }
 
 .image-blur--wrapper-image {
-  transition: transform .3s ease-in-out;
+  transition: transform .3s;
   overflow: hidden;
   transform: scale3d(1,1,1);
 }

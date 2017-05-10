@@ -31,7 +31,10 @@ class ImageBlurWrapper extends Component {
     let imgBig = new Image();
     imgBig.src = src;
     imgBig.onload = () => {
-      this.setState({ loaded: true });
+      setTimeout(() => {
+this.setState({ loaded: true });
+      }, 3000)
+      
     };
   }
 
