@@ -70,6 +70,7 @@ button.more {
     font-size: 14px;
     font-weight: 600;
     font-family: 'Arial';
+    margin: 10px 0 50px 0;
 }
 
 button.more::before {

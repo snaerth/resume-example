@@ -1,7 +1,7 @@
 .processbar-container {
-    padding: 70px 0;
+    padding: 0;
     max-width: 1200px;
-    margin: 0 auto 50px;
+    margin: 0 auto 100px;
 }
 
 .processbar-row {
@@ -100,10 +100,11 @@
     }
     .processbar-container {
         padding: 45px 0;
+        margin: 0 auto;
     }
     .processbar-row {
         flex-direction: column-reverse;
-        padding: 30px 0;
+        padding: 30px 0 10px;
     }
     .processbar-left h2 {
         text-align: left;

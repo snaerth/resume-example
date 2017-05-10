@@ -55,7 +55,7 @@
 .even img.image-blur--image,
 .odd img.image-blur--image {
   transform: scale3d(1, 1, 1);
-  transition: transform .3s, visibility .15s linear 0s, opacity .15s;
+  transition: transform .3s, visibility 0s linear, opacity .3s;
 }
 
 .even:hover img,
