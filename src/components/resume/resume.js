@@ -38,22 +38,23 @@ class Resume extends Component {
 	}
 
 	initElementInViewportChecker() {
-		withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisble, el) => {
-			if (isVisble && !el.isAnimated && el.classList.contains('processbars')) {
+		withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisible, el) => {
+			if (isVisible && el.classList.contains('processbars')) {
 				let processbarState = this.state.processbarVisible;
 
 				for (let i = 0, len = processbarState.length; i < len; i++) {
 					if (el.classList.contains('processbar-' + i)) {
 						let newArr = [...processbarState];
-						newArr[i] = true;
-						this.setState((prevState, props) => {
-							return { processbarVisible: newArr };
-						});
+						if(!newArr[i]) {
+							newArr[i] = true;
+							
+							this.setState((prevState, props) => {
+								return { processbarVisible: newArr };
+							});
+						}
 					}
 				}
 			}
-
-			el.isAnimated = true;
 		});
 	}
 
