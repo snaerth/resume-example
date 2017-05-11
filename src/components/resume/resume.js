@@ -45,9 +45,9 @@ class Resume extends Component {
 				for (let i = 0, len = processbarState.length; i < len; i++) {
 					if (el.classList.contains('processbar-' + i)) {
 						let newArr = [...processbarState];
-						if(!newArr[i]) {
+						if (!newArr[i]) {
 							newArr[i] = true;
-							
+
 							this.setState((prevState, props) => {
 								return { processbarVisible: newArr };
 							});
@@ -80,7 +80,7 @@ class Resume extends Component {
 				0.8
 			);
 		// Animate texts in section
-		this.animateSections(rows, 3,tl);
+		this.animateSections(rows, 3, tl);
 	}
 
 	/**
@@ -133,10 +133,7 @@ class Resume extends Component {
 							<span ref={index === 0 ? 'title' : ''}>{section.title}</span>
 						</h1>
 						{
-							<div
-								ref={'rows' + i}
-								className="resume-section--row"
-							>
+							<div ref={'rows' + i} className="resume-section--row">
 								{rows}
 								{rows.length > 3
 									? <div className="text-center">
@@ -208,11 +205,11 @@ class Resume extends Component {
 		newArr[index] = false;
 
 		rows = this.refs['rows' + index].children;
-		let newRows = []; 
+		let newRows = [];
 		for (let i = 3; i < rows.length; i++) {
 			const row = rows[i];
-	
-			if(row.className.indexOf('text-center') === -1 ) {
+
+			if (row.className.indexOf('text-center') === -1) {
 				newRows.push(rows[i]);
 			}
 		}
@@ -226,8 +223,23 @@ class Resume extends Component {
 				return { extraRowsHidden: newArr };
 			});
 			this.animateSections(newRows);
-		}, 200);
-    	
+		}, 250);
+	}
+
+	renderProcessbarsList(processbars, processbarVisible) {
+		return (
+			<div className="resume-section">
+				<div>
+					<h1 className="name visible relative">
+						<span>skills</span>
+					</h1>
+					<ProcessBarsList
+						processbars={processbars}
+						visibleArr={processbarVisible}
+					/>
+				</div>
+			</div>
+		);
 	}
 
 	render() {
@@ -247,17 +259,7 @@ class Resume extends Component {
 				</Link>
 				<div className="resume-container" ref="container">
 					{this.renderSections()}
-					<div className="resume-section">
-						<div>
-							<h1 className="name visible relative">
-								<span>skills</span>
-							</h1>
-							<ProcessBarsList
-								processbars={processbars}
-								visibleArr={processbarVisible}
-							/>
-						</div>
-					</div>
+					{this.renderProcessbarsList(processbars,processbarVisible)}
 				</div>
 			</div>
 		);

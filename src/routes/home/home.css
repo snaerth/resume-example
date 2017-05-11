@@ -212,6 +212,12 @@ h1.name span:last-child {
     }
 }
 
+@media only screen and (max-width: 768px) {
+    .left {
+        bottom: 5%;
+    }
+}
+
 @media only screen and (max-width: 480px) {
     h1.name {
         font-size: 60px;
