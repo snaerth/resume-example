@@ -60,8 +60,8 @@ class Resume extends Component {
 	componentDidMount() {
 		this.initElementInViewportChecker();
 		const { tl } = this.state;
-		const { title, back, row_1 } = this.refs;
-		const rows = row_1.children;
+		const { title, back, rows0 } = this.refs;
+		const rows = rows0.children;
 
 		tl
 			.set(title, { rotationX: -45 })
@@ -78,15 +78,18 @@ class Resume extends Component {
 				},
 				0.8
 			);
+		// Animate texts in section
+		this.animateSections(rows, 3,tl);
 	}
 
 	/**
    * Animates section title and text
    */
-	animateSections(rows, tl) {
+	animateSections(rows, indexMax, tl) {
 		tl = tl ? tl : new TimelineLite();
+		const len = indexMax || rows.length;
 
-		for (let i = 0, len = rows.length; i < len; i++) {
+		for (let i = 0; i < len; i++) {
 			const cols = rows[i].children;
 			for (let j = 0, len = cols.length; j < len; j++) {
 				const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
@@ -130,13 +133,14 @@ class Resume extends Component {
 						</h1>
 						{
 							<div
-								ref={index === 0 ? 'row_1' : ''}
+								ref={'rows' + i}
 								className="resume-section--row"
 							>
 								{rows}
-								{extraRowsHidden[index] && rows.length > 3
+								{rows.length > 3
 									? <div className="text-center">
 											<button
+												ref={'morebutton' + i}
 												className="more"
 												onClick={e => this.removeHiddenClass(e, index, rows)}
 											>
@@ -194,15 +198,35 @@ class Resume extends Component {
 		});
 	}
 
+	/**
+	 * Removes hidden class from row and starts animation on section texts
+	 */
 	removeHiddenClass(e, index, rows) {
 		e.preventDefault();
 		let newArr = [...this.state.extraRowsHidden];
 		newArr[index] = false;
 
-		this.setState((prevState, props) => {
-			return { extraRowsHidden: newArr };
-		});
-    	this.animateSections(rows);
+		rows = this.refs['rows' + index].children;
+		let newRows = []; 
+		for (let i = 3; i < rows.length; i++) {
+			const row = rows[i];
+	
+			if(row.className.indexOf('text-center') === -1 ) {
+				newRows.push(rows[i]);
+			}
+		}
+
+		const button = this.refs['morebutton' + index];
+		button.classList.add('fadeOut');
+
+		setTimeout(() => {
+			button.classList.add('hidden');
+			this.setState((prevState, props) => {
+				return { extraRowsHidden: newArr };
+			});
+			this.animateSections(newRows);
+		}, 200);
+    	
 	}
 
 	render() {
