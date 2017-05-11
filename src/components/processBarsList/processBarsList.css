@@ -23,7 +23,6 @@
 @media only screen and (max-width: 1200px) {
     .processbars-header {
         letter-spacing: 0;
-        margin: initial;
         padding-left: 50px;
     }
 }
@@ -42,7 +41,7 @@
     .processbars-header {
         padding: 0;
     }
-    .processbars-header span{
+    .processbars-header span {
         font-size: 30px;
     }
     .processbars-list-container {

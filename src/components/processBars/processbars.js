@@ -66,7 +66,7 @@ class Processbar extends Component {
 
     tl.set(title, { rotationX: -45 }).to(
       title,
-      1.5,
+      1,
       {
         y: '0%',
         opacity: 1,
@@ -201,7 +201,7 @@ class Processbar extends Component {
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect height={this.props.height} fill="#fff" width="100%" />
+              <rect height={this.props.height} fill="#CCCCCC" width="100%" />
               <rect
                 height={this.props.height}
                 fill="#FF92F6"

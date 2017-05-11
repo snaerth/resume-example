@@ -11,64 +11,64 @@ import './imageBlurWrapper.css';
  * it hides canvas and shows bigger image
  */
 class ImageBlurWrapper extends Component {
-	static propTypes = {
-		src: PropTypes.string.isRequired,
-		alt: PropTypes.string.isRequired,
-		txt: PropTypes.string,
-		thumbnail: PropTypes.string.isRequired,
-		blur: PropTypes.string,
-		id: PropTypes.number.isRequired
-	};
+  static propTypes = {
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    txt: PropTypes.string,
+    thumbnail: PropTypes.string.isRequired,
+    blur: PropTypes.string,
+    id: PropTypes.number.isRequired
+  };
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.state = {
-			loaded: false
-		};
-	}
+    this.state = {
+      loaded: false
+    };
+  }
 
-	componentDidMount() {
-		const { blur, thumbnail, src, id } = this.props;
-		let img = new Image();
-		img.src = thumbnail || 'images/image_placeholder.png';
-		img.onload = () => {
-			let canvas = document.getElementById('canvas-blur-' + id);
-			processImage(img, canvas, blur || 10);
-		};
+  componentDidMount() {
+    const { blur, thumbnail, src, id } = this.props;
+    let img = new Image();
+    img.src = thumbnail || 'images/image_placeholder.png';
+    img.onload = () => {
+      let canvas = document.getElementById('canvas-blur-' + id);
+      processImage(img, canvas, blur || 10);
+    };
 
-		let imgBig = new Image();
-		imgBig.src = src;
-		imgBig.onload = () => {
-			this.setState({ loaded: true });
-		};
-	}
+    let imgBig = new Image();
+    imgBig.src = src;
+    imgBig.onload = () => {
+      this.setState({ loaded: true });
+    };
+  }
 
-	render() {
-		const { src, alt, id, className, text } = this.props;
-		return (
-			<div className={classnames('image-blur--wrapper', className)}>
-				<div className="image-blur--wrapper-image">
-					<img
-						src={src}
-						alt={alt}
-						className={classnames(
-							'image-blur--image',
-							this.state.loaded ? 'show' : ''
-						)}
-					/>
-					<canvas
-						id={'canvas-blur-' + id}
-						className={classnames(
-							'image-blur--canvas',
-							this.state.loaded ? 'hide' : ''
-						)}
-					/>
-				</div>
-				{text ? <p>{text}</p> : null}
-			</div>
-		);
-	}
+  render() {
+    const { src, alt, id, className, text } = this.props;
+    return (
+      <div className={classnames('image-blur--wrapper', className)}>
+        <div className="image-blur--wrapper-image">
+          <img
+            src={src}
+            alt={alt}
+            className={classnames(
+              'image-blur--image',
+              this.state.loaded ? 'show' : ''
+            )}
+          />
+          <canvas
+            id={'canvas-blur-' + id}
+            className={classnames(
+              'image-blur--canvas',
+              this.state.loaded ? 'hide' : ''
+            )}
+          />
+        </div>
+        {text ? <p>{text}</p> : null}
+      </div>
+    );
+  }
 }
 
 export default ImageBlurWrapper;
