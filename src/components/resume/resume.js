@@ -148,7 +148,7 @@ class Resume extends Component {
 									: null}
 							</div>
 						}
-						<div className="image-blur--container">
+						<div className="image-blur--container onscroll-reveal">
 							{colImages}
 						</div>
 					</div>
