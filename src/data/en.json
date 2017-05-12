@@ -137,16 +137,40 @@
         }
     ],
     "projects": [{
-            "id": 1,
-            "url": "biomynd_is.PNG",
-            "thumbnail": "thumbnails/biomynd_is.PNG",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "title": "My projects",
+            "projects": [{
+                    "id": 1,
+                    "image": "biomynd_is.PNG",
+                    "thumbnail": "thumbnails/biomynd_is.PNG",
+                    "url": "http://www.biomynd.is",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "id": 2,
+                    "image": "api_biomynd_is.PNG",
+                    "thumbnail": "thumbnails/api_biomynd_is.PNG",
+                    "url": "http://api.kvikmyndir.is",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                }
+            ]
         },
         {
-            "id": 2,
-            "url": "api_biomynd_is.PNG",
-            "thumbnail": "thumbnails/api_biomynd_is.PNG",
-            "text": "Dolor sit amet, consectetur adipiscing."
+            "title": "Work related projects",
+            "projects": [{
+                    "id": 1,
+                    "image": "biomynd_is.PNG",
+                    "thumbnail": "thumbnails/biomynd_is.PNG",
+                    "url": "http://www.biomynd.is",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "id": 2,
+                    "image": "api_biomynd_is.PNG",
+                    "thumbnail": "thumbnails/api_biomynd_is.PNG",
+                    "url": "http://api.kvikmyndir.is",
+                    "text": "Dolor sit amet, consectetur adipiscing."
+                }
+            ]
         }
     ]
 }

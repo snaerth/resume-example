@@ -8,6 +8,9 @@ import PageSlideEffect from './components/pageSlideEffect';
 class RouterWrapper extends Component {
 	componentWillMount() {
 		this.props.actions.setLanguage('en');
+		if(window.location.pathname !== '/') {
+			this.props.actions.removePageLoading();
+		}
 	}
 
 	render() {
