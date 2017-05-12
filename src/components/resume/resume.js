@@ -34,6 +34,31 @@ class Resume extends Component {
       setTimeout(this.props.history.push, 1500, '/');
     };
   }
+  
+  componentDidMount() {
+    this.initElementInViewportChecker();
+    const { tl } = this.state;
+    const { title, back, rows0 } = this.refs;
+    const rows = rows0.children;
+
+    tl
+      .set(title, { rotationX: -45 })
+      .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
+      .to(
+        title,
+        1.5,
+        {
+          y: '0%',
+          opacity: 1,
+          transformOrigin: '0 50%',
+          rotationX: 0,
+          ease: Power2.easeOut // eslint-disable-line
+        },
+        0.8
+      );
+    // Animate texts in section
+    this.animateSections(rows, 3, tl);
+  }
 
   componentWillUnmount() {
     withinViewport(true);
@@ -58,31 +83,6 @@ class Resume extends Component {
         }
       }
     });
-  }
-
-  componentDidMount() {
-    this.initElementInViewportChecker();
-    const { tl } = this.state;
-    const { title, back, rows0 } = this.refs;
-    const rows = rows0.children;
-
-    tl
-      .set(title, { rotationX: -45 })
-      .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
-      .to(
-        title,
-        1.5,
-        {
-          y: '0%',
-          opacity: 1,
-          transformOrigin: '0 50%',
-          rotationX: 0,
-          ease: Power2.easeOut // eslint-disable-line
-        },
-        0.8
-      );
-    // Animate texts in section
-    this.animateSections(rows, 3, tl);
   }
 
   /**

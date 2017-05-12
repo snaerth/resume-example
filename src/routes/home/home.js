@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TimelineLite } from 'gsap';
 import { bindActionCreators } from 'redux';
+import imagesLoaded from 'imagesloaded';
 import * as actionCreators from '../../common/actions';
 import ImageSection from '../../components/imageSection';
 import ContentSection from '../../components/contentSection';
 import backgroundImage from '../../common/images/snaer_seljan_thoroddsson.png';
+
 import './home.css';
 
 class Home extends Component {
@@ -18,7 +20,11 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		this.animateStart();
+		const self = this;
+		imagesLoaded(this.refs.mobileImage, { background: true }, () => {
+			self.props.actions.removePageLoading();
+			self.animateStart();
+		});
 	}
 
 	animateStart() {
@@ -144,7 +150,7 @@ class Home extends Component {
 						</svg>
 					</a>
 					<div className="right" ref="right">
-						<ImageSection />
+						<ImageSection src={backgroundImage} alt="Snær Seljan Þóroddsson" />
 					</div>
 				</div>
 			</div>

@@ -1,21 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CoverPhoto from '../coverPhoto';
 import './imageSection.css';
-import Me from '../../common/images/snaer_seljan_thoroddsson.png';
 
-class ImageSection extends Component {
-  render() {
-    return (
-      <div className="image-container text-center">
-        <CoverPhoto
-          src={Me}
-          alt="Snær Seljan Þóroddsson"
-          className="coverImage"
-        />
-        <div className="overlay" />
-      </div>
-    );
-  }
+const ImageSection = ({src, alt}) => (
+  <div className="image-container text-center">
+    <CoverPhoto
+      src={src}
+      alt={alt}
+      className="coverImage"
+    />
+    <div className="overlay" />
+  </div>
+);
+
+ImageSection.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
 }
 
 export default ImageSection;

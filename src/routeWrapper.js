@@ -1,26 +1,25 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import * as actionCreators from './common/actions';
 import PageSlideEffect from './components/pageSlideEffect';
 
 class RouterWrapper extends Component {
-  componentWillMount() {
-    this.props.actions.setLanguage('en');
-    this.props.actions.removePageLoading();
-  }
+	componentWillMount() {
+		this.props.actions.setLanguage('en');
+	}
 
-  render() {
-    return (
-      <div>
-        {this.props.children}
-        {this.props.common.pageRevealer
-          ? <PageSlideEffect type={this.props.common.pageRevealerType} />
-          : null}
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				{this.props.children}
+				{this.props.common.pageRevealer
+					? <PageSlideEffect type={this.props.common.pageRevealerType} />
+					: null}
+			</div>
+		);
+	}
 }
 
 /**
@@ -31,7 +30,7 @@ class RouterWrapper extends Component {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return {common: state.common};
+	return { common: state.common };
 }
 
 /**
@@ -42,11 +41,11 @@ function mapStateToProps(state) {
  * @author Snær Seljan Þóroddsson
  */
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch),
-  };
+	return {
+		actions: bindActionCreators(actionCreators, dispatch)
+	};
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(RouterWrapper),
+	connect(mapStateToProps, mapDispatchToProps)(RouterWrapper)
 );
