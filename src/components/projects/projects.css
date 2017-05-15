@@ -26,6 +26,19 @@
     padding: 0px 40px;
 }
 
+.work-link {
+    width: 25%;
+}
+
+.work {
+    padding: 0px 40px;
+}
+
+.work img {
+    width: 100%;
+    max-width: 200px;
+}
+
 @media only screen and (max-width: 1200px) {
     .project-header {
         letter-spacing: 0;

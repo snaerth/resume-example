@@ -8,7 +8,7 @@ class Projects extends Component {
     data: PropTypes.array.isRequired
   };
 
-  renderProjects(projects) {
+  renderHobbyProjects(projects) {
     return projects.map((project, i) => {
       const { id, url, image, thumbnail, text, title, titleText } = project;
 
@@ -37,6 +37,26 @@ class Projects extends Component {
     });
   }
 
+  renderWorkProjects(projects) {
+    return projects.map((project, i) => {
+      const { url, text, title, image } = project;
+
+      return (
+        <a
+          href={url}
+          title={text}
+          key={'project-image' + i}
+          className="project work-link"
+          target="_blank"
+        >
+          <div className="work">
+            <img src={'images/' + image} alt={text} />
+          </div>
+        </a>
+      );
+    });
+  }
+
   renderSection(sections) {
     return sections.map((section, i) => {
       return (
@@ -45,7 +65,8 @@ class Projects extends Component {
             <span>{section.title}</span>
           </h2>
           <div className="image-blur--container">
-            {this.renderProjects(section.projects)}
+            {i === 0 ? this.renderHobbyProjects(section.projects) : null}
+            {i === 1 ? this.renderWorkProjects(section.projects) : null}
           </div>
         </div>
       );

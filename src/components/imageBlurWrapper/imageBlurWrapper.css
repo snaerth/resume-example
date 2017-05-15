@@ -93,7 +93,7 @@
 
 .image-blur--wrapper-overlay {
     background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.7), rgba(145, 58, 252, 0.7), rgba(16, 11, 192, 0.7));
-    padding: 4em;
+    padding: 3em;
     position: absolute;
     top: 0;
     left: 0;
@@ -166,6 +166,16 @@
 @media only screen and (max-width: 992px) {
     .image-blur--wrapper {
         max-width: 300px;
+    }
+    .image-blur--wrapper-overlay {
+        padding: 1em;
+    }
+    .image-blur--wrapper-overlay h2 {
+        font-size: 2em;
+    }
+    .image-blur--wrapper-overlay p {
+        margin: 0;
+        font-size: 14px;
     }
 }
 
