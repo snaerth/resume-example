@@ -80,6 +80,21 @@
                     "name": "CSS",
                     "percentage": 85,
                     "description": "Lýsing á css skills"
+                },
+                {
+                    "name": "C#",
+                    "percentage": 70,
+                    "description": "Lýsing á css skills"
+                },
+                {
+                    "name": "JAVA",
+                    "percentage": 70,
+                    "description": "Lýsing á css skills"
+                },
+                {
+                    "name": "XSLT",
+                    "percentage": 80,
+                    "description": "Lýsing á css skills"
                 }
             ]
         },
@@ -168,56 +183,7 @@
         },
         {
             "title": "Work projects",
-            "projects": [
-                {
-                    "id": 1,
-                    "url": "https://www.advania.com",
-                    "image": "logos/advania.png",
-                    "title": "ADVANIA"
-                },
-                {
-                    "id": 2,
-                    "url": "https: //vefverslun.advania.is/fermingar/",
-                    "image": "logos/advania.png",
-                    "title": "ADVANIA"
-                },
-                {
-                    "id": 3,
-                    "url": "https://www.borgun.is",
-                    "image": "logos/borgun.svg",
-                    "title": "BORGUN"
-                },
-                {
-                    "id": 4,
-                    "url": "https://www.borgun.com",
-                    "image": "logos/advania.png",
-                    "title": "BORGUN.COM"
-                },
-                {
-                    "id": 5,
-                    "url": "https://www.ils.is",
-                    "image": "logos/ils.svg",
-                    "title": "ILS"
-                },
-                {
-                    "id": 6,
-                    "url": "https://www.tollur.is",
-                    "image": "logos/tollur.png",
-                    "title": "Tollur"
-                },
-                {
-                    "id": 7,
-                    "url": "https://www.isb.is",
-                    "image": "logos/isb.png",
-                    "title": "ISB"
-                },
-                {
-                    "id": 8,
-                    "url": null,
-                    "image": "logos/advania.png",
-                    "title": "ÖSSUR"
-                }
-            ]
+            "text": "I have worked on a lot of projects during my stay at Advania. Icelandic movie API is a free REST service for movies showing in Icelandic theaters. I have worked on a lot of projects during my stay at Advania. Icelandic movie API is a free REST service for movies showing in Icelandic theaters."
         }
     ]
 }

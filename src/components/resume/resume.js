@@ -149,7 +149,7 @@ class Resume extends Component {
             {colImages}
           </div>
         </div>
-        {!last ? <WaveSvg /> : null}
+        <WaveSvg />
       </div>
     );
   }
@@ -270,10 +270,10 @@ class Resume extends Component {
           </div>
         </Link>
         <div className="resume-container" ref="container">
-          {this.renderProjects(projects)}
           {this.renderSection(career, 0)}
           {this.renderProcessbarsList(processbars, processbarVisible)}
           {this.renderSection(education, 1, true)}
+          {this.renderProjects(projects)}
         </div>
       </div>
     );
