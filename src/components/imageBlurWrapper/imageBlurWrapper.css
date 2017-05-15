@@ -1,138 +1,200 @@
 .image-blur--container {
-  max-width: 1600px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  padding-bottom: 100px;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding-bottom: 100px;
 }
 
 .image-blur--canvas {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  transition: visibility 2s linear, opacity .2s;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    transition: visibility 2s linear, opacity .2s;
 }
 
 .image-blur--image {
-  width: 100%;
-  visibility: hidden;
-  opacity: 0;
-  backface-visibility: hidden;
-  transition: visibility 0s linear 0s, opacity .15s;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    backface-visibility: hidden;
+    transition: visibility 0s linear 0s, opacity .15s;
 }
 
 .hide {
-  visibility: hidden;
-  opacity: 0;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .show {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .image-blur--wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
 }
 
 .image-blur--wrapper p {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .even,
 .odd {
-  padding: 0 25px;
+    padding: 0 25px;
 }
 
 .even img.image-blur--image,
 .odd img.image-blur--image {
-  transform: scale3d(1, 1, 1);
-  transition: transform .3s, visibility 0s linear, opacity .3s;
-  
+    transform: scale3d(1, 1, 1);
+    transition: transform .4s, visibility 0s linear, opacity .4s;
 }
 
 .even:hover img,
 .odd:hover img {
-  transform: scale3d(1.1,1.1,1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
 }
 
 .image-blur--wrapper-image {
-  transition: transform .3s;
-  overflow: hidden;
-  transform: scale3d(1,1,1);
+    transition: transform .4s;
+    overflow: hidden;
+    transform: scale3d(1, 1, 1);
+    position: relative;
 }
 
 .even:hover .image-blur--wrapper-image,
 .odd:hover .image-blur--wrapper-image {
-  overflow: hidden;
-  transform: scale3d(0.98,0.98,0.98);
+    overflow: hidden;
+    transform: scale3d(0.98, 0.98, 0.98);
 }
 
 .image-blur--wrapper-image img {
-  height: 100%;
-  cursor: pointer;
+    height: 100%;
+    cursor: pointer;
 }
 
 .even:nth-child(1),
 .odd:nth-child(2) {
-  padding: 0 25px;
+    padding: 0 25px;
 }
 
 .even:nth-child(2),
 .odd:nth-child(1) {
-  padding: 100px 25px 0;
+    padding: 100px 25px 0;
 }
+
+.image-blur--wrapper-overlay {
+    background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.7), rgba(145, 58, 252, 0.7), rgba(16, 11, 192, 0.7));
+    padding: 4em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.even:hover .image-blur--wrapper-overlay,
+.odd:hover .image-blur--wrapper-overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+.image-blur--wrapper-overlay h2 {
+    text-align: left;
+    width: 100%;
+    font-size: 3em;
+    margin: 0;
+    color: white;
+    transform: translate3d(0, 80px, 0);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.even:hover .image-blur--wrapper-overlay h2,
+.odd:hover .image-blur--wrapper-overlay h2 {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.image-blur--wrapper-overlay p {
+    margin: 1em 0 0 0;
+    font-size: 0.85em;
+    letter-spacing: 0.15em;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    transform: translate3d(0, 80px, 0);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.even:hover .image-blur--wrapper-overlay p,
+.odd:hover .image-blur--wrapper-overlay p {
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0.1s;
+    opacity: 1;
+}
+
 @media only screen and (max-width: 1200px) {
-  .image-blur--wrapper {
-    max-width: 400px;
-  }
-
-  .even,
-  .odd {
-    padding: 0 15px;
-  }
+    .image-blur--wrapper {
+        max-width: 400px;
+    }
+    .even,
+    .odd {
+        padding: 0 15px;
+    }
 }
+
 @media only screen and (max-width: 992px) {
-  .image-blur--wrapper {
-    max-width: 300px;
-  }
+    .image-blur--wrapper {
+        max-width: 300px;
+    }
 }
+
 @media only screen and (max-width: 768px) {
-  .even,
-  .odd {
-    padding: 0 10px;
-  }
-
-  .image-blur--container {
-    padding-bottom: 50px;
-  }
-
-  .image-blur--wrapper {
-    max-width: 270px;
-  }
+    .even,
+    .odd {
+        padding: 0 10px;
+    }
+    .image-blur--container {
+        padding-bottom: 50px;
+    }
+    .image-blur--wrapper {
+        max-width: 270px;
+    }
 }
 
 @media only screen and (max-width: 650px) {
-  .image-blur--wrapper {
-    max-width: 220px;
-  }
+    .image-blur--wrapper {
+        max-width: 220px;
+    }
 }
-@media only screen and (max-width: 600px) {
-  .image-blur--wrapper {
-    max-width: initial;
-    margin-bottom: 30px;
-  }
 
-  .even,
-  .odd {
-    padding: 0 !important;
-  }
+@media only screen and (max-width: 600px) {
+    .image-blur--wrapper {
+        max-width: initial;
+        margin-bottom: 30px;
+    }
+    .even,
+    .odd {
+        padding: 0 !important;
+    }
 }

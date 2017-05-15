@@ -136,6 +136,16 @@ button.more:hover::after {
     /* Gecko Browsers */
 }
 
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #484848;
+}
+
 a.link-slideright {
     font-family: 'Josefin Sans', sans-serif;
     color: #F478DC;

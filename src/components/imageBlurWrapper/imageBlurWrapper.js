@@ -17,7 +17,10 @@ class ImageBlurWrapper extends Component {
     txt: PropTypes.string,
     thumbnail: PropTypes.string.isRequired,
     blur: PropTypes.string,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    overlay: PropTypes.bool,
+    overlayTitle: PropTypes.string,
+    overlayText: PropTypes.string
   };
 
   constructor() {
@@ -45,27 +48,49 @@ class ImageBlurWrapper extends Component {
   }
 
   render() {
-    const { src, alt, id, className, text } = this.props;
+    const {
+      src,
+      alt,
+      id,
+      className,
+      text,
+      overlay,
+      overlayText,
+      overlayTitle
+    } = this.props;
+
     return (
       <div className={classnames('image-blur--wrapper', className)}>
-        <div className="image-blur--wrapper-image">
-          <img
-            src={src}
-            alt={alt}
-            className={classnames(
-              'image-blur--image',
-              this.state.loaded ? 'show' : ''
-            )}
-          />
-          <canvas
-            id={'canvas-blur-' + id}
-            className={classnames(
-              'image-blur--canvas',
-              this.state.loaded ? 'hide' : ''
-            )}
-          />
-        </div>
-        {text ? <p>{text}</p> : null}
+        <figure className="image-blur--wrapper-image">
+          <div>
+            <img
+              src={src}
+              alt={alt}
+              className={classnames(
+                'image-blur--image',
+                this.state.loaded ? 'show' : ''
+              )}
+            />
+            <canvas
+              id={'canvas-blur-' + id}
+              className={classnames(
+                'image-blur--canvas',
+                this.state.loaded ? 'hide' : ''
+              )}
+            />
+          </div>
+          {overlay
+            ? <div className="image-blur--wrapper-overlay">
+                <h2>{overlayTitle}</h2>
+                <p>{overlayText}</p>
+              </div>
+            : null}
+        </figure>
+        {text
+          ? <figcaption>
+              <p>{text}</p>
+            </figcaption>
+          : null}
       </div>
     );
   }
