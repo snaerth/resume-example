@@ -119,7 +119,7 @@ class Home extends Component {
 					onClick={() => this.changeLanguage()}
 				>
 					<svg className="icon-globe">
-						<use href="#icon-globe" />
+						<use href="#icon-globe" xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-globe" />
 					</svg>
 					<span className="language">
 						{this.props.common.lang === 'en' ? 'Icelandic' : 'English'}
@@ -130,8 +130,8 @@ class Home extends Component {
 					href="https://github.com/snaerth?tab=repositories"
 					className="github-link mobile"
 				>
-					<svg className="icon-github">
-						<use href="#icon-github" />
+					<svg className="icon-github" >
+						<use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-github"/>
 					</svg>
 				</a>
 				<div className="col-50">
@@ -146,7 +146,7 @@ class Home extends Component {
 						className="github-link"
 					>
 						<svg className="icon-github">
-							<use href="#icon-github" />
+							<use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-github" />
 						</svg>
 					</a>
 					<div className="right" ref="right">
