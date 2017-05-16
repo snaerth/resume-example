@@ -6,6 +6,7 @@
     text-align: center;
     position: relative;
     margin-bottom: 100px;
+    transform: translate3d(0, 100px, 0);
 }
 
 .project-header span {
