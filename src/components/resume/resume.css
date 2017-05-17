@@ -10,6 +10,10 @@ h1.name.relative {
     margin-bottom: 20px;
 }
 
+.resume-section {
+    min-height: 500px;
+}
+
 .resume-section:nth-of-type(even) {
     background: #FFFFFF;
 }
