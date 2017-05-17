@@ -1,4 +1,5 @@
-.image-blur--container {
+.image-blur--container,
+.image-blur--container .extend {
     max-width: 1600px;
     margin: 0 auto;
     display: flex;

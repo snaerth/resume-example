@@ -9,7 +9,8 @@
     "resume": "Resume",
     "career": {
         "title": "Career",
-        "rows": [{
+        "rows": [
+            {
                 "title": "Advania",
                 "secondTitle": "2014-2017",
                 "content": "Vefforritun hjá Advania síðastliðin 2 ár.Þar hef ég sinnt störfum vefforritara og hef komið aðgerð, hönnun og þróun margra vefsíðna, kerfa og verkefna.Ég hef reynslu bæði í fram-og bakendaforritun.Einnig hef ég reynslu af verktakavinnuhjá ýmsum fyrirtækjum og má þar nefna Símann,Íslandsbanka og Borgun.Kunnáttamínog helstu verkefni má sjá nánar í kaflanumtölvukunnátta"
@@ -39,11 +40,26 @@
                 "secondTitle": "2009-2012",
                 "content": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla."
             }
+        ],
+        "images": [
+            {
+                "id": 1,
+                "url": "me1.jpg",
+                "thumbnail": "thumbnails/me1.jpg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+                "id": 2,
+                "url": "me2.jpg",
+                "thumbnail": "thumbnails/me2.jpg",
+                "text": "Dolor sit amet, consectetur adipiscing."
+            }
         ]
     },
     "education": {
         "title": "Education",
-        "rows": [{
+        "rows": [
+            {
                 "title": "Háskóli Íslands",
                 "secondTitle": "2012-2015",
                 "content": "Computer science, BS"
@@ -58,15 +74,51 @@
                 "secondTitle": "2000-2004",
                 "content": "Stúdentspróf af náttúrufræðibraut"
             }
+        ],
+        "images": [
+            {
+                "id": 3,
+                "url": "me3.jpg",
+                "thumbnail": "thumbnails/me3.jpg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+                "id": 4,
+                "url": "me4.jpg",
+                "thumbnail": "thumbnails/me4.jpg",
+                "text": "Dolor sit amet, consectetur adipiscing."
+            }
         ]
     },
     "relationships": {
-        "title": "relationships",
-        "text": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla."
+        "title": "relationship",
+        "text": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla.",
+        "images": [
+            {
+                "id": 7,
+                "url": "solla_3.jpg",
+                "thumbnail": "thumbnails/rsz_solla_3.jpg",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            },
+            {
+                "id": 8,
+                "url": "solla_1.jpg",
+                "thumbnail": "thumbnails/rsz_solla_1.jpg",
+                "text": "Dolor sit amet, consectetur adipiscing."
+            },
+            {
+                "id": 9,
+                "url": "solla_4.jpg",
+                "thumbnail": "thumbnails/rsz_solla_4.jpg",
+                "text": "Dolor sit amet, consectetur adipiscing."
+            }
+        ]
     },
-    "processbars": [{
+    "processbars": [
+        {
             "title": "programming languages",
-            "items": [{
+            "items": [
+                {
                     "name": "Javascript",
                     "percentage": 90,
                     "description": "Lýsing á javascript skills"
@@ -100,7 +152,8 @@
         },
         {
             "title": "javascript frameworks",
-            "items": [{
+            "items": [
+                {
                     "name": "React",
                     "percentage": 80,
                     "description": "Lýsing á javascript skills"
@@ -118,7 +171,8 @@
             ]
         }
     ],
-    "images": [{
+    "images": [
+        {
             "id": 1,
             "url": "me1.jpg",
             "thumbnail": "thumbnails/me1.jpg",
@@ -156,20 +210,28 @@
         },
         {
             "id": 7,
-            "url": "me5.jpg",
-            "thumbnail": "thumbnails/me5.jpg",
+            "url": "solla_1.jpg",
+            "thumbnail": "thumbnails/rsz_solla_1.jpg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         },
         {
             "id": 8,
-            "url": "me6.jpg",
-            "thumbnail": "thumbnails/me6.jpg",
+            "url": "solla_3.jpg",
+            "thumbnail": "thumbnails/rsz_solla_3.jpg",
+            "text": "Dolor sit amet, consectetur adipiscing."
+        },
+        {
+            "id": 9,
+            "url": "solla_4.jpg",
+            "thumbnail": "thumbnails/rsz_solla_4.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         }
     ],
-    "projects": [{
+    "projects": [
+        {
             "title": "Hobby projects",
-            "projects": [{
+            "projects": [
+                {
                     "id": 1,
                     "image": "biomynd_is.PNG",
                     "thumbnail": "thumbnails/biomynd_is.PNG",

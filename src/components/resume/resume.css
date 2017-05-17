@@ -11,7 +11,7 @@ h1.name.relative {
 }
 
 .resume-section {
-    min-height: 500px;
+    min-height: 1000px;
 }
 
 .resume-section:nth-of-type(even) {
