@@ -55,7 +55,7 @@ h1.name {
     font-size: 13vw;
     line-height: .8;
     margin: 0;
-    padding: 0 0 0 7vw;
+    padding: 0 0 0 10vw;
     text-indent: -4vw;
     letter-spacing: -0.05em;
     text-transform: lowercase;
@@ -68,7 +68,7 @@ h1.name {
 }
 
 h1.name span {
-    display: block;
+    display: inline-block;
     opacity: 0;
     transform: translate3d(0, 20%, 0);
 }

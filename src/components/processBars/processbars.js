@@ -56,8 +56,8 @@ class Processbar extends Component {
     window.addEventListener('resize', this.resize);
     const tl = this.state.tl;
     tl.add(this.animateTitle());
-    tl.add(this.animateColumns(), 1.3);
-    tl.add(this.animateProcessbar(), 1.3);
+    tl.add(this.animateColumns(), 0.7);
+    tl.add(this.animateProcessbar(), 0.7);
   }
 
   animateTitle() {
@@ -74,7 +74,7 @@ class Processbar extends Component {
         rotationX: 0,
         ease: Power2.easeOut
       },
-      0.8
+      0.2
     );
 
     return tl;

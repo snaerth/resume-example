@@ -10,8 +10,8 @@ h1.name.relative {
     margin-bottom: 20px;
 }
 
-.resume-section {
-    min-height: 1000px;
+.resume-section>div:first-child {
+    min-height: 600px;
 }
 
 .resume-section:nth-of-type(even) {
@@ -86,6 +86,70 @@ h1.name.relative {
 
 .vertical-scroll-hider {
     overflow: hidden;
+}
+
+.reveal-text,
+.reveal-text:after {
+    animation-delay: 2s;
+    animation-iteration-count: 1;
+    animation-duration: 800ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+/*
+.reveal-text {
+    position: relative;
+    font-size: 10vw;
+    display: block;
+    user-select: none;
+    animation-name: reveal-text;
+    color: #FFF;
+    white-space: nowrap;
+    cursor: default;
+}*/
+
+.reveal-text:after {
+    content: "";
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f2f98b;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+    animation-name: revealer-text;
+}
+
+@keyframes reveal-text {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes revealer-text {
+    0%,
+    50% {
+        transform-origin: 0 50%;
+    }
+    60%,
+    100% {
+        transform-origin: 100% 50%;
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    60% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
 }
 
 @media only screen and (max-width: 992px) {
