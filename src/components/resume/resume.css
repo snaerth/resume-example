@@ -8,6 +8,11 @@
 h1.name.relative {
     position: relative;
     margin-bottom: 20px;
+    text-indent: 0;
+}
+
+h1.name.relative span:last-child {
+    text-indent: 0;
 }
 
 .resume-section>div:first-child {
@@ -88,6 +93,11 @@ h1.name.relative {
     overflow: hidden;
 }
 
+.max-1000 {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .reveal-text,
 .reveal-text:after {
     animation-delay: 2s;
@@ -96,17 +106,6 @@ h1.name.relative {
     animation-fill-mode: both;
     animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
 }
-/*
-.reveal-text {
-    position: relative;
-    font-size: 10vw;
-    display: block;
-    user-select: none;
-    animation-name: reveal-text;
-    color: #FFF;
-    white-space: nowrap;
-    cursor: default;
-}*/
 
 .reveal-text:after {
     content: "";
@@ -116,7 +115,7 @@ h1.name.relative {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f2f98b;
+    background-color: pink;
     transform: scaleX(0);
     transform-origin: 0 50%;
     pointer-events: none;
