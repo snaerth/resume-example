@@ -46,13 +46,13 @@
                 "id": 1,
                 "url": "me1.jpg",
                 "thumbnail": "thumbnails/me1.jpg",
-                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                "text": "In Hoi An in Hanoi"
             },
             {
                 "id": 2,
                 "url": "me2.jpg",
                 "thumbnail": "thumbnails/me2.jpg",
-                "text": "Dolor sit amet, consectetur adipiscing."
+                "text": "In Kaminarimon in Tokyo"
             }
         ]
     },
@@ -114,9 +114,9 @@
             },
             {
                 "id": 2,
-                "url": "me2.jpg",
-                "thumbnail": "thumbnails/me2.jpg",
-                "text": "In Kaminarimon in Tokyo (Japan 2016)"
+                "url": "me_and_solla4.jpg",
+                "thumbnail": "thumbnails/me_and_solla4.jpg",
+                "text": "Me and Solla in Kyoto Japan"
             },
             {
                 "id": 3,
