@@ -12,14 +12,14 @@ class ProcessBarsList extends Component {
 
   renderRows() {
     const { processbars, visibleArr } = this.props;
-    
+
     return processbars.map((processbar, i) => {
       return (
         <div key={'processbarlist-row' + i}>
           <div
             className={classnames(
               'onscroll-reveal processbars',
-              'processbar-' + i
+              'processbar' + i
             )}
           >
             {visibleArr[i]

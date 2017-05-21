@@ -33,23 +33,19 @@ class ImageBlurWrapper extends Component {
   }
 
   componentDidMount() {
-    const { blur, thumbnail, src, id, visible } = this.props;
+    const { blur, thumbnail } = this.props;
     let img = new Image();
     img.src = thumbnail || 'images/image_placeholder.png';
     img.onload = () => {
-      let canvas = document.getElementById('canvas-blur-' + id);
+      let canvas = this.refs.canvas;
       processImage(img, canvas, blur || 10);
     };
-
-    if (visible === undefined) {
-      this.startImageOnLoad(src);
-    }
   }
 
-  startImageOnLoad(src) {
-    let imgBig = new Image();
-    imgBig.src = src;
-    imgBig.onload = () => {
+  loadBigImage(src, alt) {
+    let img = new Image();
+    img.src = src;
+    img.onload = () => {
       this.setState({ loaded: true });
     };
   }
@@ -58,13 +54,17 @@ class ImageBlurWrapper extends Component {
     const {
       src,
       alt,
-      id,
       className,
       text,
       overlay,
       overlayText,
-      overlayTitle
+      overlayTitle,
+      visible
     } = this.props;
+
+    if (visible === undefined || visible === true) {
+      this.loadBigImage(src, alt);
+    }
 
     return (
       <div className={classnames('image-blur--wrapper', className)}>
@@ -79,7 +79,7 @@ class ImageBlurWrapper extends Component {
               )}
             />
             <canvas
-              id={'canvas-blur-' + id}
+              ref="canvas"
               className={classnames(
                 'image-blur--canvas',
                 this.state.loaded ? 'hide' : ''

@@ -85,12 +85,18 @@ class Resume extends Component {
           this.changeStateVisibility(
             el,
             processbarVisible,
-            'processbarVisible'
+            'processbarVisible',
+            'processbar'
           );
         }
 
-        if (el.classList.contains('processbars')) {
-          this.changeStateVisibility(el, imagesVisible, 'imagesVisible');
+        if (el.classList.contains('images-container')) {
+          this.changeStateVisibility(
+            el,
+            imagesVisible,
+            'imagesVisible',
+            'images-container'
+          );
         }
 
         if (el.classList.contains('projects-wrapper')) {
@@ -104,13 +110,13 @@ class Resume extends Component {
     });
   }
 
-  changeStateVisibility(el, statePropVal, statePropName) {
+  changeStateVisibility(el, statePropVal, statePropName, className) {
     el.isAnimated = true;
     let newArr = [...statePropVal];
     let newStateProp = {};
 
     for (let i = 0, len = statePropVal.length; i < len; i++) {
-      if (el.classList.contains('processbar-' + i) && !newArr[i]) {
+      if (el.classList.contains(className + i) && !newArr[i]) {
         newArr[i] = true;
       }
     }
@@ -208,7 +214,8 @@ class Resume extends Component {
       <div
         className={classnames(
           'onscroll-reveal',
-          'images-section-container-' + index
+          'images-container',
+          'images-container' + index
         )}
       >
         <Evenodd
