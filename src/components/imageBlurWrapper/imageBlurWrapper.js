@@ -16,6 +16,7 @@ class ImageBlurWrapper extends Component {
     alt: PropTypes.string.isRequired,
     txt: PropTypes.string,
     thumbnail: PropTypes.string.isRequired,
+    visible: PropTypes.bool,
     blur: PropTypes.string,
     id: PropTypes.number.isRequired,
     overlay: PropTypes.bool,
@@ -32,7 +33,7 @@ class ImageBlurWrapper extends Component {
   }
 
   componentDidMount() {
-    const { blur, thumbnail, src, id } = this.props;
+    const { blur, thumbnail, src, id, visible } = this.props;
     let img = new Image();
     img.src = thumbnail || 'images/image_placeholder.png';
     img.onload = () => {
@@ -40,6 +41,12 @@ class ImageBlurWrapper extends Component {
       processImage(img, canvas, blur || 10);
     };
 
+    if (visible === undefined) {
+      this.startImageOnLoad(src);
+    }
+  }
+
+  startImageOnLoad(src) {
     let imgBig = new Image();
     imgBig.src = src;
     imgBig.onload = () => {

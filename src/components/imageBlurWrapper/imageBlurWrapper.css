@@ -4,7 +4,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    flex-flow: row wrap;
+    flex-flow: row;
     padding-bottom: 100px;
 }
 
@@ -59,8 +59,8 @@
     transition: transform .4s, visibility 0s linear, opacity .4s;
 }
 
-.even:hover img,
-.odd:hover img {
+.even img:hover,
+.odd img:hover {
     transform: scale3d(1.1, 1.1, 1.1);
 }
 
@@ -71,8 +71,8 @@
     position: relative;
 }
 
-.even:hover .image-blur--wrapper-image,
-.odd:hover .image-blur--wrapper-image {
+.even .image-blur--wrapper-image:hover,
+.odd .image-blur--wrapper-image:hover {
     overflow: hidden;
     transform: scale3d(0.98, 0.98, 0.98);
 }
