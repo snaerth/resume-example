@@ -5,7 +5,7 @@ import {
   REVEAL_ANIMATION_BACKWARD,
   SET_LANGUAGE,
   ADD_PAGE_LOADING,
-  REMOVE_PAGE_LOADING,
+  REMOVE_PAGE_LOADING
 } from './types';
 
 export function setLanguage(lang) {
@@ -13,17 +13,17 @@ export function setLanguage(lang) {
     type: SET_LANGUAGE,
     payload: {
       translations: lang === 'is' ? is : en,
-      lang: lang || 'en',
-    },
+      lang: lang || 'en'
+    }
   };
 }
 
 export function revealAnimationForward() {
-  return {type: REVEAL_ANIMATION_FORWARD};
+  return { type: REVEAL_ANIMATION_FORWARD };
 }
 
 export function revealAnimationBackward(backButtonPressed) {
-  return {type: REVEAL_ANIMATION_BACKWARD, payload: backButtonPressed};
+  return { type: REVEAL_ANIMATION_BACKWARD, payload: backButtonPressed };
 }
 
 export function removePageLoading() {
@@ -36,16 +36,16 @@ export function removePageLoading() {
       const delay = minTime - timeDiff;
       setTimeout(() => {
         document.body.classList.remove('loading');
-        dispatch({type: REMOVE_PAGE_LOADING});
+        dispatch({ type: REMOVE_PAGE_LOADING });
       }, delay);
     } else {
       document.body.classList.remove('loading');
-      return {type: REMOVE_PAGE_LOADING};
+      return { type: REMOVE_PAGE_LOADING };
     }
   };
 }
 
 export function addPageLoading() {
   document.body.classList.add('loading');
-  return {type: ADD_PAGE_LOADING};
+  return { type: ADD_PAGE_LOADING };
 }

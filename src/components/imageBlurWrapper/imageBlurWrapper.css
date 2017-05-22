@@ -24,7 +24,7 @@
     visibility: hidden;
     opacity: 0;
     backface-visibility: hidden;
-    transition: visibility 0s linear 0s, opacity .15s;
+    transition: all 3s;
 }
 
 .hide {
@@ -51,6 +51,11 @@
 .odd {
     width: 50%;
     padding: 0 25px;
+}
+
+a .even,
+a .odd {
+    width: initial;
 }
 
 .even img.image-blur--image,
@@ -155,9 +160,6 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .image-blur--wrapper {
-        max-width: 400px;
-    }
     .even,
     .odd {
         padding: 0 15px;
@@ -165,9 +167,6 @@
 }
 
 @media only screen and (max-width: 992px) {
-    .image-blur--wrapper {
-        max-width: 300px;
-    }
     .image-blur--wrapper-overlay {
         padding: 1em;
     }
@@ -178,24 +177,24 @@
         margin: 0;
         font-size: 14px;
     }
+    .text-section {
+        padding: 0 15px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .even,
-    .odd {
+    .odd,
+    .even:nth-child(1),
+    .odd:nth-child(2) {
         padding: 0 10px;
+    }
+    .even:nth-child(2),
+    .odd:nth-child(1) {
+        padding: 70px 10px 0;
     }
     .image-blur--container {
         padding-bottom: 50px;
-    }
-    .image-blur--wrapper {
-        max-width: 270px;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .image-blur--wrapper {
-        max-width: 220px;
     }
 }
 
@@ -207,5 +206,13 @@
     .even,
     .odd {
         padding: 0 !important;
+        width: 100%;
+    }
+    .image-blur--container,
+    .image-blur--container .extend {
+        flex-flow: column;
+    }
+    .text-section {
+        padding: 0;
     }
 }

@@ -78,6 +78,9 @@ class Resume extends Component {
   }
 
   initElementInViewportChecker() {
+    let cnt = 0;
+    const maxCount = document.querySelectorAll('.onscroll-reveal').length;
+
     withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisible, el) => {
       if (isVisible && !el.isAnimated) {
         const { imagesVisible, processbarVisible } = this.state;
@@ -105,6 +108,12 @@ class Resume extends Component {
           this.setState((prevState, props) => {
             return { projectsVisible: true };
           });
+        }
+
+        cnt++;
+
+        if (cnt === maxCount) {
+          withinViewport(true);
         }
       }
     });
@@ -187,7 +196,7 @@ class Resume extends Component {
           {section.text
             ? <div className="resume-section--row">
                 <div className="resume-row">
-                  <p className="max-1000">{section.text}</p>
+                  <p className="max-1000 text-section">{section.text}</p>
                 </div>
               </div>
             : null}
