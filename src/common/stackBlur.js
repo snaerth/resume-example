@@ -72,9 +72,11 @@ const shg_table = [
 ];
 
 
-export function processImage(img, canvas, radius) {
+export function processImage(img, canvas, radius, parent) {
   const w = img.naturalWidth;
   const h = img.naturalHeight;
+  const ratio = h / w;
+	canvas.parentNode.style.height = (ratio * canvas.clientWidth) + 'px';
   canvas.width = w;
   canvas.height = h;
 
