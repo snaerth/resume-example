@@ -12,7 +12,6 @@ class ProcessBarsList extends Component {
 
   renderRows() {
     const { processbars, visibleArr } = this.props;
-
     return processbars.map((processbar, i) => {
       return (
         <div key={'processbarlist-row' + i}>

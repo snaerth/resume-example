@@ -78,8 +78,8 @@ h1.name.relative span:last-child {
     margin-top: 20px;
 }
 
-.section-0 .resume-left,
-.section-0 .resume-right {
+.resume-left,
+.resume-right {
     opacity: 0;
     transform: translate3d(0, 20px, 0);
 }

@@ -9,7 +9,6 @@ class Evenodd extends Component {
 
   renderImages(image) {
     const { visible } = this.props;
-
     return (
       <ImageBlurWrapper
         key={image.id}
@@ -21,6 +20,10 @@ class Evenodd extends Component {
         visible={visible}
       />
     );
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.visible === true;
   }
 
   render() {

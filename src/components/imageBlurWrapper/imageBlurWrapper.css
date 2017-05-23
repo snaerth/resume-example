@@ -16,7 +16,7 @@
     width: 100%;
     height: 100%;
     margin: auto;
-    transition: visibility 0s linear .5s,opacity .1s .4s;
+    transition: visibility 0s linear .5s, opacity .1s .4s;
 }
 
 .image-blur--image {
@@ -27,16 +27,16 @@
     transition: all 3s;
 }
 
-.hide {
+.image-blur--image--hide {
     visibility: hidden;
     opacity: 0;
     backface-visibility: hidden;
 }
 
-.show {
+.image-blur--image--show {
     visibility: visible;
     opacity: 1;
-    transition: transform .4s, visibility 0s linear,opacity .4s 0s;
+    transition: transform .4s, visibility 0s linear, opacity .4s 0s;
 }
 
 .image-blur--wrapper {

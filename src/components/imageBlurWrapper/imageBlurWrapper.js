@@ -24,14 +24,6 @@ class ImageBlurWrapper extends Component {
     overlayText: PropTypes.string
   };
 
-  constructor() {
-    super();
-
-    this.state = {
-      loaded: false
-    };
-  }
-
   componentDidMount() {
     const { blur, thumbnail } = this.props;
     let img = new Image();
@@ -46,7 +38,6 @@ class ImageBlurWrapper extends Component {
     let img = new Image();
     img.src = src;
     img.onload = () => {
-      this.setState({ loaded: true });
       this.refs.canvas.parentNode.style.height = 'auto';
     };
   }
@@ -63,8 +54,6 @@ class ImageBlurWrapper extends Component {
       visible
     } = this.props;
 
-    const { loaded } = this.state;
-
     if (visible === undefined || visible === true) {
       this.loadBigImage(src, alt);
     }
@@ -74,13 +63,19 @@ class ImageBlurWrapper extends Component {
         <figure className="image-blur--wrapper-image">
           <div>
             <img
-              src={loaded ? src : ''}
+              src={visible ? src : ''}
               alt={alt}
-              className={classnames('image-blur--image', loaded ? 'show' : '')}
+              className={classnames(
+                'image-blur--image',
+                visible ? 'image-blur--image--show' : ''
+              )}
             />
             <canvas
               ref="canvas"
-              className={classnames('image-blur--canvas', loaded ? 'hide' : '')}
+              className={classnames(
+                'image-blur--canvas',
+                visible ? 'image-blur--image--hide' : ''
+              )}
             />
           </div>
           {overlay
