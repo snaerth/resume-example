@@ -10,16 +10,19 @@
     box-sizing: border-box;
 }
 
-#root,
 body,
 html {
     min-height: 100vh;
     overflow-x: hidden;
 }
 
+#root {
+    height: 100vh;
+}
+
 html {
     -webkit-overflow-scrolling: touch;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 }
 
 body {
