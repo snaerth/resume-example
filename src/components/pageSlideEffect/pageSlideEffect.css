@@ -1,6 +1,6 @@
 .revealer {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     z-index: 1000;
     pointer-events: none;
@@ -9,11 +9,11 @@
 }
 
 .revealer--top {
-	bottom: 100%;
+    bottom: 100%;
 }
 
 .revealer--bottom {
-	top: 100%;
+    top: 100%;
 }
 
 .layer {
@@ -24,17 +24,18 @@
     left: 0;
 }
 
+
 /* Two layer effect (effect-2) to TOP */
 
 .anim--effect-top.revealer--animate .layer {
     animation: anim-effect-2-1-top 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-	animation-delay: 0.5s;
+    animation-delay: 0.5s;
     background: #fff;
 }
 
 .anim--effect-top.revealer--animate .layer:nth-child(2) {
     animation-name: anim-effect-2-2-top;
-	animation-delay: 0.5s;
+    animation-delay: 0.5s;
     background: #FF92F6;
 }
 
@@ -68,16 +69,18 @@
     }
 }
 
+
 /* Two layer effect (effect-2) to Bottom */
+
 .anim--effect-bottom.revealer--animate .layer {
     animation: anim-effect-2-1-bottom 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-	animation-delay: 0.5s;
+    animation-delay: 0.5s;
     background: #fff;
 }
 
 .anim--effect-bottom.revealer--animate .layer:nth-child(2) {
     animation-name: anim-effect-2-2-bottom;
-	animation-delay: 0.5s;
+    animation-delay: 0.5s;
     background: #FF92F6;
 }
 
