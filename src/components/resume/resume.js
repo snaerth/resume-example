@@ -31,28 +31,45 @@ class Resume extends Component {
 
 	componentDidMount() {
 		this.initElementInViewportChecker();
-        const { back } = this.refs;
-        const tl = new TimelineLite();
-        tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2);
-        console.log(this.refs);
+		const { back } = this.refs;
+		const tl = new TimelineLite();
+		tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2);
+		console.log(this.refs);
+
 		// const { tl } = this.state;
+
 		// const { title, back, rows0 } = this.refs;
+
 		// const rows = rows0.children;
 
 		// tl
+
 		// 	.set(title, { rotationX: -45 })
+
 		// 	.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2)
+
 		// 	.to(
+
 		// 		title,
+
 		// 		1.5,
+
 		// 		{
+
 		// 			y: '0%',
+
 		// 			opacity: 1,
+
 		// 			transformOrigin: '0 50%',
+
 		// 			rotationX: 0,
-		// 			ease: Power2.easeOut  
+
+		// 			ease: Power2.easeOut
+
 		// 		},
+
 		// 		0.8
+
 		// 	);
 
 		// Animate texts in section
@@ -63,8 +80,6 @@ class Resume extends Component {
 	componentWillUnmount() {
 		withinViewport(true);
 	}
-
-
 
 	initElementInViewportChecker() {
 		let cnt = 0;
@@ -80,6 +95,8 @@ class Resume extends Component {
 						'processbarVisible',
 						'processbar'
 					);
+
+          cnt++;
 				}
 
 				if (el.classList.contains('images-container')) {
@@ -89,6 +106,8 @@ class Resume extends Component {
 						'imagesVisible',
 						'images-container'
 					);
+
+          cnt++;
 				}
 
 				if (el.classList.contains('projects-wrapper')) {
@@ -97,9 +116,9 @@ class Resume extends Component {
 					this.setState((prevState, props) => {
 						return { projectsVisible: true };
 					});
-				}
 
-				cnt++;
+          cnt++;
+				}
 
 				if (cnt === maxCount) {
 					withinViewport(true);
@@ -159,7 +178,11 @@ class Resume extends Component {
 		const colImages = this.renderColImages(section.images, index);
 
 		return (
-			<div className={'resume-section section-' + index} key={index}>
+			<div
+				className="resume-section onscroll-reveal"
+				key={index}
+				ref={'section' + index}
+			>
 				<div>
 					<h1
 						className={index === 0 ? 'name relative' : 'name visible relative'}
@@ -167,7 +190,7 @@ class Resume extends Component {
 						<span ref={index === 0 ? 'title' : ''}>{section.title}</span>
 					</h1>
 					{rows
-						? <div ref={'rows' + index} className="resume-section--row">
+						? <div className="resume-section--row" ref={'rows' + index}>
 								{rows}
 								{rows.length > 3
 									? <div className="text-center">
