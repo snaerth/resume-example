@@ -31,51 +31,40 @@ class Resume extends Component {
 
 	componentDidMount() {
 		this.initElementInViewportChecker();
-
+        const { back } = this.refs;
+        const tl = new TimelineLite();
+        tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2);
+        console.log(this.refs);
 		// const { tl } = this.state;
-
 		// const { title, back, rows0 } = this.refs;
-
 		// const rows = rows0.children;
 
 		// tl
+		// 	.set(title, { rotationX: -45 })
+		// 	.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2)
+		// 	.to(
+		// 		title,
+		// 		1.5,
+		// 		{
+		// 			y: '0%',
+		// 			opacity: 1,
+		// 			transformOrigin: '0 50%',
+		// 			rotationX: 0,
+		// 			ease: Power2.easeOut  
+		// 		},
+		// 		0.8
+		// 	);
 
-		//   .set(title, { rotationX: -45 })
+		// Animate texts in section
 
-		//   .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2) // eslint-disable-line
-
-		//   .to(
-
-		//     title,
-
-		//     1.5,
-
-		//     {
-
-		//       y: '0%',
-
-		//       opacity: 1,
-
-		//       transformOrigin: '0 50%',
-
-		//       rotationX: 0,
-
-		//       ease: Power2.easeOut // eslint-disable-line
-
-		//     },
-
-		//     0.8
-
-		//   );
-
-		// // Animate texts in section
-
-		// this.animateSections(rows, 3, tl);
+		//this.animateSections(rows, 3, tl);
 	}
 
 	componentWillUnmount() {
 		withinViewport(true);
 	}
+
+
 
 	initElementInViewportChecker() {
 		let cnt = 0;
@@ -148,7 +137,7 @@ class Resume extends Component {
 				tl.to(
 					cols[j],
 					1.5,
-					{ y: '0%', opacity: 1, ease: Power2.easeOut }, // eslint-disable-line
+					{ y: '0%', opacity: 1, ease: Power2.easeOut },
 					delayBetween
 				);
 			}
