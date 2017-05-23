@@ -43,6 +43,8 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
 }
 
 .image-blur--wrapper p {

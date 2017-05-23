@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { TimelineLite, Power2 } from 'gsap';
 import { processImage } from '../../common/stackBlur';
 import './imageBlurWrapper.css';
 
@@ -25,21 +26,26 @@ class ImageBlurWrapper extends Component {
   };
 
   componentDidMount() {
-    const { blur, thumbnail } = this.props;
+    const { blur, thumbnail, src } = this.props;
     let img = new Image();
     img.src = thumbnail || 'images/thumbnails/placeholder.png';
     img.onload = () => {
       let canvas = this.refs.canvas;
       processImage(img, canvas, blur || 10);
     };
+
+    let bigImg = new Image();
+    bigImg.src = src;
+    bigImg.onload = () => {
+      this.refs.canvas.parentNode.style.height = 'auto';
+      this.refs.canvas.classList.add('image-blur--image--hide');
+      this.refs.image.classList.add('image-blur--image--show');
+    };
   }
 
-  loadBigImage(src, alt) {
-    let img = new Image();
-    img.src = src;
-    img.onload = () => {
-      this.refs.canvas.parentNode.style.height = 'auto';
-    };
+  startAnimation(el) {
+    const tl = new TimelineLite();
+    tl.to(el, 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut });
   }
 
   render() {
@@ -54,29 +60,24 @@ class ImageBlurWrapper extends Component {
       visible
     } = this.props;
 
-    if (visible === undefined || visible === true) {
-      this.loadBigImage(src, alt);
+    if ((this.refs.wrapper && visible === undefined) || visible === true) {
+      this.startAnimation(this.refs.wrapper);
     }
 
     return (
-      <div className={classnames('image-blur--wrapper', className)}>
+      <div
+        className={classnames('image-blur--wrapper', className)}
+        ref="wrapper"
+      >
         <figure className="image-blur--wrapper-image">
           <div>
             <img
               src={visible ? src : ''}
               alt={alt}
-              className={classnames(
-                'image-blur--image',
-                visible ? 'image-blur--image--show' : ''
-              )}
+              className="image-blur--image"
+              ref="image"
             />
-            <canvas
-              ref="canvas"
-              className={classnames(
-                'image-blur--canvas',
-                visible ? 'image-blur--image--hide' : ''
-              )}
-            />
+            <canvas ref="canvas" className="image-blur--canvas" />
           </div>
           {overlay
             ? <div className="image-blur--wrapper-overlay">
