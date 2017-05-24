@@ -179,7 +179,7 @@ export function withinViewport(
       return false;
     } else {
       scrollHandler = throttle(() => {
-        _requestAnimationFrame(toggleElement);
+        return _requestAnimationFrame(toggleElement);
       }, 300);
 
       resizeHandler = throttle(() => {

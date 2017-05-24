@@ -12,88 +12,98 @@ import './imageBlurWrapper.css';
  * it hides canvas and shows bigger image
  */
 class ImageBlurWrapper extends Component {
-  static propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    txt: PropTypes.string,
-    thumbnail: PropTypes.string.isRequired,
-    visible: PropTypes.bool,
-    blur: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    overlay: PropTypes.bool,
-    overlayTitle: PropTypes.string,
-    overlayText: PropTypes.string
-  };
+	static propTypes = {
+		src: PropTypes.string.isRequired,
+		alt: PropTypes.string.isRequired,
+		txt: PropTypes.string,
+		thumbnail: PropTypes.string.isRequired,
+		visible: PropTypes.bool,
+		blur: PropTypes.string,
+		id: PropTypes.number.isRequired,
+		overlay: PropTypes.bool,
+		overlayTitle: PropTypes.string,
+		overlayText: PropTypes.string
+	};
 
-  componentDidMount() {
-    const { blur, thumbnail, src } = this.props;
-    let img = new Image();
-    img.src = thumbnail || 'images/thumbnails/placeholder.png';
-    img.onload = () => {
-      let canvas = this.refs.canvas;
-      processImage(img, canvas, blur || 10);
-    };
+	componentDidMount() {
+		const { blur, thumbnail, src } = this.props;
+		let img = new Image();
+		img.src = thumbnail || 'images/thumbnails/placeholder.png';
+		img.onload = () => {
+			let canvas = this.refs.canvas;
+			processImage(img, canvas, blur || 10);
+		};
+	}
 
-    let bigImg = new Image();
-    bigImg.src = src;
-    bigImg.onload = () => {
-      this.refs.canvas.parentNode.style.height = 'auto';
-      this.refs.canvas.classList.add('image-blur--image--hide');
-      this.refs.image.classList.add('image-blur--image--show');
-    };
-  }
+	startAnimation(el) {
+		const tl = new TimelineLite();
+		tl.to(el, 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut });
+	}
 
-  startAnimation(el) {
-    const tl = new TimelineLite();
-    tl.to(el, 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut });
-  }
+	loadBigImage(src) {
+		let img = new Image();
+		img.src = src;
+		img.onload = () => {
+			this.refs.canvas.parentNode.style.height = 'auto';
+			setTimeout(() => {
+				this.refs.canvas.classList.add('image-blur--image--hide');
+				this.refs.image.classList.add('image-blur--image--show');
+			}, 100);
+		};
+	}
 
-  render() {
-    const {
-      src,
-      alt,
-      className,
-      text,
-      overlay,
-      overlayText,
-      overlayTitle,
-      visible
-    } = this.props;
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.visible === true;
+	}
 
-    if ((this.refs.wrapper && visible === undefined) || visible === true) {
-      this.startAnimation(this.refs.wrapper);
-    }
+	render() {
+		const {
+			src,
+			alt,
+			className,
+			text,
+			overlay,
+			overlayText,
+			overlayTitle,
+			visible
+		} = this.props;
 
-    return (
-      <div
-        className={classnames('image-blur--wrapper', className)}
-        ref="wrapper"
-      >
-        <figure className="image-blur--wrapper-image">
-          <div>
-            <img
-              src={visible ? src : ''}
-              alt={alt}
-              className="image-blur--image"
-              ref="image"
-            />
-            <canvas ref="canvas" className="image-blur--canvas" />
-          </div>
-          {overlay
-            ? <div className="image-blur--wrapper-overlay">
-                <h2>{overlayTitle}</h2>
-                <p>{overlayText}</p>
-              </div>
-            : null}
-        </figure>
-        {text
-          ? <figcaption>
-              <p>{text}</p>
-            </figcaption>
-          : null}
-      </div>
-    );
-  }
+		if ((this.refs.wrapper && visible === undefined) || visible === true) {
+      console.log('supp');
+			this.loadBigImage(src);
+			this.startAnimation(this.refs.wrapper);
+		}
+
+		return (
+			<div
+				className={classnames('image-blur--wrapper', className)}
+				ref="wrapper"
+			>
+				<figure className="image-blur--wrapper-image">
+					<div>
+						<img
+							src={visible ? src : ''}
+							alt={alt}
+							className="image-blur--image"
+							ref="image"
+						/>
+						<canvas ref="canvas" className="image-blur--canvas" />
+					</div>
+					{overlay
+						? <div className="image-blur--wrapper-overlay">
+								<h2>{overlayTitle}</h2>
+								<p>{overlayText}</p>
+							</div>
+						: null}
+				</figure>
+				{text
+					? <figcaption>
+							<p>{text}</p>
+						</figcaption>
+					: null}
+			</div>
+		);
+	}
 }
 
 export default ImageBlurWrapper;

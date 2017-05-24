@@ -16,10 +16,6 @@ html {
     overflow-x: hidden;
 }
 
-#root {
-    height: 100vh;
-}
-
 html {
     -webkit-overflow-scrolling: touch;
     transform: translate3d(0, 0, 0);

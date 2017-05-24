@@ -1,6 +1,6 @@
 .revealer {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     z-index: 1000;
     pointer-events: none;
@@ -23,7 +23,6 @@
     top: 0;
     left: 0;
 }
-
 
 /* Two layer effect (effect-2) to TOP */
 
