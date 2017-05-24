@@ -37,7 +37,7 @@ class ImageBlurWrapper extends Component {
 
   startAnimation(el) {
     const tl = new TimelineLite();
-    tl.to(el, 1.5, { y: '0%', opacity: 1, ease: Power2.easeOut });
+    tl.to(el, 1, { y: '0%', opacity: 1, ease: Power2.easeOut });
   }
 
   loadBigImage(src) {
@@ -48,7 +48,7 @@ class ImageBlurWrapper extends Component {
       setTimeout(() => {
         this.refs.canvas.classList.add('image-blur--image--hide');
         this.refs.image.classList.add('image-blur--image--show');
-      }, 100);
+      }, 800);
     };
   }
 
@@ -68,8 +68,8 @@ class ImageBlurWrapper extends Component {
       visible
     } = this.props;
 
-    if ((this.refs.wrapper && visible === undefined) || visible === true) {
-      console.log('supp');
+    if (visible === true) {
+      console.log(src);
       this.loadBigImage(src);
       this.startAnimation(this.refs.wrapper);
     }

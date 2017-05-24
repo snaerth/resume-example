@@ -3,6 +3,21 @@ import PropTypes from 'prop-types';
 import ImageBlurWrapper from '../imageBlurWrapper';
 
 class Evenodd extends Component {
+  static propTypes = {
+    left: PropTypes.array.isRequired,
+    right: PropTypes.array.isRequired,
+    type: PropTypes.string,
+    visible: PropTypes.bool
+  };
+
+  constructor() {
+    super();
+
+    this.state = {
+      hasShown: false
+    };
+  }
+
   renderCol(images) {
     return images.map((image, i) => this.renderImages(image));
   }
@@ -22,8 +37,16 @@ class Evenodd extends Component {
     );
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.hasShown === false) {
+      this.setState((prevState, props) => {
+        return { hasShown: true };
+      });
+    }
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.visible === true;
+    return nextProps.visible && !nextState.hasShown;
   }
 
   render() {
@@ -37,12 +60,5 @@ class Evenodd extends Component {
     );
   }
 }
-
-Evenodd.propTypes = {
-  left: PropTypes.array.isRequired,
-  right: PropTypes.array.isRequired,
-  type: PropTypes.string,
-  visible: PropTypes.bool
-};
 
 export default Evenodd;

@@ -88,7 +88,7 @@ class Resume extends Component {
     withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisible, el) => {
       if (isVisible && !el.isAnimated) {
         const { imagesVisible, processbarVisible } = this.state;
-        
+
         if (el.classList.contains('processbars')) {
           this.changeStateVisibility(
             el,
