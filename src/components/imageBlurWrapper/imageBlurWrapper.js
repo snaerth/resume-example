@@ -45,10 +45,8 @@ class ImageBlurWrapper extends Component {
     img.src = src;
     img.onload = () => {
       this.refs.canvas.parentNode.style.height = 'auto';
-      setTimeout(() => {
-        this.refs.canvas.classList.add('image-blur--image--hide');
-        this.refs.image.classList.add('image-blur--image--show');
-      }, 800);
+      this.refs.canvas.classList.add('image-blur--image--hide');
+      this.refs.image.classList.add('image-blur--image--show');
     };
   }
 
@@ -69,7 +67,6 @@ class ImageBlurWrapper extends Component {
     } = this.props;
 
     if (visible === true) {
-      console.log(src);
       this.loadBigImage(src);
       this.startAnimation(this.refs.wrapper);
     }

@@ -327,10 +327,13 @@ class Resume extends Component {
     );
   }
 
-  renderProjects(projects) {
+  renderProjects(projects, index) {
     const { projectsVisible } = this.state;
     return (
-      <div className="resume-section onscroll-reveal projects-wrapper">
+      <div
+        className="resume-section onscroll-reveal projects-wrapper"
+        data-id={index}
+      >
         <div>
           <h1 className="name visible relative">
             <span>projects</span>
@@ -362,7 +365,7 @@ class Resume extends Component {
           {this.renderSection(education, 1)}
           {this.renderSection(career, 2)}
           {this.renderProcessbarsList(processbars, processbarVisible)}
-          {this.renderProjects(projects)}
+          {this.renderProjects(projects, 3)}
         </div>
       </div>
     );
