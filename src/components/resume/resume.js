@@ -31,12 +31,11 @@ class Resume extends Component {
 
   componentDidMount() {
     this.initElementInViewportChecker();
-    const { back } = this.refs;
+    const { back, title } = this.refs;
     const { tl } = this.state;
-    const { title } = this.refs;
     let text = title.parentNode.nextSibling;
+    this.animateTitle(title, tl);
     tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2).pause();
-    this.animateTitle(this.refs.title, tl);
     tl
       .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.4')
       .play();
@@ -158,12 +157,14 @@ class Resume extends Component {
    * Animates section title
    */
   animateTitle(title, tl) {
-    title.classList.add('reveal-text');
-    return tl.to(
+    return tl.set(title, { rotationX: -45 }).to(
       title,
       1.5,
       {
-        x: '0%',
+        y: '0%',
+        opacity: 1,
+        transformOrigin: '0 50%',
+        rotationX: 0,
         ease: Power2.easeOut
       },
       0.5

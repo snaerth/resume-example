@@ -119,12 +119,14 @@ class Projects extends Component {
    */
   animateTitle(title) {
     const tl = new TimelineLite();
-    title.classList.add('reveal-text');
-    tl.to(
+    tl.set(title, { rotationX: -45 }).to(
       title,
       1.5,
       {
-        x: '0%',
+        y: '0%',
+        opacity: 1,
+        transformOrigin: '0 50%',
+        rotationX: 0,
         ease: Power2.easeOut
       },
       0.5
