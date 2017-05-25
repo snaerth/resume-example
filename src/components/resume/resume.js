@@ -335,7 +335,6 @@ class Resume extends Component {
         <div>
           <Projects data={projects} visible={projectsVisible} />
         </div>
-        <WaveSvg />
       </div>
     );
   }

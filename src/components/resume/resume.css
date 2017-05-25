@@ -107,9 +107,12 @@ h1.name.relative span:last-child {
     margin: 0 auto;
 }
 
+
+/* Reveal text animation */
+
 .reveal-text,
 .reveal-text:after {
-    animation-delay: 500ms;
+    animation-delay: 0;
     animation-iteration-count: 1;
     animation-duration: 1200ms;
     animation-fill-mode: both;
@@ -122,7 +125,7 @@ h1.name.relative span:last-child {
     z-index: 999;
     top: -1vh;
     left: 0;
-    right: -2vw;
+    right: -5vw;
     bottom: 0;
     background-color: #FF92F6;
     transform: scaleX(0);
