@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { TimelineLite, Power2 } from 'gsap';
 import ImageBlurWrapper from '../imageBlurWrapper';
 
 class Evenodd extends Component {
@@ -16,6 +17,31 @@ class Evenodd extends Component {
     this.state = {
       hasShown: false
     };
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.hasShown === false) {
+      this.setState((prevState, props) => {
+        return { hasShown: true };
+      });
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.visible && !nextState.hasShown;
+  }
+
+  startAnimation(elements) {
+    const tl = new TimelineLite();
+    elements = elements[0].classList.contains('odd')
+      ? [elements[1], elements[0]]
+      : elements;
+    tl.staggerTo(
+      elements,
+      0.5,
+      { y: '0%', opacity: 1, ease: Power2.easeOut },
+      0.2
+    );
   }
 
   renderCol(images) {
@@ -37,23 +63,15 @@ class Evenodd extends Component {
     );
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (nextState.hasShown === false) {
-      this.setState((prevState, props) => {
-        return { hasShown: true };
-      });
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.visible && !nextState.hasShown;
-  }
-
   render() {
-    const { left, right, type } = this.props;
+    const { left, right, type, visible } = this.props;
+
+    if (visible === true) {
+      this.startAnimation(this.refs.container.children);
+    }
 
     return (
-      <div className="image-blur--container">
+      <div className="image-blur--container" ref="container">
         <div className={type ? type : 'even'}>{this.renderCol(left)}</div>
         <div className={type ? type : 'odd'}>{this.renderCol(right)}</div>
       </div>

@@ -43,8 +43,6 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
 }
 
 .image-blur--wrapper p {
@@ -55,6 +53,8 @@
 .odd {
     width: 50%;
     padding: 0 25px;
+    opacity: 0;
+    transform: translate3d(0, 100px, 0);
 }
 
 a .even,

@@ -33,47 +33,13 @@ class Resume extends Component {
     this.initElementInViewportChecker();
     const { back } = this.refs;
     const { tl } = this.state;
-    tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2);
-
-    // console.log(this.refs);
-
-    // const { tl } = this.state;
-
-    // const { title, back, rows0 } = this.refs;
-
-    // const rows = rows0.children;
-
-    // tl
-
-    //   .set(title, { rotationX: -45 })
-
-    //   .to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2)
-
-    //   .to(
-
-    //     title,
-
-    //     1.5,
-
-    //     {
-
-    //       y: '0%',
-
-    //       opacity: 1,
-
-    //       transformOrigin: '0 50%',
-
-    //       rotationX: 0,
-
-    //       ease: Power2.easeOut
-
-    //     },
-
-    //     0.8
-
-    //   );
-
-    // this.animateSections(rows, 3, tl);
+    const { title } = this.refs;
+    let text = title.parentNode.nextSibling;
+    tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2).pause();
+    this.animateTitle(this.refs.title, tl);
+    tl
+      .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.4')
+      .play();
   }
 
   componentWillUnmount() {
@@ -124,7 +90,7 @@ class Resume extends Component {
           const id = el.attributes['data-id'].value;
           const row = self.refs['rows' + id];
           if (row) {
-            self.animateSections(row.children);
+            self.animateSections(row.children, 3);
             el.isAnimated = true;
           }
         }
@@ -152,30 +118,61 @@ class Resume extends Component {
   }
 
   /**
-   * Animates section title and text
+   * Animates section content
    */
   animateSections(rows, indexMax, tl) {
-    tl = tl ? tl : new TimelineLite();
-    const len = indexMax || rows.length;
+    if (rows.length > 0) {
+      tl = tl ? tl : new TimelineLite();
+      let extraDelay = 0;
+      const title = rows[0].parentNode && rows[0].parentNode.previousSibling
+        ? rows[0].parentNode.previousSibling
+        : null;
 
-    for (let i = 0; i < len; i++) {
-      const cols = rows[i].children;
-      for (let j = 0, len = cols.length; j < len; j++) {
-        const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
-        tl.to(
-          cols[j],
-          1,
-          { y: '0%', opacity: 1, ease: Power2.easeOut },
-          delayBetween
-        );
+      if (title) {
+        this.animateTitle(title.children[0], tl);
+        if (!indexMax) {
+          extraDelay = 0.8;
+        }
       }
-    }
 
-    tl.play();
+      const len = indexMax || rows.length;
+
+      for (let i = 0; i < len; i++) {
+        const cols = rows[i].children;
+        for (let j = 0, len = cols.length; j < len; j++) {
+          const delayBetween = 0.4 + (i + 1) / 10 + (j + i + 1) / 10;
+          tl.to(
+            cols[j],
+            1,
+            { y: '0%', opacity: 1, ease: Power2.easeOut },
+            delayBetween + extraDelay
+          );
+        }
+      }
+
+      tl.play();
+    }
+  }
+
+  /**
+   * Animates section title
+   */
+  animateTitle(title, tl) {
+    title.classList.add('reveal-text');
+    return tl.to(
+      title,
+      1.5,
+      {
+        x: '0%',
+        ease: Power2.easeOut
+      },
+      0.5
+    );
   }
 
   back(ev) {
     ev.preventDefault();
+    this.refs['images-container0'].classList.add('fadeOut');
     this.state.tl.timeScale(4).reverse();
     this.props.actions.revealAnimationBackward();
     setTimeout(this.props.history.push, 1500, '/');
@@ -194,9 +191,7 @@ class Resume extends Component {
         ref={'section' + index}
       >
         <div>
-          <h1
-            className={index === 0 ? 'name relative' : 'name visible relative'}
-          >
+          <h1 className="name visible relative">
             <span ref={index === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
           {rows
@@ -216,7 +211,12 @@ class Resume extends Component {
               </div>
             : null}
           {section.text
-            ? <div className="resume-section--row">
+            ? <div
+                className={classnames(
+                  'resume-section--row',
+                  index === 0 ? 'first' : ''
+                )}
+              >
                 <div className="resume-row">
                   <p className="max-1000 text-section">{section.text}</p>
                 </div>
@@ -249,6 +249,7 @@ class Resume extends Component {
           'images-container',
           'images-container' + index
         )}
+        ref={'images-container' + index}
       >
         <Evenodd
           left={left}
@@ -299,24 +300,21 @@ class Resume extends Component {
     }
 
     const button = this.refs['morebutton' + index];
-    button.classList.add('fadeOut');
+    button.classList.add('fadeOutButton');
 
     setTimeout(() => {
       button.classList.add('hidden');
       this.setState((prevState, props) => {
         return { sectionsVisible: newArr };
       });
-      this.animateSections(newRows);
     }, 250);
+    this.animateSections(newRows);
   }
 
   renderProcessbarsList(processbars, processbarVisible) {
     return (
       <div className="resume-section">
         <div>
-          <h1 className="name visible relative">
-            <span>skills</span>
-          </h1>
           <ProcessBarsList
             processbars={processbars}
             visibleArr={processbarVisible}
@@ -335,10 +333,7 @@ class Resume extends Component {
         data-id={index}
       >
         <div>
-          <h1 className="name visible relative">
-            <span>projects</span>
-          </h1>
-          {projectsVisible ? <Projects data={projects} /> : null}
+          <Projects data={projects} visible={projectsVisible} />
         </div>
         <WaveSvg />
       </div>

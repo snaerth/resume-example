@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { TimelineLite, Power2 } from 'gsap';
 import { processImage } from '../../common/stackBlur';
 import './imageBlurWrapper.css';
 
@@ -35,18 +34,15 @@ class ImageBlurWrapper extends Component {
     };
   }
 
-  startAnimation(el) {
-    const tl = new TimelineLite();
-    tl.to(el, 1, { y: '0%', opacity: 1, ease: Power2.easeOut });
-  }
-
   loadBigImage(src) {
     let img = new Image();
     img.src = src;
     img.onload = () => {
-      this.refs.canvas.parentNode.style.height = 'auto';
-      this.refs.canvas.classList.add('image-blur--image--hide');
-      this.refs.image.classList.add('image-blur--image--show');
+      this.refs.canvas.parentNode.classList.add('heightAuto');
+      setTimeout(() => {
+        this.refs.canvas.classList.add('image-blur--image--hide');
+        this.refs.image.classList.add('image-blur--image--show');
+      }, 600);
     };
   }
 
@@ -68,7 +64,6 @@ class ImageBlurWrapper extends Component {
 
     if (visible === true) {
       this.loadBigImage(src);
-      this.startAnimation(this.refs.wrapper);
     }
 
     return (

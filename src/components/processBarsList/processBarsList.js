@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Processbars from '../processBars';
+import { TimelineLite, Power2 } from 'gsap';
 import classnames from 'classnames';
 import './processBarsList.css';
 
@@ -12,6 +13,10 @@ class ProcessBarsList extends Component {
 
   renderRows() {
     const { processbars, visibleArr } = this.props;
+    if (visibleArr[0]) {
+      this.animateTitle(this.refs.title.children[0]);
+    }
+
     return processbars.map((processbar, i) => {
       return (
         <div key={'processbarlist-row' + i}>
@@ -35,9 +40,31 @@ class ProcessBarsList extends Component {
     });
   }
 
+  /**
+   * Animates section title
+   */
+  animateTitle(title) {
+    const tl = new TimelineLite();
+    title.classList.add('reveal-text');
+    tl.to(
+      title,
+      1.2,
+      {
+        x: '0%',
+        ease: Power2.easeOut
+      },
+      0.5
+    );
+  }
+
   render() {
     return (
-      <div className="processbars-list-container">{this.renderRows()}</div>
+      <div>
+        <h1 className="name visible relative" ref="title">
+          <span>skills</span>
+        </h1>
+        <div className="processbars-list-container">{this.renderRows()}</div>
+      </div>
     );
   }
 }

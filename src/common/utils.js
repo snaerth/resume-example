@@ -251,7 +251,7 @@ ElmentTilt.prototype.options = {
   tilt: {
     maxRotationX: -4,
     maxRotationY: 3,
-    maxTranslationX: 6,
+    maxTranslationX: 10,
     maxTranslationY: -2
   }
 };

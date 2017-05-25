@@ -126,7 +126,7 @@ class Home extends Component {
             />
           </svg>
           <span className="language">
-            {this.props.common.lang === 'en' ? 'Icelandic' : 'English'}
+            {this.props.common.lang === 'en' ? 'IS' : 'EN'}
           </span>
         </span>
         <a
