@@ -36,7 +36,7 @@ class Processbar extends Component {
           0.3,
           {
             x: calcPercentageWidth,
-            ease: Power2.easeOut // eslint-disable-line
+            ease: Power2.easeOut
           },
           '-=0.3'
         )
@@ -44,8 +44,8 @@ class Processbar extends Component {
           processbarEl,
           0.5,
           {
-            width: percentage + '%',
-            ease: Power2.easeOut // eslint-disable-line
+            attr: {width: percentage + '%'},
+            ease: Power2.easeOut
           },
           '-=0.5'
         );
@@ -166,7 +166,7 @@ class Processbar extends Component {
           processbarEl,
           1.5,
           {
-            width: percentage + '%',
+            attr: {width: percentage + '%'},
             ease: Power2.easeOut
           },
           '-=1.5'
@@ -205,6 +205,7 @@ class Processbar extends Component {
               <rect
                 height={this.props.height}
                 fill="#FF92F6"
+                width="0"
                 ref={'processbar-' + i}
               />
             </svg>
