@@ -7,7 +7,7 @@ const WaveSvg = () => (
       width="100%"
       height="100%"
       viewBox="0 0 500 70"
-      preserveAspectRatio="xMinYMin meet"
+      preserveAspectRatio="xMinYMin slice"
     >
       <path d="M0,50 C200,100 200,0 500,50 L500,00 L0,0 Z" />
     </svg>

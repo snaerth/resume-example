@@ -9,8 +9,12 @@
 }
 
 .resume-section:nth-of-type(even) .container-wave svg path {
-  stroke: none;
+  stroke: #FFFFFF;
   fill: #FFFFFF;
+}
+
+.resume-section:nth-of-type(odd) .container-wave svg path {
+  stroke: #CCCCCC;
 }
 
 .resume-section:nth-of-type(even) .container-wave svg {
