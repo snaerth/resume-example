@@ -10,10 +10,24 @@ class Nav extends Component {
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 
-  onClickHandler(i) {
-    TweenMax.to(window, 1, {
+  onClickHandler(id) {
+    const { linksState } = this.props;
+    let currentSection = 0;
+
+    for (let i = 0; i < linksState.length; i++) {
+      if (linksState[i]) {
+        currentSection = i;
+        break;
+      }
+    }
+
+    let timeSec = 1;
+    let diff = Math.abs(currentSection - id);
+    timeSec += diff * 0.4;
+
+    TweenMax.to(window, timeSec, {
       scrollTo: {
-        y: 'div[data-navid="' + i + '"]',
+        y: 'div[data-navid="' + id + '"]',
         autoKill: true,
         offsetY: 150
       },
@@ -23,6 +37,7 @@ class Nav extends Component {
 
   render() {
     const { links, linksState } = this.props;
+
     return (
       <nav>
         <ul className="nav">
