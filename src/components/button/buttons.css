@@ -21,10 +21,19 @@
 
 .button-right {
     position: absolute;
-    right: 15px;
+    left: 30px;
 }
 
 .button-right--offset {
+    transform: translate3d(200%, 0, 0);
+}
+
+.button-left {
+    position: absolute;
+    left: 15px;
+}
+
+.button-left--offset {
     transform: translate3d(-200%, 0, 0);
 }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TimelineLite, Power2 } from 'gsap';
-import WaveSvg from '../waveSvg';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -10,6 +9,7 @@ import Projects from '../projects';
 import Button from '../button';
 import Evenodd from '../evenodd';
 import Nav from '../nav';
+import WaveSvg from '../waveSvg';
 import * as actionCreators from '../../common/actions';
 import { withinViewport } from '../../common/utils';
 import './resume.css';
@@ -17,16 +17,19 @@ import './resume.css';
 class Resume extends Component {
   constructor(props) {
     super(props);
+    const { processbars, nav } = this.props.translations;
     this.back = this.back.bind(this);
     this.removeHiddenClass = this.removeHiddenClass.bind(this);
 
-    const { processbars } = this.props.translations;
     this.state = {
       tl: new TimelineLite(),
       processbarVisible: processbars.map(() => false),
-      sectionsVisible: [false, false],
+      sectionsVisible: [false, false, false],
       projectsVisible: false,
-      imagesVisible: [false, false, false]
+      imagesVisible: [false, false, false],
+      linksState: nav.map((link, i) => {
+        return link.active;
+      })
     };
   }
 
@@ -49,10 +52,23 @@ class Resume extends Component {
   initElementInViewportChecker() {
     const self = this;
     let cnt = 0;
-    const maxCount = document.querySelectorAll('.onscroll-reveal').length;
+    const maxCount = document.querySelectorAll('.onscroll-reveal').length - 4;
+    let currentSection = 0;
+    let allSectionsAnimated = false;
 
     withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisible, el) => {
-      if (isVisible && !el.isAnimated) {
+      if (isVisible) {
+        if (el.classList.contains('resume-section')) {
+          const id = el.attributes['data-navid'].value;
+
+          if (currentSection !== id) {
+            currentSection = id;
+            this.setActiveNavLink(id);
+          }
+        }
+      }
+
+      if (isVisible && !el.isAnimated && !allSectionsAnimated) {
         const { imagesVisible, processbarVisible } = this.state;
 
         if (el.classList.contains('processbars')) {
@@ -63,6 +79,7 @@ class Resume extends Component {
             'processbar'
           );
 
+          el.isAnimated = true;
           cnt++;
         }
 
@@ -74,6 +91,7 @@ class Resume extends Component {
             'images-container'
           );
 
+          el.isAnimated = true;
           cnt++;
         }
 
@@ -87,7 +105,7 @@ class Resume extends Component {
         }
 
         if (el.classList.contains('resume-section')) {
-          const id = el.attributes['data-id'].value;
+          const id = el.attributes['data-navid'].value;
           const row = self.refs['rows' + id];
           if (row) {
             self.animateSections(row.children, 3);
@@ -96,14 +114,22 @@ class Resume extends Component {
         }
 
         if (cnt === maxCount) {
-          withinViewport(true);
+          allSectionsAnimated = true;
         }
       }
     });
   }
 
+  setActiveNavLink(id) {
+    let links = this.state.linksState.map(() => false);
+    links[id] = true;
+
+    this.setState((prevState, props) => {
+      return { linksState: links };
+    });
+  }
+
   changeStateVisibility(el, statePropVal, statePropName, className) {
-    el.isAnimated = true;
     let newArr = [...statePropVal];
     let newStateProp = {};
 
@@ -188,7 +214,7 @@ class Resume extends Component {
     return (
       <div
         className={classnames('resume-section onscroll-reveal')}
-        data-id={index}
+        data-navid={index}
         key={index}
         ref={'section' + index}
       >
@@ -313,9 +339,9 @@ class Resume extends Component {
     this.animateSections(newRows);
   }
 
-  renderProcessbarsList(processbars, processbarVisible) {
+  renderProcessbarsList(processbars, processbarVisible, index) {
     return (
-      <div className="resume-section">
+      <div className="resume-section onscroll-reveal" data-navid={index}>
         <div>
           <ProcessBarsList
             processbars={processbars}
@@ -332,7 +358,7 @@ class Resume extends Component {
     return (
       <div
         className="resume-section onscroll-reveal projects-wrapper"
-        data-id={index}
+        data-navid={index}
       >
         <div>
           <Projects data={projects} visible={projectsVisible} />
@@ -351,25 +377,25 @@ class Resume extends Component {
       about,
       nav
     } = translations;
-    const { processbarVisible } = this.state;
+    const { processbarVisible, linksState } = this.state;
 
     return (
       <div>
         <Link to="/" onClick={ev => this.back(ev)}>
           <div
-            className="job-application--button-container button-right button-right--offset back-button"
+            className="job-application--button-container button-left button-left--offset "
             ref="back"
           >
             <Button text={translations.back} />
           </div>
         </Link>
-        <Nav links={nav} />
+        <Nav links={nav} linksState={linksState} />
         <div className="resume-container" ref="container">
           {this.renderSection(about, 0)}
           {this.renderSection(education, 1)}
           {this.renderSection(career, 2)}
-          {this.renderProcessbarsList(processbars, processbarVisible)}
-          {this.renderProjects(projects, 3)}
+          {this.renderProcessbarsList(processbars, processbarVisible, 3)}
+          {this.renderProjects(projects, 4)}
         </div>
       </div>
     );

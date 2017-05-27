@@ -8,11 +8,31 @@
     "more": "More",
     "resume": "Resume",
     "nav": [
-        "about me",
-        "education",
-        "career",
-        "skills",
-        "projects"
+        {
+            "id": 1,
+            "text": "about me",
+            "active": true
+        },
+        {
+            "id": 2,
+            "text": "education",
+            "active": false
+        },
+        {
+            "id": 3,
+            "text": "career",
+            "active": false
+        },
+        {
+            "id": 4,
+            "text": "skills",
+            "active": false
+        },
+        {
+            "id": 5,
+            "text": "projects",
+            "active": false
+        }
     ],
     "career": {
         "title": "Career",

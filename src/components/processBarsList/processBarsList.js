@@ -11,6 +11,14 @@ class ProcessBarsList extends Component {
     visibleArr: PropTypes.array.isRequired
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.visibleArr.includes(false)) {
+      return true;
+    }
+
+    return false;
+  }
+
   renderRows() {
     const { processbars, visibleArr } = this.props;
     if (visibleArr[0]) {
