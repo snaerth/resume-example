@@ -1,0 +1,44 @@
+nav {
+    position: fixed;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    max-width: 150px;
+}
+
+ul.nav {
+    list-style: none;
+    padding: 1.5em 2em;
+}
+
+.nav li {
+    display: block;
+    width: 100%;
+    margin: 0 0 2em;
+    padding: 0;
+    text-align: left;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #484848;
+    text-transform: uppercase;
+}
+
+.nav li:first-child {
+    padding-left: 0;
+}
+
+@media only screen and (max-width: 1500px) {
+    nav {
+        position: absolute;
+        right: 0;
+        max-width: 500px;
+    }
+    ul.nav {
+        display: inline-flex;
+        padding-right: 0;
+    }
+    .nav li {
+        padding: .25rem;
+    }
+}

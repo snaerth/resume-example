@@ -9,6 +9,7 @@ import ProcessBarsList from '../processBarsList';
 import Projects from '../projects';
 import Button from '../button';
 import Evenodd from '../evenodd';
+import Nav from '../nav';
 import * as actionCreators from '../../common/actions';
 import { withinViewport } from '../../common/utils';
 import './resume.css';
@@ -342,7 +343,14 @@ class Resume extends Component {
 
   render() {
     const { translations } = this.props;
-    const { processbars, career, education, projects, about } = translations;
+    const {
+      processbars,
+      career,
+      education,
+      projects,
+      about,
+      nav
+    } = translations;
     const { processbarVisible } = this.state;
 
     return (
@@ -355,6 +363,7 @@ class Resume extends Component {
             <Button text={translations.back} />
           </div>
         </Link>
+        <Nav links={nav} />
         <div className="resume-container" ref="container">
           {this.renderSection(about, 0)}
           {this.renderSection(education, 1)}

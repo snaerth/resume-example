@@ -38,7 +38,7 @@ class Evenodd extends Component {
       : elements;
     tl.staggerTo(
       elements,
-      0.5,
+      1,
       { y: '0%', opacity: 1, ease: Power2.easeOut },
       0.2
     );

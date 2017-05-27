@@ -42,7 +42,7 @@ class ImageBlurWrapper extends Component {
       setTimeout(() => {
         this.refs.canvas.classList.add('image-blur--image--hide');
         this.refs.image.classList.add('image-blur--image--show');
-      }, 600);
+      }, 1000);
     };
   }
 

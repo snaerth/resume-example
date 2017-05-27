@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    padding: 100px 0;
+    padding: 150px 0 100px;
 }
 
 h1.name.relative {
@@ -95,8 +95,9 @@ h1.name.relative span:last-child {
 }
 
 .back-button {
-    right: 0;
+    left: 0;
     position: absolute;
+    display: table;
 }
 
 .vertical-scroll-hider {
@@ -175,7 +176,7 @@ h1.name.relative span:last-child {
 
 @media only screen and (max-width: 992px) {
     .resume-container {
-        padding: 80px 0;
+        padding: 100px 0;
     }
     .resume-section {
         padding-left: 1em;
