@@ -28,7 +28,9 @@ class Processbar extends Component {
       const counterEl = this.refs['processcounter-' + i];
       const processbarEl = this.refs['processbar-' + i];
       const percentage = this.props.data[i].percentage;
-      const fullWidth = processbarEl.viewportElement.clientWidth;
+      const fullWidth =
+        processbarEl.viewportElement.clientWidth ||
+        processbarEl.parentNode.parentNode.clientWidth;
       const calcPercentageWidth = percentage / 100 * fullWidth;
       tl
         .to(
@@ -44,7 +46,7 @@ class Processbar extends Component {
           processbarEl,
           0.5,
           {
-            attr: {width: percentage + '%'},
+            attr: { width: percentage + '%' },
             ease: Power2.easeOut
           },
           '-=0.5'
@@ -122,7 +124,9 @@ class Processbar extends Component {
       const counterEl = this.refs['processcounter-' + i];
       const processbarEl = this.refs['processbar-' + i];
       const percentage = this.props.data[i].percentage;
-      const fullWidth = processbarEl.viewportElement.clientWidth;
+      const fullWidth =
+        processbarEl.viewportElement.clientWidth ||
+        processbarEl.parentNode.parentNode.clientWidth;
       const calcPercentageWidth = percentage / 100 * fullWidth;
       counters.push({ score: 0 });
 
@@ -166,7 +170,7 @@ class Processbar extends Component {
           processbarEl,
           1.5,
           {
-            attr: {width: percentage + '%'},
+            attr: { width: percentage + '%' },
             ease: Power2.easeOut
           },
           '-=1.5'
@@ -191,24 +195,26 @@ class Processbar extends Component {
             <span className="processbar-counter" ref={'processcounter-' + i}>
               <span>0</span><span>%</span>
             </span>
-            <svg
-              viewBox="0 0 622 20"
-              preserveAspectRatio="xMidYMid meet"
-              className="processbar-svg"
-              ref="svg"
-              height={this.props.height}
-              width="100%"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect height={this.props.height} fill="#CCCCCC" width="100%" />
-              <rect
+            <div>
+              <svg
+                viewBox="0 0 622 20"
+                preserveAspectRatio="xMidYMid meet"
+                className="processbar-svg"
+                ref="svg"
                 height={this.props.height}
-                fill="#FF92F6"
-                width="0"
-                ref={'processbar-' + i}
-              />
-            </svg>
+                width="100%"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect height={this.props.height} fill="#CCCCCC" width="100%" />
+                <rect
+                  height={this.props.height}
+                  fill="#FF92F6"
+                  width="0"
+                  ref={'processbar-' + i}
+                />
+              </svg>
+            </div>
           </div>
         </div>
       );

@@ -1,42 +1,55 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {initElementTilt} from '../../common/utils';
+import { initElementTilt, ifIE } from '../../common/utils';
 
 class CoverPhoto extends Component {
-    componentDidMount() {
-        setTimeout(initElementTilt, 2300, this.refs.image);
-    }
+  constructor(props) {
+    super(props);
 
-    componentWillUnmount() {
-        initElementTilt(this.refs.image, true);
+    this.state = {
+      ie: ifIE()
+    };
+  }
+  componentDidMount() {
+    if (!this.state.ie) {
+      setTimeout(initElementTilt, 2300, this.refs.image);
     }
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.common.showPage) {
-            initElementTilt(this.refs.image, true);
-        }
+  componentWillUnmount() {
+    if (!this.state.ie) {
+      initElementTilt(this.refs.image, true);
     }
+  }
 
-    render() {
-        const {src, alt, onClick, className} = this.props;
-
-        return (
-            <div style={{ backgroundImage: `url(${src})`} }
-                role="img"
-                aria-label={alt}
-                onClick={onClick}
-                className={className}
-                ref="image"/>
-        );
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.common.showPage && !this.state.ie) {
+      initElementTilt(this.refs.image, true);
     }
+  }
+
+  render() {
+    const { src, alt, onClick, className } = this.props;
+
+    return (
+      <div
+        style={{ backgroundImage: `url(${src})` }}
+        role="img"
+        aria-label={alt}
+        onClick={onClick}
+        className={className}
+        ref="image"
+      />
+    );
+  }
 }
 
 CoverPhoto.propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    onClick: PropTypes.func
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 /**
@@ -47,7 +60,7 @@ CoverPhoto.propTypes = {
  * @author Snær Seljan Þóroddsson
  */
 function mapStateToProps(state) {
-  return {common: state.common};
+  return { common: state.common };
 }
 
 export default connect(mapStateToProps, null)(CoverPhoto);

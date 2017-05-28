@@ -310,3 +310,9 @@ function debounceResizeHandler() {
     this.win = { width: window.innerWidth, height: window.innerHeight };
   }, 10);
 }
+
+export function ifIE() {
+  return document.documentMode || /Edge/.test(navigator.userAgent)
+    ? true
+    : false;
+}
