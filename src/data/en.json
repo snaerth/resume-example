@@ -7,6 +7,12 @@
     "back": "Back",
     "more": "More",
     "resume": "Resume",
+    "contact": {
+        "title": "Contact me",
+        "text": "If you'd like to get in touch, you can send me an email directly at snaerth@gmail.com or contact me on",
+        "email": "snaerth@gmail.com",
+        "buttonText": "Send me an email"
+    },
     "nav": [
         {
             "id": 1,

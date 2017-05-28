@@ -20,7 +20,7 @@ class ProcessBarsList extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.componentRenderCount <= nextProps.visibleArr.length + 1) {
+    if (nextState.componentRenderCount <= nextProps.visibleArr.length + 2) {
       return true;
     }
 
@@ -30,7 +30,7 @@ class ProcessBarsList extends Component {
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.visibleArr.includes(true) &&
-      this.state.componentRenderCount <= nextProps.visibleArr.length + 1
+      this.state.componentRenderCount <= nextProps.visibleArr.length + 2
     ) {
       let cnt = this.state.componentRenderCount;
       cnt++;

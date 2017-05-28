@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { TimelineLite, Power2 } from 'gsap';
-import { scrollIt } from '../../common/scrollHelper';
 import './nav.css';
 
 class Nav extends Component {
@@ -38,12 +37,8 @@ class Nav extends Component {
   }
 
   onClickHandler(id) {
-    scrollIt(
-      document.querySelector('div[data-navid="' + id + '"]'),
-      0,
-      150,
-      'easeOutQuad'
-    );
+    const element = document.querySelector('div[data-navid="' + id + '"]');
+    window.scroll(0, element.offsetTop - 100);
   }
 
   componentWillReceiveProps(nextProps) {

@@ -383,7 +383,11 @@ class Resume extends Component {
       <div>
         <Link to="/" onClick={ev => this.back(ev)}>
           <div
-            className="job-application--button-container button-left button-left--offset "
+            className={classnames(
+              'job-application--button-container',
+              'button-left',
+              'button-left--offset'
+            )}
             ref="back"
           >
             <Button text={translations.back} />
