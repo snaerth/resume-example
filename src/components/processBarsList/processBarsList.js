@@ -11,12 +11,33 @@ class ProcessBarsList extends Component {
     visibleArr: PropTypes.array.isRequired
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      componentRenderCount: 0
+    };
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.visibleArr.includes(false)) {
+    if (nextState.componentRenderCount <= nextProps.visibleArr.length + 1) {
       return true;
     }
 
     return false;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.visibleArr.includes(true) &&
+      this.state.componentRenderCount <= nextProps.visibleArr.length + 1
+    ) {
+      let cnt = this.state.componentRenderCount;
+      cnt++;
+      this.setState((prevState, props) => {
+        return { componentRenderCount: cnt };
+      });
+    }
   }
 
   renderRows() {
