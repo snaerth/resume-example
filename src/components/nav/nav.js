@@ -1,38 +1,55 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { TweenMax, Power3 } from 'gsap';
-import ScrollToPlugin from 'gsap/ScrollToPlugin'; // eslint-disable-line
+import { connect } from 'react-redux';
+import { TimelineLite, Power2 } from 'gsap';
+import { scrollIt } from '../../common/scrollHelper';
 import './nav.css';
 
 class Nav extends Component {
+  static propTypes = {
+    linksState: PropTypes.array.isRequired,
+    links: PropTypes.array.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.onClickHandler = this.onClickHandler.bind(this);
+
+    this.state = {
+      tl: new TimelineLite()
+    };
+  }
+
+  componentDidMount() {
+    const winW = window.innerWidth;
+    const { ul } = this.refs;
+    const { tl } = this.state;
+    let animateOptions = { x: '0%', opacity: 1, ease: Power2.easeOut };
+    if (winW <= 1500) {
+      animateOptions = { y: '0%', opacity: 1, ease: Power2.easeOut };
+    }
+
+    tl.staggerTo(ul.children, 0.7, animateOptions, 0.1).pause();
+
+    setTimeout(() => {
+      tl.play();
+    }, 1000);
   }
 
   onClickHandler(id) {
-    const { linksState } = this.props;
-    let currentSection = 0;
+    scrollIt(
+      document.querySelector('div[data-navid="' + id + '"]'),
+      0,
+      150,
+      'easeOutQuad'
+    );
+  }
 
-    for (let i = 0; i < linksState.length; i++) {
-      if (linksState[i]) {
-        currentSection = i;
-        break;
-      }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.common.back === true) {
+      this.state.tl.timeScale(4).reverse();
     }
-
-    let timeSec = 1;
-    let diff = Math.abs(currentSection - id);
-    timeSec += diff * 0.4;
-
-    TweenMax.to(window, timeSec, {
-      scrollTo: {
-        y: 'div[data-navid="' + id + '"]',
-        autoKill: true,
-        offsetY: 150
-      },
-      ease: Power3.easeOut
-    });
   }
 
   render() {
@@ -40,12 +57,16 @@ class Nav extends Component {
 
     return (
       <nav>
-        <ul className="nav">
+        <ul className="nav" ref="ul">
           {links.map((link, i) => {
             const active = linksState[i] ? 'active' : '';
 
             return (
-              <li key={link.id} onClick={() => this.onClickHandler(i)}>
+              <li
+                key={link.id}
+                className={active}
+                onClick={() => this.onClickHandler(i)}
+              >
                 {link.text}
                 <svg className={classnames('icon-line', active)}>
                   <use
@@ -62,4 +83,15 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+/**
+ * Maps state to components props
+ *
+ * @param {Object} state - Application state
+ * @returns {Object}
+ * @author Snær Seljan Þóroddsson
+ */
+function mapStateToProps(state) {
+  return { common: state.common };
+}
+
+export default connect(mapStateToProps, null)(Nav);

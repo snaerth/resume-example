@@ -59,7 +59,7 @@ class Resume extends Component {
     withinViewport(null, 'onscroll-reveal', 'inViewport', (isVisible, el) => {
       if (isVisible) {
         if (el.classList.contains('resume-section')) {
-          const id = el.attributes['data-navid'].value;
+          const id = parseInt(el.attributes['data-navid'].value, 10);
 
           if (currentSection !== id) {
             currentSection = id;
