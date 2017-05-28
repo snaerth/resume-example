@@ -3,7 +3,7 @@ nav {
     right: 0;
     z-index: 3;
     width: 100%;
-    max-width: 150px;
+    max-width: 158px;
 }
 
 ul.nav {
@@ -93,7 +93,7 @@ li:nth-child(5) .icon-line {
         padding: 0;
         text-align: right;
         float: right;
-        min-width: 510px;
+        min-width: 530px;
     }
     .nav li {
         padding: .25rem 1.2em;
