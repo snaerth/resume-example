@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TimelineLite, Power2 } from 'gsap';
+import { TimelineLite, Power2, Elastic } from 'gsap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -19,12 +19,19 @@ class ContactComponent extends Component {
   }
 
   componentDidMount() {
-    const { back, title, text } = this.refs;
+    const { back, title, text, button } = this.refs;
     const { tl } = this.state;
+    tl.set(button, { scale: 0, autoAlpha: 0 });
     this.animateTitle(title, tl);
     tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2).pause();
     tl
-      .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.4')
+      .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.8')
+      .to(
+        button,
+        1.5,
+        { scale: 1, autoAlpha: 1, ease: Elastic.easeOut },
+        '-=0.6'
+      )
       .play();
   }
 
@@ -86,21 +93,25 @@ class ContactComponent extends Component {
               <h1 className="name visible relative text-center no-padding">
                 <span ref="title">{title}</span>
               </h1>
-              <div
-                className="resume-section--row first max-768 no-padding"
-                ref="text"
-              >
-                <div className="resume-row">
+              <div className="resume-section--row max-768 no-padding">
+                <div className="resume-row hidden-element" ref="text">
                   <p className="text-section text-center">
                     {text}
                   </p>
                 </div>
-                <div className="resume-row flex-center no-padding">
+                <div className="resume-row flex-center no-padding" ref="button">
                   <Button
                     text={buttonText}
                     onClick={() => this.emailHandler(sendEmail)}
-                    className="max-width-300"
-                  />
+                    className="max-width-300 svg"
+                  >
+                    <svg className="icon-paperplane">
+                      <use
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        xlinkHref="#icon-paperplane"
+                      />
+                    </svg>
+                  </Button>
                 </div>
               </div>
             </div>

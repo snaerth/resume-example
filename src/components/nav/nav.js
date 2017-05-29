@@ -38,7 +38,7 @@ class Nav extends Component {
 
   onClickHandler(id) {
     const element = document.querySelector('div[data-navid="' + id + '"]');
-    window.scroll(0, element.offsetTop - 100);
+    window.scroll(0, id !== 0 ? element.offsetTop - 50 : 0);
   }
 
   componentWillReceiveProps(nextProps) {

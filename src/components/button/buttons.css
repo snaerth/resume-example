@@ -11,6 +11,22 @@
   cursor: pointer;
 }
 
+.button span {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+}
+
+.button span svg {
+  height: 32px;
+  width: 32px;
+  fill: #fff;
+}
+
+.button.svg {
+  padding-right: 65px;
+}
+
 .button.noMaxWidth {
   max-width: initial;
 }

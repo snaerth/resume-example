@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './buttons.css';
 
-const Button = ({ text, onClick, className }) => {
+const Button = ({ text, onClick, className, children }) => {
   return (
     <button
       className={classnames(
@@ -15,7 +15,7 @@ const Button = ({ text, onClick, className }) => {
       )}
       onClick={onClick}
     >
-      {text}
+      {text}{children ? <span>{children}</span> : null}
     </button>
   );
 };

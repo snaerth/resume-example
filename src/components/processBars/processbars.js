@@ -27,30 +27,33 @@ class Processbar extends Component {
     for (let i = 0, len = this.props.data.length; i < len; i++) {
       const counterEl = this.refs['processcounter-' + i];
       const processbarEl = this.refs['processbar-' + i];
-      const percentage = this.props.data[i].percentage;
-      const fullWidth =
-        processbarEl.viewportElement.clientWidth ||
-        processbarEl.parentNode.parentNode.clientWidth;
-      const calcPercentageWidth = percentage / 100 * fullWidth;
-      tl
-        .to(
-          counterEl,
-          0.3,
-          {
-            x: calcPercentageWidth,
-            ease: Power2.easeOut
-          },
-          '-=0.3'
-        )
-        .to(
-          processbarEl,
-          0.5,
-          {
-            attr: { width: percentage + '%' },
-            ease: Power2.easeOut
-          },
-          '-=0.5'
-        );
+
+      if (processbarEl) {
+        const percentage = this.props.data[i].percentage;
+        const fullWidth =
+          processbarEl.viewportElement.clientWidth ||
+          processbarEl.parentNode.parentNode.clientWidth;
+        const calcPercentageWidth = percentage / 100 * fullWidth;
+        tl
+          .to(
+            counterEl,
+            0.3,
+            {
+              x: calcPercentageWidth,
+              ease: Power2.easeOut
+            },
+            '-=0.3'
+          )
+          .to(
+            processbarEl,
+            0.5,
+            {
+              attr: { width: percentage + '%' },
+              ease: Power2.easeOut
+            },
+            '-=0.5'
+          );
+      }
     }
   }
 
