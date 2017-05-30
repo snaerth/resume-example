@@ -25,7 +25,7 @@ h1.name.relative span:last-child {
 }
 
 .resume-section:nth-of-type(even) {
-  background: #FFFFFF;
+  background: #f9f7f6;
 }
 
 .resume-section:not(:first-child) {

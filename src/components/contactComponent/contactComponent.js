@@ -32,7 +32,7 @@ class ContactComponent extends Component {
     for (let i = 0; i < links.length; i++) {
       setTimeout(() => {
         links[i].classList.add('reveal-text');
-      }, (i + 1) * 400);
+      }, (i + 1) * 800);
     }
   }
 
@@ -82,7 +82,7 @@ class ContactComponent extends Component {
 
     setTimeout(() => {
       window.location.href = 'mailto:' + email;
-    }, 1200);
+    }, 2000);
     return false;
   }
 
