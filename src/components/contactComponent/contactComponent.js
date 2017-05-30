@@ -27,6 +27,13 @@ class ContactComponent extends Component {
       .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.8')
       .to(button, 0.4, { scale: 1, opacity: 1, ease: Power2.easeOut }, '-=0.6')
       .play();
+
+    const links = text.children[0].children;
+    for (let i = 0; i < links.length; i++) {
+      setTimeout(() => {
+        links[i].classList.add('reveal-text');
+      }, (i + 1) * 400);
+    }
   }
 
   /**
@@ -103,7 +110,7 @@ class ContactComponent extends Component {
               <h1 className="name visible relative text-center no-padding">
                 <span ref="title">{title}</span>
               </h1>
-              <div className="resume-section--row max-768 no-padding">
+              <div className="resume-section--row max-768">
                 <div className="resume-row hidden-element" ref="text">
                   <p
                     className="text-section text-center"
@@ -111,7 +118,7 @@ class ContactComponent extends Component {
                   />
                 </div>
                 <div
-                  className="resume-row flex-center no-padding email-button-wrapper"
+                  className="resume-row flex-center email-button-wrapper"
                   ref="button"
                 >
                   <Button
