@@ -15,7 +15,7 @@ const Button = ({ text, onClick, className, children }) => {
       )}
       onClick={onClick}
     >
-      {text}{children ? <span>{children}</span> : null}
+      {text}{children ? children : null}
     </button>
   );
 };

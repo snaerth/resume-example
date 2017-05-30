@@ -148,3 +148,7 @@
     padding: 1em 2em;
   }
 }
+
+.pr-60 {
+  padding-right: 60px;
+}

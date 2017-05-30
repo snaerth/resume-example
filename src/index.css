@@ -290,3 +290,68 @@ p {
   max-width: 300px;
   margin: 0 auto;
 }
+
+.reveal-text,
+.reveal-text:after {
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-duration: 800ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.reveal-text {
+  position: relative;
+  display: inline-block;
+  color: #FFF;
+}
+
+.reveal-text:hover,
+.reveal-text:hover:after {
+  animation-name: reveal-text;
+}
+
+.reveal-text:after {
+  content: "";
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: pink;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+@keyframes reveal-text {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes revealer-text {
+  0%,
+  50% {
+    transform-origin: 0 50%;
+  }
+
+  100%,
+  60% {
+    transform-origin: 100% 50%;
+  }
+
+  50% {
+    transform: scaleX(1);
+  }
+
+  60% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}

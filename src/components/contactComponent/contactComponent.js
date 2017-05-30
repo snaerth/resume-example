@@ -21,17 +21,11 @@ class ContactComponent extends Component {
   componentDidMount() {
     const { back, title, text, button } = this.refs;
     const { tl } = this.state;
-    tl.set(button, { scale: 0, autoAlpha: 0 });
     this.animateTitle(title, tl);
     tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2).pause();
     tl
       .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.8')
-      .to(
-        button,
-        1.5,
-        { scale: 1, autoAlpha: 1, ease: Elastic.easeOut },
-        '-=0.6'
-      )
+      .to(button, 0.4, { scale: 1, opacity: 1, ease: Power2.easeOut }, '-=0.6')
       .play();
   }
 
@@ -61,17 +55,33 @@ class ContactComponent extends Component {
   }
 
   emailHandler(email) {
-    window.location.href = 'mailto:' + email;
+    const tl = new TimelineLite();
+    const { svg } = this.refs;
+    tl
+      .to(svg, 1, {
+        x: '-15px',
+        y: '-15px',
+        ease: Elastic.easeIn
+      })
+      .to(svg, 1, {
+        x: '1000px',
+        y: '-1000px',
+        ease: Power2.easeOut
+      })
+      .set(svg, {
+        x: 0,
+        y: 0
+      });
+
+    setTimeout(() => {
+      window.location.href = 'mailto:' + email;
+    }, 1200);
     return false;
   }
 
   render() {
     const { translations } = this.props;
-    const {
-      sendEmail,
-      back,
-      contact: { text, buttonText, title }
-    } = translations;
+    const { email, back, contact: { text, buttonText, title } } = translations;
 
     return (
       <div>
@@ -95,23 +105,30 @@ class ContactComponent extends Component {
               </h1>
               <div className="resume-section--row max-768 no-padding">
                 <div className="resume-row hidden-element" ref="text">
-                  <p className="text-section text-center">
-                    {text}
-                  </p>
+                  <p
+                    className="text-section text-center"
+                    dangerouslySetInnerHTML={{ __html: text }}
+                  />
                 </div>
-                <div className="resume-row flex-center no-padding" ref="button">
+                <div
+                  className="resume-row flex-center no-padding email-button-wrapper"
+                  ref="button"
+                >
                   <Button
                     text={buttonText}
-                    onClick={() => this.emailHandler(sendEmail)}
-                    className="max-width-300 svg"
+                    onClick={() => this.emailHandler(email)}
+                    className="max-width-300 pr-60"
                   >
-                    <svg className="icon-paperplane">
-                      <use
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        xlinkHref="#icon-paperplane"
-                      />
-                    </svg>
+                    <span className="plane-container" ref="svg">
+                      <svg className="icon-paperplane">
+                        <use
+                          xmlnsXlink="http://www.w3.org/1999/xlink"
+                          xlinkHref="#icon-paperplane"
+                        />
+                      </svg>
+                    </span>
                   </Button>
+
                 </div>
               </div>
             </div>
