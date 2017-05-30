@@ -310,6 +310,8 @@ p {
     animation-name: reveal-text;
     font-weight: bold;
     padding: 0 5px;
+    border-bottom: 1px solid rgba(52, 73, 94, 0.4);
+    color: #404d5b;
 }
 
 .reveal-text:after {
