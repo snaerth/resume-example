@@ -38,11 +38,6 @@
             "id": 5,
             "text": "projects",
             "active": false
-        },
-        {
-            "id": 6,
-            "text": "other",
-            "active": false
         }
     ],
     "career": {

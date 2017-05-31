@@ -137,7 +137,7 @@
     },
     "about": {
         "title": "about me",
-        "text": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla. Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla. Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla.",
+        "text": "Ég heiti Snær Seljan Þóroddsson. Ég er vef",
         "images": [
             {
                 "id": 7,
@@ -306,9 +306,5 @@
             "thumbnail": "thumbnails/rsz_solla_4.jpg",
             "text": "Dolor sit amet, consectetur adipiscing."
         }
-    ],
-    "other": {
-        "title": "Annað",
-        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    }
+    ]
 }
