@@ -164,7 +164,6 @@ class Projects extends Component {
         <div className="projects-list-container" ref="container">
           {visible ? this.renderSection(data) : null}
         </div>
-        <WaveSvg />
       </div>
     );
   }
