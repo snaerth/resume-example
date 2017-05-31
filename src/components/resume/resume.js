@@ -375,7 +375,8 @@ class Resume extends Component {
       education,
       projects,
       about,
-      nav
+      nav,
+      other
     } = translations;
     const { processbarVisible, linksState } = this.state;
 
@@ -400,6 +401,21 @@ class Resume extends Component {
           {this.renderSection(career, 2)}
           {this.renderProcessbarsList(processbars, processbarVisible, 3)}
           {this.renderProjects(projects, 4)}
+          <div
+            className={classnames('resume-section onscroll-reveal')}
+            data-navid={5}
+            key={5}
+            ref={'section' + 5}
+          >
+            <h1 className="name visible relative">
+              <span>{other.title}</span>
+            </h1>
+            <div className="resume-section--row">
+                <div className="resume-row">
+                  <p className="max-1000 text-section">{other.text}</p>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     );
