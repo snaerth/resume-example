@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TimelineLite, Elastic, Power2 } from 'gsap';
 import classnames from 'classnames';
-import WaveSvg from '../waveSvg';
 import ImageBlurWrapper from '../imageBlurWrapper';
 import './projects.css';
 
