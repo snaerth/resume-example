@@ -8,7 +8,7 @@
     "more": "Meira",
     "resume": "Ferilskrá",
     "contact": {
-        "title": "Hafðu samband",
+        "title": "Vertu í bandi",
         "text": "Ef þú vilt hafa samband þá getur þú sent mér póst beint á <a href='mailto:snaerth@gmail.com' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> eða sent mér skilaboð á <a href='https://www.facebook.com/snaerth' title='Facebook'>Facebook</a>.",
         "email": "snaerth@gmail.com",
         "buttonText": "Sendu mér póst"
@@ -79,7 +79,7 @@
                 "id": 1,
                 "url": "me1.jpg",
                 "thumbnail": "thumbnails/me1.jpg",
-                "text": "Klæðskerabærinn Hoi An í Hanoi"
+                "text": "Í klæðskerabænum Hoi An í Hanoi"
             },
             {
                 "id": 2,
@@ -131,13 +131,13 @@
                 "id": 6,
                 "url": "me6.jpg",
                 "thumbnail": "thumbnails/me6.jpg",
-                "text": "Ég er kaffi perri. Hér er ég að drekka Víetnamskt Weasel kaffi í Hanoi 2016"
+                "text": "Ég er kaffiperri. Hér er ég að drekka Víetnamskt Weasel kaffi í Hanoi 2016"
             }
         ]
     },
     "about": {
         "title": "um mig",
-        "text": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla. Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla. Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir. Á vorönn 2014 í afleysingarkennslu á unglingastigi í Seljaskóla.",
+        "text": "Hæ ég heiti Snær Seljan Þóroddsson og ég fæddur 1983 á ári svínsins. Ég er meðal annars vefforritari, kennari, glímu- og júdómaður ef eitthvað á að nefna. Ég er uppalin á Reyðarfirði en hef búið í Reykjavík síðan 2004. Ef nefna á einhver áhugamál þá ber þar helst forritun, íþróttir, kvikmyndir, útivera, ferðalög, kaffi, bjór og að sjálfsögðu kærastan. Mér þykir fátt skemmtilegra en að grúska í node.js og React.js þegar ég á dauðan tíma.",
         "images": [
             {
                 "id": 7,
@@ -168,6 +168,7 @@
     "processbars": [
         {
             "title": "forritunarmál",
+            "mainTitle": "hæfileikar",
             "items": [
                 {
                     "name": "Javascript",
@@ -186,7 +187,7 @@
                 },
                 {
                     "name": "C#",
-                    "percentage": 70,
+                    "percentage": 73,
                     "description": "Lýsing á css skills"
                 },
                 {
@@ -202,10 +203,10 @@
             ]
         },
         {
-            "title": "javascript frameworks",
+            "title": "javascript",
             "items": [
                 {
-                    "name": "React",
+                    "name": "React og Redux",
                     "percentage": 90,
                     "description": "Lýsing á javascript skills"
                 },
@@ -215,8 +216,13 @@
                     "description": "Lýsing á html skills"
                 },
                 {
+                    "name": "Node.js og Express",
+                    "percentage": 80,
+                    "description": "Lýsing á css skills"
+                },
+                {
                     "name": "Angular 1.x",
-                    "percentage": 95,
+                    "percentage": 90,
                     "description": "Lýsing á css skills"
                 }
             ]
@@ -224,7 +230,8 @@
     ],
     "projects": [
         {
-            "title": "Hobby projects",
+            "title": "Leikverkefni",
+            "mainTitle": "verkefni",
             "projects": [
                 {
                     "id": 11,
@@ -247,8 +254,8 @@
             ]
         },
         {
-            "title": "Work projects",
-            "text": "Ég hef unnið að mörgum fjölbreyttum verkefnum meðan I have worked on a lot of projects during my stay at Advania. Icelandic movie API is a free REST service for movies showing in Icelandic theaters. I have worked on a lot of projects during my stay at Advania. Icelandic movie API is a free REST service for movies showing in Icelandic theaters."
+            "title": "Vinnu verkefni",
+            "text": "Ég hef unnið að mörgum fjölbreyttum verkefnum síðan ég hóf störf hjá Advania. Helstu verkefni sem ég hef unnið að eru tengd framendaforritun en ég hef einnig sinnt mörgum verkefnum tengdum bakendaforritun. Minn styrkur liggur þó í framendanum og þá sérstaklega að vinna með React, Angular eða eitthvað tengt Javascript. Fyrirtæki sem ég hef unnið verkefni fyrir eru t.d. Advania, Íslandsbanki, Össur, Borgun, Tollurinn, Íbúðalánasjóður, Fastus o.fl. Endilega hafðu samband <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> og ég skal segja þér í hverju ég hef verið að vinna í."
         }
     ],
     "images": [

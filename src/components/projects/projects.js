@@ -145,7 +145,12 @@ class Projects extends Component {
           </h2>
           <div className="image-blur--container">
             {i === 0 ? this.renderHobbyProjects(projects) : null}
-            {i === 1 ? <p className="work-text">{text}</p> : null}
+            {i === 1
+              ? <p
+                  className="work-text"
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
+              : null}
           </div>
         </div>
       );
@@ -158,7 +163,7 @@ class Projects extends Component {
     return (
       <div>
         <h1 className="name visible relative name-project" ref="title">
-          <span>projects</span>
+          <span>{data[0].mainTitle}</span>
         </h1>
         <div className="projects-list-container" ref="container">
           {visible ? this.renderSection(data) : null}

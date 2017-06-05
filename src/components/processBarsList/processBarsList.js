@@ -8,7 +8,8 @@ import './processBarsList.css';
 class ProcessBarsList extends Component {
   static propTypes = {
     processbars: PropTypes.array.isRequired,
-    visibleArr: PropTypes.array.isRequired
+    visibleArr: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired
   };
 
   constructor(props) {
@@ -89,10 +90,12 @@ class ProcessBarsList extends Component {
   }
 
   render() {
+    const { title } = this.props;
+
     return (
       <div>
         <h1 className="name visible relative" ref="title">
-          <span>skills</span>
+          <span>{title}</span>
         </h1>
         <div className="processbars-list-container">{this.renderRows()}</div>
       </div>

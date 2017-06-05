@@ -168,6 +168,7 @@
     "processbars": [
         {
             "title": "programming languages",
+            "mainTitle": "skills",
             "items": [
                 {
                     "name": "Javascript",
@@ -205,7 +206,7 @@
             "title": "javascript frameworks",
             "items": [
                 {
-                    "name": "React",
+                    "name": "React and Redux",
                     "percentage": 80,
                     "description": "Lýsing á javascript skills"
                 },
@@ -213,6 +214,11 @@
                     "name": "React Native",
                     "percentage": 80,
                     "description": "Lýsing á html skills"
+                },
+                {
+                    "name": "Node.js and Express",
+                    "percentage": 80,
+                    "description": "Lýsing á css skills"
                 },
                 {
                     "name": "Angular 1.x",
@@ -225,6 +231,7 @@
     "projects": [
         {
             "title": "Hobby projects",
+            "mainTitle": "projects",
             "projects": [
                 {
                     "id": 11,

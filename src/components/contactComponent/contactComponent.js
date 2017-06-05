@@ -135,7 +135,6 @@ class ContactComponent extends Component {
                       </svg>
                     </span>
                   </Button>
-
                 </div>
               </div>
             </div>

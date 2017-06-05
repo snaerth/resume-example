@@ -339,13 +339,14 @@ class Resume extends Component {
     this.animateSections(newRows);
   }
 
-  renderProcessbarsList(processbars, processbarVisible, index) {
+  renderProcessbarsList(processbars, processbarVisible, index, title) {
     return (
       <div className="resume-section onscroll-reveal" data-navid={index}>
         <div>
           <ProcessBarsList
             processbars={processbars}
             visibleArr={processbarVisible}
+            title={processbars[0].mainTitle}
           />
         </div>
         <WaveSvg />
