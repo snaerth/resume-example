@@ -12,7 +12,7 @@ export function setLanguage(lang) {
   return {
     type: SET_LANGUAGE,
     payload: {
-      translations: lang !== 'is' ? is : en,
+      translations: lang === 'is' ? is : en,
       lang: lang || 'en'
     }
   };
