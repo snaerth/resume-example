@@ -11,7 +11,7 @@
         "title": "Vertu í bandi",
         "text": "Ef þú vilt hafa samband þá getur þú sent mér póst beint á <a href='mailto:snaerth@gmail.com' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> eða sent mér skilaboð á <a href='https://www.facebook.com/snaerth' title='Facebook'>Facebook</a>.",
         "email": "snaerth@gmail.com",
-        "buttonText": "Sendu mér póst"
+        "buttonText": "Senda mér póst"
     },
     "nav": [
         {
@@ -31,7 +31,7 @@
         },
         {
             "id": 4,
-            "text": "hæfileikar",
+            "text": "kunnátta",
             "active": false
         },
         {
@@ -46,7 +46,7 @@
             {
                 "title": "Advania",
                 "secondTitle": "2014-2017",
-                "content": "Hjá Advania hef ég sinnt mörgum og fjölbreyttum verkefnum tengt vefforritun síðastliðinn 3 ár. Ég hef góða reynslu bæði í fram-og bakendaforritun og hef ég þróað og forritað stóra vefi og vefþjónustur (REST og SOAP). Helsti styrkleiki minn er í Javascript og CSS, n.t.t. að vinna bakenda í Node.js og skrifa framendan í React með Redux og stílað í SASS, LESS, CSS Modules eða bara gamla góða CSS."
+                "content": "Hjá Advania hef ég sinnt mörgum og fjölbreyttum verkefnum sem vefforritari síðastliðinn 3 ár. Ég hef góða reynslu bæði í fram- og bakendaforritun en ég hef þróað og forritað stóra vefi og vefþjónustur (REST og SOAP). Helsti styrkleiki minn liggur í Javascript og CSS, nánar tiltekið í Node.js, React með Redux, SASS, LESS og CSS Modules."
             },
             {
                 "title": "Launafl ehf.",
@@ -56,12 +56,12 @@
             {
                 "title": "Seljaskóli",
                 "secondTitle": "2009-2012",
-                "content": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, þar má nefna íþróttafræði, glímu, fótbolta og almennar íþróttir."
+                "content": "Umsjónakennari á miðstigi í Seljaskóla. Einnig kenndi ég valfög á unglingastigi, meðal annars íþróttafræði, glímu, fótbolta og almennar íþróttir."
             },
             {
                 "title": "Ungmennafélagið Valur",
                 "secondTitle": "2010-2012",
-                "content": "Umsjónamaður leikjanámskeiða á sumrin hjá Ungmenafélaginu Val á  Reyðarfirði."
+                "content": "Umsjónamaður leikjanámskeiða á sumrin hjá Ungmennafélaginu Val á Reyðarfirði."
             },
             {
                 "title": "Ármann",
@@ -71,7 +71,7 @@
             {
                 "title": "Japan",
                 "secondTitle": "2004-2005 ",
-                "content": "Tók svarta beltið og lagði stund á júdó í Matsuyama í Japan í fimm mánuði ásamt því að kenna grunn- og framhaldsskólanemum ensku."
+                "content": "Lauk svarta beltinu og lagði stund á júdó í Matsuyama, Japan í fimm mánuði ásamt því að kenna grunn- og framhaldsskólanemum ensku."
             }
         ],
         "images": [
@@ -79,18 +79,18 @@
                 "id": 1,
                 "url": "me1.jpg",
                 "thumbnail": "thumbnails/me1.jpg",
-                "text": "Í klæðskerabænum Hoi An í Hanoi"
+                "text": "Hanoi, Vietnam"
             },
             {
                 "id": 2,
                 "url": "me2.jpg",
                 "thumbnail": "thumbnails/me2.jpg",
-                "text": "Kaminarimon í Tokyo"
+                "text": "Kaminarimon, Tokyo"
             }
         ]
     },
     "education": {
-        "title": "Education",
+        "title": "menntun",
         "rows": [
             {
                 "title": "Háskóli Íslands",
@@ -113,62 +113,62 @@
                 "id": 3,
                 "url": "me_and_solla3.jpg",
                 "thumbnail": "thumbnails/me_and_solla3.jpg",
-                "text": "Solla passar alltaf vel upp á mig"
+                "text": "Þorrablót á Reyðarfirði"
             },
             {
                 "id": 4,
                 "url": "me4.jpg",
                 "thumbnail": "thumbnails/me4.jpg",
-                "text": "Sólsetur í Luang Prabang í Laos"
+                "text": "Luang Prabang, Laos"
             },
             {
                 "id": 5,
                 "url": "me5.jpg",
                 "thumbnail": "thumbnails/me5.jpg",
-                "text": "Endurkynni við gamla Júdó meistarann minn herra Bunji sensei í Matsuyama 2016"
+                "text": "Endurkynni við Júdó meistarann minn herra Bunji sensei í Matsuyama, Japan"
             },
             {
                 "id": 6,
                 "url": "me6.jpg",
                 "thumbnail": "thumbnails/me6.jpg",
-                "text": "Ég er kaffiperri. Hér er ég að drekka Víetnamskt Weasel kaffi í Hanoi 2016"
+                "text": "Góður bolli af víetnömsku kaffi í Hanoi, Vietnam"
             }
         ]
     },
     "about": {
         "title": "um mig",
-        "text": "Hæ ég heiti Snær Seljan Þóroddsson og ég fæddur 1983 á ári svínsins. Ég er meðal annars vefforritari, kennari, glímu- og júdómaður ef eitthvað á að nefna. Ég er uppalin á Reyðarfirði en hef búið í Reykjavík síðan 2004. Ef nefna á einhver áhugamál þá ber þar helst forritun, íþróttir, kvikmyndir, útivera, ferðalög, kaffi, bjór og að sjálfsögðu kærastan. Mér þykir fátt skemmtilegra en að grúska í node.js og React.js þegar ég á dauðan tíma.",
+        "text": "Ég heiti Snær Seljan Þóroddsson og er fæddur 1983. Ég er vefforritari, kennari, glímu- og júdómaður svo fátt eitt sé nefnt. Ég er uppalinn á Reyðarfirði en hef búið í Reykjavík síðan 2004. Af áhugamálum ber helst að nefna forritun auðvitað, íþróttir og hreyfing, kvikmyndir, útivera, ferðalög, kaffi og bjór. Mér þykir fátt skemmtilegra en að grúska í Node.js og React.js þegar tími gefst.",
         "images": [
             {
                 "id": 7,
                 "url": "me8.jpg",
                 "thumbnail": "thumbnails/me8.jpg",
-                "text": "Á Þingvallavatni"
+                "text": "Þingvallavatn Iceland"
             },
             {
                 "id": 8,
                 "url": "me_and_solla4.jpg",
                 "thumbnail": "thumbnails/me_and_solla4.jpg",
-                "text": "Ég og Solla í Kyoto í Japan"
+                "text": "Kyoto, Japan"
             },
             {
                 "id": 9,
                 "url": "me7.jpg",
                 "thumbnail": "thumbnails/me7.jpg",
-                "text": "Ég elska bjór og þá sérstaklega India pale ale (IPA)"
+                "text": "Bjórunnandi"
             },
             {
                 "id": 10,
                 "url": "solla_3.jpg",
                 "thumbnail": "thumbnails/solla_3.jpg",
-                "text": "Betri helminguirnn hún Sólveig"
+                "text": "Betri helmingurinn"
             }
         ]
     },
     "processbars": [
         {
             "title": "forritunarmál",
-            "mainTitle": "hæfileikar",
+            "mainTitle": "kunnátta",
             "items": [
                 {
                     "name": "Javascript",
@@ -230,7 +230,7 @@
     ],
     "projects": [
         {
-            "title": "Leikverkefni",
+            "title": "tómstundagaman",
             "mainTitle": "verkefni",
             "projects": [
                 {
@@ -238,7 +238,7 @@
                     "image": "biomynd_is.PNG",
                     "thumbnail": "thumbnails/biomynd_is.PNG",
                     "url": "http://www.biomynd.is",
-                    "text": "Allt það sem þú vilt vita um bíómyndir í sýningu sem og væntanlegar í kvikmyndhúsum landsins.",
+                    "text": "Allt það sem þú vilt vita um bíómyndir í sýningu sem og væntanlegar í kvikmyndhús landsins.",
                     "title": "biomynd.is",
                     "titleText": "Allar myndir í bíó á einum stað"
                 },
@@ -254,8 +254,8 @@
             ]
         },
         {
-            "title": "Vinnu verkefni",
-            "text": "Ég hef unnið að mörgum fjölbreyttum verkefnum síðan ég hóf störf hjá Advania. Helstu verkefni sem ég hef unnið að eru tengd framendaforritun en ég hef einnig sinnt mörgum verkefnum tengdum bakendaforritun. Minn styrkur liggur þó í framendanum og þá sérstaklega að vinna með React, Angular eða eitthvað tengt Javascript. Fyrirtæki sem ég hef unnið verkefni fyrir eru t.d. Advania, Íslandsbanki, Össur, Borgun, Tollurinn, Íbúðalánasjóður, Fastus o.fl. Endilega hafðu samband <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> og ég skal segja þér í hverju ég hef verið að vinna í."
+            "title": "Vinnutengd verkefni",
+            "text": "Helstu verkefni sem ég hef unnið að eru tengd framendaforritun en ég hef einnig sinnt mörgum verkefnum í bakendaforritun. Minn styrkur liggur í framendanum, þá sérstaklega í React, Angular eða annað tengt Javascript. Fyrirtæki sem ég hef meðal annars unnið verkefni fyrir sem verktaki hjá Advania eru Íslandsbanki, Össur, Borgun, Tollstjóra, Íbúðalánasjóður og Fastus. Endilega hafið samband <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> fyrir frekari upplýsingar."
         }
     ],
     "images": [
