@@ -1,4 +1,0 @@
-[0331/224230.340:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: The pipe is being closed. (0xE8)
-[0420/122218.379:ERROR:process_info.cc(625)] range at 0xaf3568ea00000000, size 0x250 fully unreadable
-[0420/122218.379:ERROR:process_info.cc(625)] range at 0xaf35695000000000, size 0x250 fully unreadable
-[0420/122218.379:ERROR:process_info.cc(625)] range at 0x0, size 0x250 fully unreadable
