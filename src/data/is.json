@@ -140,28 +140,28 @@
         "text": "Ég heiti Snær Seljan Þóroddsson og er fæddur 1983. Ég er vefforritari, kennari, glímu- og júdómaður svo fátt eitt sé nefnt. Ég er uppalinn á Reyðarfirði en hef búið í Reykjavík síðan 2004. Af áhugamálum ber helst að nefna forritun auðvitað, íþróttir og hreyfing, kvikmyndir, útivera, ferðalög, kaffi og bjór. Mér þykir fátt skemmtilegra en að grúska í Node.js og React.js þegar tími gefst.",
         "images": [
             {
-                "id": 7,
+                "id": 8,
                 "url": "me_and_solla4.jpg",
                 "thumbnail": "thumbnails/me_and_solla4.jpg",
                 "text": "Kyoto, Japan"
             },
             {
-                "id": 8,
-                "url": "me7.jpg",
-                "thumbnail": "thumbnails/me7.jpg",
-                "text": "Bjórunnandi"
+                "id": 10,
+                "url": "me_and_solla1.jpg",
+                "thumbnail": "thumbnails/me_and_solla1.jpg",
+                "text": "Á Keflavíkurflugvelli"
             },
             {
-                "id": 10,
+                "id": 7,
                 "url": "me13.jpg",
                 "thumbnail": "thumbnails/me13.jpg",
                 "text": "Fushimi Inari Tori hliðið í Kyoto, Japan"
             },
             {
                 "id": 9,
-                "url": "solla_3.jpg",
-                "thumbnail": "thumbnails/solla_3.jpg",
-                "text": "Betri helmingurinn"
+                "url": "me7.jpg",
+                "thumbnail": "thumbnails/me7.jpg",
+                "text": "Bjórunnandi"
             }
         ]
     },

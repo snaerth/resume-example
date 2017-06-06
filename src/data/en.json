@@ -146,10 +146,10 @@
                 "text": "Kyoto, Japan"
             },
             {
-                "id": 9,
-                "url": "me7.jpg",
-                "thumbnail": "thumbnails/me7.jpg",
-                "text": "Beer enthusiast"
+                "id": 10,
+                "url": "me_and_solla1.jpg",
+                "thumbnail": "thumbnails/me_and_solla1.jpg",
+                "text": "Excited at KEF airport"
             },
             {
                 "id": 7,
@@ -158,10 +158,10 @@
                 "text": "Fushimi Inari Tori Gates in Kyoto, Japan"
             },
             {
-                "id": 10,
-                "url": "solla_3.jpg",
-                "thumbnail": "thumbnails/solla_3.jpg",
-                "text": "My better half"
+                "id": 9,
+                "url": "me7.jpg",
+                "thumbnail": "thumbnails/me7.jpg",
+                "text": "Beer enthusiast"
             }
         ]
     },
