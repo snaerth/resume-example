@@ -140,12 +140,6 @@
         "text": "My name is Snær Seljan Þóroddsson. I was born in 1983 and I grew up in Reyðarfjörður in the east of Iceland. I have lived in the capital Reykjavik since 2004. I am a web developer, teacher, Icelandic Glima wrestler and Judo man. Activities of interest include programming of course, sports and training, films, outdoor activities, travel, coffee and good beer. In my spare time I love hacking in Node.js and React.js. ",
         "images": [
             {
-                "id": 7,
-                "url": "me8.jpg",
-                "thumbnail": "thumbnails/me8.jpg",
-                "text": "Þingvallavatn Iceland 2016"
-            },
-            {
                 "id": 8,
                 "url": "me_and_solla4.jpg",
                 "thumbnail": "thumbnails/me_and_solla4.jpg",
@@ -156,6 +150,12 @@
                 "url": "me7.jpg",
                 "thumbnail": "thumbnails/me7.jpg",
                 "text": "Beer enthusiast"
+            },
+            {
+                "id": 7,
+                "url": "me13.jpg",
+                "thumbnail": "thumbnails/me13.jpg",
+                "text": "Fushimi Inari Tori Gates in Kyoto, Japan"
             },
             {
                 "id": 10,

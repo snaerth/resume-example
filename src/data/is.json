@@ -141,24 +141,24 @@
         "images": [
             {
                 "id": 7,
-                "url": "me8.jpg",
-                "thumbnail": "thumbnails/me8.jpg",
-                "text": "Þingvallavatn Iceland"
-            },
-            {
-                "id": 8,
                 "url": "me_and_solla4.jpg",
                 "thumbnail": "thumbnails/me_and_solla4.jpg",
                 "text": "Kyoto, Japan"
             },
             {
-                "id": 9,
+                "id": 8,
                 "url": "me7.jpg",
                 "thumbnail": "thumbnails/me7.jpg",
                 "text": "Bjórunnandi"
             },
             {
                 "id": 10,
+                "url": "me13.jpg",
+                "thumbnail": "thumbnails/me13.jpg",
+                "text": "Fushimi Inari Tori hliðið í Kyoto, Japan"
+            },
+            {
+                "id": 9,
                 "url": "solla_3.jpg",
                 "thumbnail": "thumbnails/solla_3.jpg",
                 "text": "Betri helmingurinn"
