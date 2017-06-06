@@ -131,6 +131,7 @@ class Home extends Component {
         </span>
         <a
           ref="githubMobile"
+          target="_blank"
           href="https://github.com/snaerth?tab=repositories"
           className="github-link mobile"
         >

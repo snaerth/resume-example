@@ -19,9 +19,10 @@ class RouterWrapper extends Component {
     return (
       <div>
         {this.props.children}
-        {this.props.common.pageRevealer
-          ? <PageSlideEffect type={this.props.common.pageRevealerType} />
-          : null}
+        <PageSlideEffect
+          type={this.props.common.pageRevealerType}
+          visible={this.props.common.pageRevealer}
+        />
       </div>
     );
   }

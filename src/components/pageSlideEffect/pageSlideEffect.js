@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './pageSlideEffect.css';
+import classnames from 'classnames';
 
 class PageSlideEffect extends Component {
   render() {
-    const { type } = this.props;
+    const { type, visible } = this.props;
+    const classes = visible
+      ? 'anim--effect-' + type + ' revealer--' + type
+      : '';
+
     return (
-      <div
-        className={`revealer revealer--animate anim--effect-${type} revealer--${type}`}
-      >
+      <div className={classnames('revealer revealer--animate', classes)}>
         <div className="layer" />
         <div className="layer" />
       </div>

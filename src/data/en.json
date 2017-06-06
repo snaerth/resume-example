@@ -9,7 +9,7 @@
     "resume": "Resume",
     "contact": {
         "title": "Contact me",
-        "text": "If you'd like to get in touch, you can send me an email directly at <a href='mailto:snaerth@gmail.com' title='Send mail to snaerth@gmail.com'>snaerth@gmail.com</a>, message me on <a href='https://www.facebook.com/snaerth' title='Facebook'>Facebook</a>",
+        "text": "If you'd like to get in touch, you can send me an email directly at <a href='mailto:snaerth@gmail.com' title='Send mail to snaerth@gmail.com'>snaerth@gmail.com</a> or message me on <a href='https://www.facebook.com/snaerth' title='Facebook'>Facebook</a>",
         "email": "snaerth@gmail.com",
         "buttonText": "Send me an email"
     },
