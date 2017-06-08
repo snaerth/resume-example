@@ -132,7 +132,7 @@ class Home extends Component {
         <a
           ref="githubMobile"
           target="_blank"
-          href="https://github.com/snaerth?tab=repositories"
+          href="https://github.com/snaerth/resume-example"
           className="github-link mobile"
         >
           <svg className="icon-github">
