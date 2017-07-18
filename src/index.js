@@ -22,6 +22,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route path="/profile" component={Profile} />
           <Route path="/contact" component={Contact} />
+          <Route component={Home}/>
         </RouterWrapper>
       </div>
     </Router>
