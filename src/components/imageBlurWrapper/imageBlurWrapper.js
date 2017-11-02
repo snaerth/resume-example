@@ -21,7 +21,7 @@ class ImageBlurWrapper extends Component {
     id: PropTypes.number.isRequired,
     overlay: PropTypes.bool,
     overlayTitle: PropTypes.string,
-    overlayText: PropTypes.string
+    overlayText: PropTypes.string,
   };
 
   componentDidMount() {
@@ -39,10 +39,8 @@ class ImageBlurWrapper extends Component {
     img.src = src;
     img.onload = () => {
       this.refs.canvas.parentNode.classList.add('heightAuto');
-      setTimeout(() => {
-        this.refs.canvas.classList.add('image-blur--image--hide');
-        this.refs.image.classList.add('image-blur--image--show');
-      }, 1000);
+      this.refs.canvas.classList.add('image-blur--image--hide');
+      this.refs.image.classList.add('image-blur--image--show');
     };
   }
 
@@ -59,7 +57,7 @@ class ImageBlurWrapper extends Component {
       overlay,
       overlayText,
       overlayTitle,
-      visible
+      visible,
     } = this.props;
 
     if (visible === true) {
@@ -81,18 +79,18 @@ class ImageBlurWrapper extends Component {
             />
             <canvas ref="canvas" className="image-blur--canvas" />
           </div>
-          {overlay
-            ? <div className="image-blur--wrapper-overlay">
-                <h2>{overlayTitle}</h2>
-                <p>{overlayText}</p>
-              </div>
-            : null}
+          {overlay ? (
+            <div className="image-blur--wrapper-overlay">
+              <h2>{overlayTitle}</h2>
+              <p>{overlayText}</p>
+            </div>
+          ) : null}
         </figure>
-        {text
-          ? <figcaption>
-              <p>{text}</p>
-            </figcaption>
-          : null}
+        {text ? (
+          <figcaption>
+            <p>{text}</p>
+          </figcaption>
+        ) : null}
       </div>
     );
   }

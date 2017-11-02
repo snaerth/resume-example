@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
@@ -16,7 +16,7 @@ const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <BrowserRouter history={history}>
       <div>
         <RouterWrapper>
           <Route exact path="/" component={Home} />
@@ -24,7 +24,7 @@ ReactDOM.render(
           <Route path="/contact" component={Contact} />
         </RouterWrapper>
       </div>
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
