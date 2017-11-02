@@ -15,7 +15,7 @@ class Home extends Component {
     super(props);
     this.state = {
       tl: new TimelineLite(),
-      dirty: false
+      dirty: false,
     };
   }
 
@@ -37,7 +37,7 @@ class Home extends Component {
       github,
       githubMobile,
       lang,
-      mobileImage
+      mobileImage,
     } = this.refs;
 
     tl
@@ -45,7 +45,7 @@ class Home extends Component {
       .to([left, right, mobileImage], 1.5, {
         x: '0%',
         opacity: 1,
-        ease: Power2.easeOut
+        ease: Power2.easeOut,
       })
       .to(
         firstName,
@@ -55,7 +55,7 @@ class Home extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut
+          ease: Power2.easeOut,
         },
         0.8
       )
@@ -67,7 +67,7 @@ class Home extends Component {
           opacity: 1,
           transformOrigin: '0 50%',
           rotationX: 0,
-          ease: Power2.easeOut
+          ease: Power2.easeOut,
         },
         1
       )
@@ -132,6 +132,7 @@ class Home extends Component {
         <a
           ref="githubMobile"
           target="_blank"
+          rel="noreferrer noopener"
           href="https://github.com/snaerth/resume-example"
           className="github-link mobile"
         >
@@ -189,7 +190,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch)
+    actions: bindActionCreators(actionCreators, dispatch),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

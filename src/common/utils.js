@@ -10,10 +10,11 @@ const _requestAnimationFrame =
 // Throttle http://underscorejs.org/#throttle
 function throttle(func, wait, options) {
   const _ = {
-    now: Date.now ||
+    now:
+      Date.now ||
       function() {
         return new Date().getTime();
-      }
+      },
   };
   let context, args, result;
   let timeout = null;
@@ -92,7 +93,7 @@ function checkVisibility(elem) {
 function getViewportSize() {
   return {
     width: window.document.documentElement.clientWidth,
-    height: window.document.documentElement.clientHeight
+    height: window.document.documentElement.clientHeight,
   };
 }
 
@@ -100,7 +101,7 @@ function getViewportSize() {
 function getCurrentScroll() {
   return {
     x: window.pageXOffset,
-    y: window.pageYOffset
+    y: window.pageYOffset,
   };
 }
 
@@ -124,7 +125,7 @@ function getElemInfo(elem) {
     top: offsetTop,
     left: offsetLeft,
     height: offsetHeight,
-    width: offsetWidth
+    width: offsetWidth,
   };
 }
 
@@ -166,8 +167,8 @@ export function withinViewport(
     if (unsubscribeEvents) {
       // Listening for events
       if (window.addEventListener) {
-        removeEventListener('scroll', scrollHandler, false);
-        removeEventListener('resize', resizeHandler, false);
+        window.removeEventListener('scroll', scrollHandler, false);
+        window.removeEventListener('resize', resizeHandler, false);
       } else if (window.attachEvent) {
         window.detachEvent('onscroll', scrollHandler);
         window.detachEvent('onresize', resizeHandler);
@@ -188,8 +189,8 @@ export function withinViewport(
 
       // Listening for events
       if (window.addEventListener) {
-        addEventListener('scroll', scrollHandler, false);
-        addEventListener('resize', resizeHandler, false);
+        window.addEventListener('scroll', scrollHandler, false);
+        window.addEventListener('resize', resizeHandler, false);
       } else if (window.attachEvent) {
         window.attachEvent('onscroll', scrollHandler);
         window.attachEvent('onresize', resizeHandler);
@@ -205,7 +206,8 @@ export function withinViewport(
 function debounce(func, wait, immediate) {
   let timeout;
   return function() {
-    const context = this, args = arguments;
+    const context = this,
+      args = arguments;
     const later = function() {
       timeout = null;
       if (!immediate) func.apply(context, args);
@@ -242,7 +244,7 @@ function ElmentTilt(el) {
   this.el = el;
   this.win = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   };
 }
 
@@ -252,8 +254,8 @@ ElmentTilt.prototype.options = {
     maxRotationX: -4,
     maxRotationY: 3,
     maxTranslationX: 10,
-    maxTranslationY: -2
-  }
+    maxTranslationY: -2,
+  },
 };
 
 ElmentTilt.prototype.getMousePos = function(e) {
@@ -278,7 +280,7 @@ ElmentTilt.prototype.getMousePos = function(e) {
 
   return {
     x: posx,
-    y: posy
+    y: posy,
   };
 };
 
