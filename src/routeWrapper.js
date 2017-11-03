@@ -8,7 +8,7 @@ import PageSlideEffect from './components/pageSlideEffect';
 class RouterWrapper extends Component {
   componentWillMount() {
     this.props.actions.setLanguage('en');
-    if (window.location.pathname !== '/') {
+    if (!window.location || window.location.pathname !== '/') {
       this.props.actions.removePageLoading();
     } else {
       document.body.classList.remove('loading');
@@ -48,7 +48,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch)
+    actions: bindActionCreators(actionCreators, dispatch),
   };
 }
 

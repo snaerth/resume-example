@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { initElementTilt, ifIE } from '../../common/utils';
+import { initElementTilt } from '../../common/utils';
 
 class CoverPhoto extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      ie: ifIE()
-    };
-  }
-  componentDidMount() {
-    if (!this.state.ie) {
-      setTimeout(initElementTilt, 2300, this.refs.image);
-    }
-  }
-
   componentWillUnmount() {
-    if (!this.state.ie) {
-      initElementTilt(this.refs.image, true);
-    }
+    initElementTilt(this.refs.image, true);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +34,7 @@ CoverPhoto.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 /**

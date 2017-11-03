@@ -1,12 +1,9 @@
 import React from 'react';
 import { hydrate, render } from 'react-dom'; // eslint-disable-line
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/configureStore';
-import Home from './routes/home';
-import Profile from './routes/profile';
-import Contact from './routes/contact';
-import RouterWrapper from './routeWrapper';
+import Routes from './routes';
 import './index.css';
 
 const store = configureStore();
@@ -18,29 +15,13 @@ window.store = store;
 const supportsHistory =
   window && window.history && 'pushState' in window.history ? true : false;
 
-const routes = (
-  <div>
-    <RouterWrapper>
-      <Route exact path="/" component={Home} />
-      <Route path="/profile" component={Profile} />
-      <Route path="/contact" component={Contact} />
-    </RouterWrapper>
-  </div>
-);
-
 const app = (
   <Provider store={store}>
-    <BrowserRouter forceRefresh={!supportsHistory}>{routes}</BrowserRouter>
+    <BrowserRouter forceRefresh={!supportsHistory}>
+      <div>{Routes}</div>
+    </BrowserRouter>
   </Provider>
 );
-
-const root = document.getElementById('root');
-
-if (process.env.NODE_ENV === 'development') {
-  render(app, root);
-} else {
-  hydrate(app, root);
-}
 
 const renderApp = newRoot => {
   if (process.env.NODE_ENV === 'development') {
@@ -50,6 +31,4 @@ const renderApp = newRoot => {
   }
 };
 
-renderApp(root);
-
-export default routes;
+renderApp(document.getElementById('root'));

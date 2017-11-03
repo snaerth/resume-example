@@ -35,17 +35,17 @@ export function removePageLoading() {
     if (timeDiff < minTime) {
       const delay = minTime - timeDiff;
       setTimeout(() => {
-        window.document.body.classList.remove('loading');
+        document.body.classList.remove('loading');
         dispatch({ type: REMOVE_PAGE_LOADING });
       }, delay);
     } else {
-      window.document.body.classList.remove('loading');
+      document.body.classList.remove('loading');
       return { type: REMOVE_PAGE_LOADING };
     }
   };
 }
 
 export function addPageLoading() {
-  window.document.body.classList.add('loading');
+  document.body.classList.add('loading');
   return { type: ADD_PAGE_LOADING };
 }
