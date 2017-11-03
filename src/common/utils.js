@@ -1,3 +1,7 @@
+if (typeof window === 'undefined') {
+  global.window = {};
+}
+
 // requestAnimationFrame
 // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 const _requestAnimationFrame =
@@ -140,12 +144,15 @@ export function withinViewport(
 ) {
   // Cutting the mustard
   // http://webfieldmanual.com/guides/cutting-the-mustard.html
-  if (window.requestAnimationFrame && document.documentElement.classList) {
+  if (
+    window.requestAnimationFrame &&
+    window.document.documentElement.classList
+  ) {
     // Passes the test so add enhanced class to HTML tag
-    document.documentElement.classList.add('enhanced');
+    window.document.documentElement.classList.add('enhanced');
 
     // Global class for revealing element
-    const revealer = document.querySelectorAll('.' + selector);
+    const revealer = window.document.querySelectorAll('.' + selector);
 
     // Run a loop with checkVisibility() and add / remove classes to the elements
     const toggleElement = () => {
@@ -224,7 +231,7 @@ export function initElementTilt(el, destroy) {
     const newElmentTilt = new ElmentTilt(el);
     el.style.transition = 'transform 0.2s ease-out';
     if (typeof requestAnimationFrame === 'undefined') return;
-    document.addEventListener(
+    window.document.addEventListener(
       'mousemove',
       onMouseMoveHandler.bind(newElmentTilt)
     );
@@ -233,7 +240,7 @@ export function initElementTilt(el, destroy) {
       debounceResizeHandler.bind(newElmentTilt)
     );
   } else {
-    document.removeEventListener('mousemove', onMouseMoveHandler);
+    window.document.removeEventListener('mousemove', onMouseMoveHandler);
     window.removeEventListener('resize', debounceResizeHandler);
     el.style.transition = '';
     el.style.transform = '';
@@ -272,10 +279,12 @@ ElmentTilt.prototype.getMousePos = function(e) {
   } else if (e.clientX || e.clientY) {
     posx =
       e.clientX +
-      document.body.scrollLeft +
-      document.documentElement.scrollLeft;
+      window.document.body.scrollLeft +
+      window.document.documentElement.scrollLeft;
     posy =
-      e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+      e.clientY +
+      window.document.body.scrollTop +
+      window.document.documentElement.scrollTop;
   }
 
   return {
@@ -314,7 +323,7 @@ function debounceResizeHandler() {
 }
 
 export function ifIE() {
-  return document.documentMode || /Edge/.test(navigator.userAgent)
+  return window.document.documentMode || /Edge/.test(navigator.userAgent)
     ? true
     : false;
 }

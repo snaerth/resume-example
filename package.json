@@ -18,12 +18,25 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.16"
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "image-webpack-loader": "^3.4.2",
+    "react-scripts": "1.0.16",
+    "uglifyjs-webpack-plugin": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:server": "webpack --config webpack.config.node.js",
+    "build:all":
+      "react-scripts build && webpack --config webpack.config.node.js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "server": "NODE_ENV=production node build/server.js"
+  },
+  "presets": ["react-app"]
 }
