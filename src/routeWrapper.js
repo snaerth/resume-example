@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch } from 'react-router-dom';
 import * as actionCreators from './common/actions';
 import PageSlideEffect from './components/pageSlideEffect';
 
@@ -18,7 +18,7 @@ class RouterWrapper extends Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <Switch>{this.props.children}</Switch>
         <PageSlideEffect
           type={this.props.common.pageRevealerType}
           visible={this.props.common.pageRevealer}

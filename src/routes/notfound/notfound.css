@@ -1,0 +1,35 @@
+.notfound_container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ccc;
+}
+
+.notfound_center {
+  position: relative;
+  top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.notfound_center h1 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  color: #fff;
+}
+
+.notfound_center p {
+  margin-bottom: 1em;
+  color: #fff;
+}
+
+.notfound_center a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.notfound_center:hover {
+  color: #fff;
+}
