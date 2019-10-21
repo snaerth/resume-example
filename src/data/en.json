@@ -44,6 +44,11 @@
     "title": "Career",
     "rows": [
       {
+        "title": "Dohop",
+        "secondTitle": "2017 - ",
+        "content": "Í Dohop hef ég sinnt"
+      },
+      {
         "title": "Advania",
         "secondTitle": "2014-2017",
         "content": "At Advania I have worked on many various projects as a web developer for the past 3 years. I have good experience in both front- and backend development. I have programmed large websites and web services both REST and SOAP. My main strength lies in Javascript and CSS, more specifically in Node.js, React with Redux, SASS, LESS and CSS Modules."
@@ -137,7 +142,7 @@
   },
   "about": {
     "title": "about me",
-    "text": "My name is Snær Seljan Þóroddsson. I was born in 1983 and I grew up in Reyðarfjörður in the east of Iceland. I have lived in the capital Reykjavik since 2004. I am a web developer, teacher, Icelandic Glima wrestler and Judo man. Activities of interest include programming of course, sports and training, films, outdoor activities, travel, coffee and good beer. In my spare time I love hacking in Node.js and React.js. ",
+    "text": "My name is Snær Seljan Þóroddsson. I was born in 1983 and I grew up in Reyðarfjörður in the east of Iceland. I have lived in the capital Reykjavik since 2004. I am a father, programmer, teacher, Icelandic Glima wrestler and Judo man. Activities of interest include family, programming of course, environmental issues, veganisim, health and training, films, outdoor activities and recently yoga. In my spare time I love spending time with my family or hacking in some programming language.",
     "images": [
       {
         "id": 8,
@@ -147,9 +152,9 @@
       },
       {
         "id": 10,
-        "url": "me_and_solla1.JPG",
-        "thumbnail": "thumbnails/me_and_solla1.jpg",
-        "text": "Excited at KEF airport"
+        "url": "me_and_embla.jpg",
+        "thumbnail": "thumbnails/me_and_embla.jpg",
+        "text": "Me and Embla chilling by the lake"
       },
       {
         "id": 7,
@@ -208,7 +213,7 @@
       "title": "javascript frameworks",
       "items": [
         {
-          "name": "React.js, Next.js, Gatsby, etc.",
+          "name": "React frameworks",
           "percentage": 99
         },
         {

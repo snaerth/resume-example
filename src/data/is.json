@@ -44,6 +44,11 @@
     "title": "ferill",
     "rows": [
       {
+        "title": "Dohop",
+        "secondTitle": "2017 - ",
+        "content": "Í Dohop hef ég sinnt"
+      },
+      {
         "title": "Advania",
         "secondTitle": "2014-2017",
         "content": "Hjá Advania hef ég sinnt mörgum og fjölbreyttum verkefnum sem vefforritari síðastliðinn 3 ár. Ég hef góða reynslu bæði í fram- og bakendaforritun en ég hef þróað og forritað stóra vefi og vefþjónustur (REST og SOAP). Helsti styrkleiki minn liggur í Javascript og CSS, nánar tiltekið í Node.js, React með Redux, SASS, LESS og CSS Modules."
@@ -137,7 +142,7 @@
   },
   "about": {
     "title": "um mig",
-    "text": "Ég heiti Snær Seljan Þóroddsson og er fæddur 1983. Ég er vefforritari, kennari, glímu- og júdómaður svo fátt eitt sé nefnt. Ég er uppalinn á Reyðarfirði en hef búið í Reykjavík síðan 2004. Af áhugamálum ber helst að nefna forritun auðvitað, íþróttir og hreyfing, kvikmyndir, útivera, ferðalög, kaffi og bjór. Mér þykir fátt skemmtilegra en að grúska í Node.js og React.js þegar tími gefst.",
+    "text": "Ég heiti Snær Seljan Þóroddsson og er fæddur 1983. Ég er faðir, forritari, kennari, glímu- og júdómaður svo fátt eitt sé nefnt. Ég er uppalinn á Reyðarfirði en hef búið í Reykjavík síðan 2004. Af áhugamálum ber helst að nefna fjölskyldan, umhverfismál, forritun \"auðvitað\", veganismi, heilsa og hreyfing, kvikmyndir, útivera og núna nýlega yoga. Mér þykir fátt skemmtilegra en að eyða tíma með fjölskyldu eða forrita þegar tími gefst.",
     "images": [
       {
         "id": 8,
@@ -147,9 +152,9 @@
       },
       {
         "id": 10,
-        "url": "me_and_solla1.JPG",
-        "thumbnail": "thumbnails/me_and_solla1.jpg",
-        "text": "Á Keflavíkurflugvelli"
+        "url": "me_and_embla.jpg",
+        "thumbnail": "thumbnails/me_and_embla.jpg",
+        "text": "Ég og Embla að chilla í Elliðaárdalnum"
       },
       {
         "id": 7,
@@ -204,7 +209,7 @@
       "title": "javascript frameworks",
       "items": [
         {
-          "name": "React.js, Next.js, Gatsby, etc.",
+          "name": "React umgjörðir",
           "percentage": 99
         },
         {
