@@ -21,7 +21,7 @@ class ImageBlurWrapper extends Component {
     id: PropTypes.number.isRequired,
     overlay: PropTypes.bool,
     overlayTitle: PropTypes.string,
-    overlayText: PropTypes.string,
+    overlayText: PropTypes.string
   };
 
   componentDidMount() {
@@ -44,7 +44,7 @@ class ImageBlurWrapper extends Component {
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.visible === true;
   }
 
@@ -57,7 +57,7 @@ class ImageBlurWrapper extends Component {
       overlay,
       overlayText,
       overlayTitle,
-      visible,
+      visible
     } = this.props;
 
     if (visible === true) {

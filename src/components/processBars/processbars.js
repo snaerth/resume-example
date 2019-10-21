@@ -33,26 +33,24 @@ class Processbar extends Component {
         const fullWidth =
           processbarEl.viewportElement.clientWidth ||
           processbarEl.parentNode.parentNode.clientWidth;
-        const calcPercentageWidth = percentage / 100 * fullWidth;
-        tl
-          .to(
-            counterEl,
-            0.3,
-            {
-              x: calcPercentageWidth,
-              ease: Power2.easeOut
-            },
-            '-=0.3'
-          )
-          .to(
-            processbarEl,
-            0.5,
-            {
-              attr: { width: percentage + '%' },
-              ease: Power2.easeOut
-            },
-            '-=0.5'
-          );
+        const calcPercentageWidth = (percentage / 100) * fullWidth;
+        tl.to(
+          counterEl,
+          0.3,
+          {
+            x: calcPercentageWidth,
+            ease: Power2.easeOut
+          },
+          '-=0.3'
+        ).to(
+          processbarEl,
+          0.5,
+          {
+            attr: { width: percentage + '%' },
+            ease: Power2.easeOut
+          },
+          '-=0.5'
+        );
       }
     }
   }
@@ -85,11 +83,21 @@ class Processbar extends Component {
     return tl;
   }
 
-  animateColumns(timeScale) {
+  animateColumns() {
     const id = this.props.id;
+    const tlContainer = new TimelineLite();
     const tl = new TimelineLite();
     const tlL = new TimelineLite();
     const tlR = new TimelineLite();
+
+    tlContainer.set(
+      '.processbar-row--container',
+      {
+        autoAlpha: 1
+      },
+      1.6
+    );
+
     tlL
       .set('.processbar-left-' + id, {
         autoAlpha: 0,
@@ -130,16 +138,15 @@ class Processbar extends Component {
       const fullWidth =
         processbarEl.viewportElement.clientWidth ||
         processbarEl.parentNode.parentNode.clientWidth;
-      const calcPercentageWidth = percentage / 100 * fullWidth;
+      const calcPercentageWidth = (percentage / 100) * fullWidth;
       counters.push({ score: 0 });
 
-      tl
-        .set(counterEl, {
-          autoAlpha: 0,
-          scale: 0,
-          z: 0.01,
-          y: '20px'
-        })
+      tl.set(counterEl, {
+        autoAlpha: 0,
+        scale: 0,
+        z: 0.01,
+        y: '20px'
+      })
         .to(counterEl, 1.5, {
           scale: 1,
           y: '0%',
@@ -196,7 +203,8 @@ class Processbar extends Component {
             className={classnames('processbar-right', 'processbar-right-' + id)}
           >
             <span className="processbar-counter" ref={'processcounter-' + i}>
-              <span>0</span><span>%</span>
+              <span>0</span>
+              <span>%</span>
             </span>
             <div>
               <svg
@@ -231,7 +239,9 @@ class Processbar extends Component {
         <h2 className="name processbars-header">
           <span ref={'title-' + id}>{title}</span>
         </h2>
-        {this.renderRows(data, id)}
+        <div className="processbar-row--container">
+          {this.renderRows(data, id)}
+        </div>
       </div>
     );
   }

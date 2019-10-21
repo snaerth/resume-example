@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Processbars from '../processBars';
 import { TimelineLite, Power2 } from 'gsap';
@@ -12,13 +12,12 @@ class ProcessBarsList extends Component {
     title: PropTypes.string.isRequired
   };
 
-  constructor(props) {
-    super(props);
+  titleRef = createRef();
 
-    this.state = {
-      componentRenderCount: 0
-    };
-  }
+  state = {
+    componentRenderCount: 0,
+    titleVisible: false // only render title once
+  };
 
   shouldComponentUpdate(nextProps, nextState) {
     if (nextState.componentRenderCount <= nextProps.visibleArr.length + 2) {
@@ -28,47 +27,49 @@ class ProcessBarsList extends Component {
     return false;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.visibleArr.includes(true) &&
-      this.state.componentRenderCount <= nextProps.visibleArr.length + 2
-    ) {
-      let cnt = this.state.componentRenderCount;
-      cnt++;
-      this.setState((prevState, props) => {
-        return { componentRenderCount: cnt };
-      });
+  componentDidUpdate(prevProps, prevState) {
+    const { titleVisible: prevTitleVisible } = prevState;
+    const { visibleArr: prevVisibleArr } = prevProps;
+    const { visibleArr } = this.props;
+
+    if (prevVisibleArr !== visibleArr && !prevTitleVisible) {
+      this.setState({ titleVisible: true });
     }
   }
 
-  renderRows() {
+  renderRows = (isVisible, idx) => {
     const { processbars, visibleArr } = this.props;
-    if (visibleArr[0]) {
-      this.animateTitle(this.refs.title.children[0]);
+    const { titleVisible } = this.state;
+
+    if (
+      visibleArr[idx] &&
+      this.titleRef &&
+      this.titleRef.current &&
+      !titleVisible
+    ) {
+      this.animateTitle(this.titleRef.current.children[0]);
     }
 
-    return processbars.map((processbar, i) => {
-      return (
-        <div key={'processbarlist-row' + i}>
-          <div
-            className={classnames(
-              'onscroll-reveal processbars',
-              'processbar' + i
-            )}
-          >
-            {visibleArr[i]
-              ? <Processbars
-                  height={20}
-                  data={processbar.items}
-                  id={i}
-                  title={processbar.title}
-                />
-              : null}
-          </div>
+    return (
+      <div key={idx}>
+        <div
+          className={classnames(
+            'onscroll-reveal processbars',
+            'processbar' + idx
+          )}
+        >
+          {visibleArr[idx] && (
+            <Processbars
+              height={20}
+              data={processbars[idx].items}
+              id={idx}
+              title={processbars[idx].title}
+            />
+          )}
         </div>
-      );
-    });
-  }
+      </div>
+    );
+  };
 
   /**
    * Animates section title
@@ -90,14 +91,16 @@ class ProcessBarsList extends Component {
   }
 
   render() {
-    const { title } = this.props;
+    const { title, visibleArr } = this.props;
 
     return (
       <div>
-        <h1 className="name visible relative" ref="title">
+        <h1 className="name visible relative" ref={this.titleRef}>
           <span>{title}</span>
         </h1>
-        <div className="processbars-list-container">{this.renderRows()}</div>
+        <div className="processbars-list-container">
+          {visibleArr.map(this.renderRows)}
+        </div>
       </div>
     );
   }

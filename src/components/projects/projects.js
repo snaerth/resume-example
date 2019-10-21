@@ -57,30 +57,28 @@ class Projects extends Component {
       }
     }
 
-    tl
-      .staggerTo(
-        headers,
-        1.5,
-        {
-          y: '0%',
-          autoAlpha: 1,
-          ease: Elastic.easeOut,
-          easeParams: [0.9, 1]
-        },
-        1
-      )
-      .staggerTo(
-        images,
-        1.5,
-        {
-          y: '0%',
-          autoAlpha: 1,
-          ease: Elastic.easeOut,
-          easeParams: [0.9, 1]
-        },
-        0.1,
-        0.3
-      );
+    tl.staggerTo(
+      headers,
+      1.5,
+      {
+        y: '0%',
+        autoAlpha: 1,
+        ease: Elastic.easeOut,
+        easeParams: [0.9, 1]
+      },
+      1
+    ).staggerTo(
+      images,
+      1.5,
+      {
+        y: '0%',
+        autoAlpha: 1,
+        ease: Elastic.easeOut,
+        easeParams: [0.9, 1]
+      },
+      0.1,
+      0.3
+    );
   }
 
   renderHobbyProjects(projects) {
@@ -95,6 +93,7 @@ class Projects extends Component {
           key={'project-image' + i}
           className="project"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="even">
             <ImageBlurWrapper
@@ -145,12 +144,12 @@ class Projects extends Component {
           </h2>
           <div className="image-blur--container">
             {i === 0 ? this.renderHobbyProjects(projects) : null}
-            {i === 1
-              ? <p
-                  className="work-text"
-                  dangerouslySetInnerHTML={{ __html: text }}
-                />
-              : null}
+            {i === 1 ? (
+              <p
+                className="work-text"
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            ) : null}
           </div>
         </div>
       );

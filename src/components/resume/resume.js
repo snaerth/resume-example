@@ -40,9 +40,12 @@ class Resume extends Component {
     let text = title.parentNode.nextSibling;
     this.animateTitle(title, tl);
     tl.to(back, 1, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.2).pause();
-    tl
-      .to(text, 1, { y: '0%', opacity: 1, ease: Power2.easeOut }, '-=0.4')
-      .play();
+    tl.to(
+      text,
+      1,
+      { y: '0%', opacity: 1, ease: Power2.easeOut },
+      '-=0.4'
+    ).play();
   }
 
   componentWillUnmount() {
@@ -150,9 +153,10 @@ class Resume extends Component {
     if (rows.length > 0) {
       tl = tl ? tl : new TimelineLite();
       let extraDelay = 0;
-      const title = rows[0].parentNode && rows[0].parentNode.previousSibling
-        ? rows[0].parentNode.previousSibling
-        : null;
+      const title =
+        rows[0].parentNode && rows[0].parentNode.previousSibling
+          ? rows[0].parentNode.previousSibling
+          : null;
 
       if (title) {
         this.animateTitle(title.children[0], tl);
@@ -222,34 +226,34 @@ class Resume extends Component {
           <h1 className="name visible relative">
             <span ref={index === 0 ? 'title' : ''}>{section.title}</span>
           </h1>
-          {rows
-            ? <div className="resume-section--row" ref={'rows' + index}>
-                {rows}
-                {rows.length > 3
-                  ? <div className="text-center">
-                      <button
-                        ref={'morebutton' + index}
-                        className="more"
-                        onClick={e => this.removeHiddenClass(e, index, rows)}
-                      >
-                        {more}
-                      </button>
-                    </div>
-                  : null}
-              </div>
-            : null}
-          {section.text
-            ? <div
-                className={classnames(
-                  'resume-section--row',
-                  index === 0 ? 'first' : ''
-                )}
-              >
-                <div className="resume-row">
-                  <p className="max-1000 text-section">{section.text}</p>
+          {rows ? (
+            <div className="resume-section--row" ref={'rows' + index}>
+              {rows}
+              {rows.length > 3 ? (
+                <div className="text-center">
+                  <button
+                    ref={'morebutton' + index}
+                    className="more"
+                    onClick={e => this.removeHiddenClass(e, index, rows)}
+                  >
+                    {more}
+                  </button>
                 </div>
+              ) : null}
+            </div>
+          ) : null}
+          {section.text ? (
+            <div
+              className={classnames(
+                'resume-section--row',
+                index === 0 ? 'first' : ''
+              )}
+            >
+              <div className="resume-row">
+                <p className="max-1000 text-section">{section.text}</p>
               </div>
-            : null}
+            </div>
+          ) : null}
           {colImages ? colImages : null}
         </div>
         <WaveSvg />
@@ -291,9 +295,8 @@ class Resume extends Component {
 
   renderRows(rows, index) {
     return rows.map((row, i) => {
-      const hidden = !this.state.sectionsVisible[index] && i > 2
-        ? 'hidden'
-        : '';
+      const hidden =
+        !this.state.sectionsVisible[index] && i > 2 ? 'hidden' : '';
 
       return (
         <div className={classnames('resume-row', hidden)} key={'row-' + i}>
@@ -310,8 +313,8 @@ class Resume extends Component {
   }
 
   /**
-	 * Removes hidden class from row and starts animation on section texts
-	 */
+   * Removes hidden class from row and starts animation on section texts
+   */
   removeHiddenClass(e, index, rows) {
     e.preventDefault();
     const newArr = [...this.state.sectionsVisible];
@@ -339,7 +342,7 @@ class Resume extends Component {
     this.animateSections(newRows);
   }
 
-  renderProcessbarsList(processbars, processbarVisible, index, title) {
+  renderProcessbarsList(processbars, processbarVisible, index) {
     return (
       <div className="resume-section onscroll-reveal" data-navid={index}>
         <div>
@@ -431,4 +434,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Resume));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Resume)
+);
