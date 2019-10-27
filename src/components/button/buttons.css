@@ -57,6 +57,28 @@
   transform: translate3d(-200%, 0, 0);
 }
 
+.button-back--fixed {
+  position: fixed;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1500px) {
+  .button-back--fixed.job-application--button-container {
+    margin: 0;
+    padding: 0;
+  }
+  .button-back--fixed button {
+    margin: 0;
+    padding: 1.2em 2em;
+    background-color: transparent;
+    color: #37474f;
+    font-size: 14px;
+  }
+  .button-back--fixed button:hover {
+    background-color: transparent;
+    color: #000;
+  }
+}
+
 /* Moema */
 
 .button--moema {

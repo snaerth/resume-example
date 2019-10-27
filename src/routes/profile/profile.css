@@ -1,17 +1,17 @@
 .page-container {
-    background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 
 .job-application--button-container {
-    z-index: 4;
+  z-index: 4;
 }
 
 .page-container h1.name {
-    padding: 0 0 0 5vw;
+  padding: 0 0 0 5vw;
 }
 
 @media only screen and (max-width: 992px) {
-    .page-container h1.name {
-        padding: 0;
-    }
+  .page-container h1.name {
+    padding: 0;
+  }
 }

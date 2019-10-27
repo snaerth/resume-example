@@ -46,7 +46,7 @@
       {
         "title": "Dohop",
         "secondTitle": "2017 - ",
-        "content": "Í Dohop hef ég sinnt"
+        "content": "In Dohop I have worked on a variety of projects. My job is a combination of production owner, technology leader and programming. The tools I have worked with most in Dohop are Node.js, React.js, Less, css modules, Python in the backend, Less,  CSS modules and Amazon AWS."
       },
       {
         "title": "Advania",
@@ -184,6 +184,10 @@
           "percentage": 80
         },
         {
+          "name": "GraphQL",
+          "percentage": 50
+        },
+        {
           "name": "C#",
           "percentage": 75
         },
@@ -246,7 +250,7 @@
           "thumbnail": "thumbnails/biomynd_is.png",
           "url": "http://www.biomynd.is",
           "text": "Everything you want to know about movies both in screening and upcoming in Icelandic cinemas.",
-          "title": "biomynd.is",
+          "title": "biomynd.is (2015)",
           "titleText": "All movies in cinemas in one place."
         },
         {
@@ -255,14 +259,14 @@
           "thumbnail": "thumbnails/api_kvikmyndir_is.png",
           "url": "http://api.kvikmyndir.is",
           "text": "Icelandic movie API is a free REST service for movies showing in Icelandic cinemas.",
-          "title": "api.kvikmyndir.is",
+          "title": "api.kvikmyndir.is (2016)",
           "titleText": "Free REST service for movies in Icelandic cinemas."
         }
       ]
     },
     {
       "title": "Work projects",
-      "text": "The main tasks I've worked on are related to frontend programming, but I have also worked on many projects in backend programming. My strength lies in the front end, especially in React, Angular or other Javascript related libraries and frameworks. Please contact <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Send mail to snaerth@gmail.com'> snaerth@gmail.com </a> for further information."
+      "text": "The main tasks I've worked on are related to frontend programming, but I have also worked on many projects in backend programming. My strength lies in the front end, especially in Javascript frameworks like React.js, Vue.js, Next.js or Gatsby.js. I am also really good in plain vanilla Javascript. Please contact <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Send mail to snaerth@gmail.com'> snaerth@gmail.com </a> for further information."
     }
   ],
   "images": [

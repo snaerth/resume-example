@@ -46,7 +46,7 @@
       {
         "title": "Dohop",
         "secondTitle": "2017 - ",
-        "content": "Í Dohop hef ég sinnt"
+        "content": "Í Dohop hef ég starfað að margvíslegum verkefnum. Mitt starf er sambland af vörumerkjastjóra, tækni leiðtoga og forritara.  Tólin sem ég hef unnið mest með í Dohop eru Node.js, React.js, Less, css modules,  Python í bakenda , Less, CSS modules and Amazon AWS."
       },
       {
         "title": "Advania",
@@ -184,6 +184,10 @@
           "percentage": 80
         },
         {
+          "name": "GraphQL",
+          "percentage": 50
+        },
+        {
           "name": "C#",
           "percentage": 73
         },
@@ -242,7 +246,7 @@
           "thumbnail": "thumbnails/biomynd_is.PNG",
           "url": "http://www.biomynd.is",
           "text": "Allt það sem þú vilt vita um bíómyndir í sýningu sem og væntanlegar í kvikmyndhús landsins.",
-          "title": "biomynd.is",
+          "title": "biomynd.is (2015)",
           "titleText": "Allar myndir í bíó á einum stað"
         },
         {
@@ -251,14 +255,14 @@
           "thumbnail": "thumbnails/api_kvikmyndir_is.PNG",
           "url": "http://api.kvikmyndir.is",
           "text": "Icelandic movie API er frí REST þjónusta sem hefur að geyma allar upplýsingar um kvikmyndir í bíóhúsum landsins.",
-          "title": "api.kvikmyndir.is",
+          "title": "api.kvikmyndir.is (2016)",
           "titleText": "Búðu til bíóapp, bíó vefsíðu með gögnunum frá Icelandic movie API."
         }
       ]
     },
     {
       "title": "Vinnutengd verkefni",
-      "text": "Helstu verkefni sem ég hef unnið að eru tengd framendaforritun en ég hef einnig sinnt mörgum verkefnum í bakendaforritun. Minn styrkur liggur í framendanum, þá sérstaklega í React, Angular eða annað tengt Javascript. Endilega hafið samband <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> fyrir frekari upplýsingar."
+      "text": "Helstu verkefni sem ég hef unnið að eru tengd framendaforritun en ég hef einnig sinnt mörgum verkefnum í bakendaforritun. Minn styrkur liggur í framendanum, þá sérstaklega í Javascript \"frameworks\" eins React.js, Vue.js, Next.js eða Gatsby.js. Svo er ég einnig mjög fær í \"Plain valnilla Javascript\". Endilega hafið samband <a href='mailto:snaerth@gmail.com' class='reveal-text' title='Senda póst til snaerth@gmail.com'>snaerth@gmail.com</a> fyrir frekari upplýsingar."
     }
   ],
   "images": [

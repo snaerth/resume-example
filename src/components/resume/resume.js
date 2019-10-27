@@ -390,7 +390,8 @@ class Resume extends Component {
             className={classnames(
               'job-application--button-container',
               'button-left',
-              'button-left--offset'
+              'button-left--offset',
+              'button-back--fixed'
             )}
             ref="back"
           >

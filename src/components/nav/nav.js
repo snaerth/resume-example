@@ -89,4 +89,7 @@ function mapStateToProps(state) {
   return { common: state.common };
 }
 
-export default connect(mapStateToProps, null)(Nav);
+export default connect(
+  mapStateToProps,
+  null
+)(Nav);
