@@ -14,4 +14,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
-/build
