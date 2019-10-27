@@ -1,7 +1,22 @@
 {
-  "main.css": "static/css/main.057d0068.css",
-  "main.css.map": "static/css/main.057d0068.css.map",
-  "main.js": "static/js/main.e0d526f7.js",
-  "main.js.map": "static/js/main.e0d526f7.js.map",
-  "static/media/snaer_seljan_thoroddsson.png": "static/media/snaer_seljan_thoroddsson.d4b0ca1f.png"
+  "files": {
+    "main.css": "/static/css/main.a5c85c27.chunk.css",
+    "main.js": "/static/js/main.c1901c1a.chunk.js",
+    "main.js.map": "/static/js/main.c1901c1a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.58aedfe6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.58aedfe6.js.map",
+    "static/js/2.915cb9b4.chunk.js": "/static/js/2.915cb9b4.chunk.js",
+    "static/js/2.915cb9b4.chunk.js.map": "/static/js/2.915cb9b4.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d0201300757eb4943474a3988b078241.js": "/precache-manifest.d0201300757eb4943474a3988b078241.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.a5c85c27.chunk.css.map": "/static/css/main.a5c85c27.chunk.css.map",
+    "static/media/snaer_seljan_thoroddsson.png": "/static/media/snaer_seljan_thoroddsson.d4b0ca1f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.58aedfe6.js",
+    "static/js/2.915cb9b4.chunk.js",
+    "static/css/main.a5c85c27.chunk.css",
+    "static/js/main.c1901c1a.chunk.js"
+  ]
 }
