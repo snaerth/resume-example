@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { TimelineLite, Elastic, Power2 } from 'gsap';
 import classnames from 'classnames';
@@ -133,6 +133,8 @@ class Projects extends Component {
   }
 
   renderSection(sections) {
+    const { visible } = this.props;
+
     return sections.map((section, i) => {
       const { title, projects, text } = section;
       const titleClass = i === 1 ? 'work-header' : '';
@@ -143,7 +145,34 @@ class Projects extends Component {
             <span>{title}</span>
           </h2>
           <div className="image-blur--container">
-            {i === 0 ? this.renderHobbyProjects(projects) : null}
+            {i === 0 ? (
+              <Fragment>
+                {this.renderHobbyProjects(projects)}
+                <a
+                  href={
+                    'https://github.com/snaerth/create-react-component-folder/'
+                  }
+                  title={text}
+                  key="project-image-5"
+                  className="project"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="even">
+                    <ImageBlurWrapper
+                      id={5}
+                      src="images/crcf.png"
+                      alt="Create react component folder"
+                      text="Hjálpartól til að búa til möppu strúktur fyrir React eða React Native með einni skipun"
+                      overlay={true}
+                      overlayTitle="Create react component folder (2018)"
+                      visible={visible}
+                    />
+                  </div>
+                </a>
+              </Fragment>
+            ) : null}
+
             {i === 1 ? (
               <p
                 className="work-text"
